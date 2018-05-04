@@ -41,5 +41,55 @@ namespace NEST.Classes
         bool joy2KeyA = false;
         bool joy2KeyB = false;
 
+
+        public void setJoy1KeyInput(int keyCode, bool enabled)
+        {
+
+            switch (keyCode)
+            {
+                case 0:
+                    {
+                        joy1KeyUp = enabled;
+                        break;
+                    }
+                case 1:
+                    {
+                        joy1KeyDown = enabled;
+                        break;
+                    }
+                case 2:
+                    {
+                        joy1KeyLeft = enabled;
+                        break;
+                    }
+                case 3:
+                    {
+                        joy1KeyRight = enabled;
+                        break;
+                    }
+                case 4:
+                    {
+                        joy1KeyStart = enabled;
+                        break;
+                    }
+                case 5:
+                    {
+                        joy1KeySelect = enabled;
+                        break;
+                    }
+                case 6:
+                    {
+                        joy1KeyA = enabled;
+                        break;
+                    }
+                case 7:
+                    {
+                        joy1KeyB = enabled;
+                        break;
+                    }
+            }
+        }
+
+
     }
 }
