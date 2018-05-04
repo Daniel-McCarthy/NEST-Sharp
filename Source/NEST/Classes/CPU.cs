@@ -19,5 +19,13 @@ namespace NEST.Classes
         public int tClock = 0;
         public int mClock = 0;
 
+        private byte readImmediateByte()
+        {
+            mClock += 1;
+            tClock += 4;
+
+            return Core.beakMemory.readMemory(programCounter++);
+        }
+
     }
 }
