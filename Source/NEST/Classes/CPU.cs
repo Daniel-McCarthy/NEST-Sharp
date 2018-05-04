@@ -16,6 +16,8 @@ namespace NEST.Classes
         private byte stackPointer = 0;
         private byte statusRegister = 0;
 
+        public int tClock = 0;
+        public int mClock = 0;
 
     }
 }
