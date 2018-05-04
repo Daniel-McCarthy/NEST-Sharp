@@ -28,6 +28,20 @@ namespace NEST.Classes
             return false;
         }
 
+        bool checkForINES2Format()
+        {
+            // Checks for NES 2.0 flags being set in byte 8 of 16.
+
+            if (romData != null && romData.Length >= 8)
+            {
+                // If bits 0000xx00 contain the value 2, then this header is NES 2.0 format.
+
+                return ((romData[7] & 0x0C) == 2);
+            }
+
+            return false;
+        }
+
         }
     }
 }
