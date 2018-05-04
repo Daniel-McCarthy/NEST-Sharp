@@ -11,5 +11,10 @@ namespace NEST.Classes
 
     class Rom
     {
+        private byte[] romData;
+        public Rom(byte[] fileData)
+        {
+            romData = fileData;
+        }
     }
 }
