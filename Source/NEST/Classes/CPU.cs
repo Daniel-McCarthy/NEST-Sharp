@@ -86,6 +86,19 @@ namespace NEST.Classes
         }
 
 
+        private void setFlagTo(byte flag, bool enable)
+        {
+            if (enable)
+            {
+                statusRegister |= flag;
+            }
+            else
+            {
+                statusRegister &= (byte)(~flag);
+            }
+        }
+
+
 
     }
 }
