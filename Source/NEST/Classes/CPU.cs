@@ -14,7 +14,17 @@ namespace NEST.Classes
         private byte yAddress = 0;
         public ushort programCounter = 0;
         private byte stackPointer = 0;
-        private byte statusRegister = 0;
+        private byte statusRegister = 0 | Empty_Flag;
+
+
+        private const byte Carry_Flag           = 0x1;          //C
+        private const byte Zero_Flag            = 0x1 << 1;     //Z
+        private const byte Interrupt_Flag       = 0x1 << 2;     //I
+        private const byte Decimal_Mode_Flag    = 0x1 << 3;     //D
+        private const byte Breakpoint_Flag      = 0x1 << 4;     //B
+        private const byte Empty_Flag           = 0x1 << 5;     //-
+        private const byte Overflow_Flag        = 0x1 << 6;     //V
+        private const byte Negative_Flag        = 0x1 << 7;     //S
 
         public int tClock = 0;
         public int mClock = 0;
