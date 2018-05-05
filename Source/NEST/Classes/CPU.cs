@@ -122,6 +122,18 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode0D()
+        {
+            //Bitwise OR A Absolute 16 Bit Address
+
+            accumulator = (byte)(accumulator | absolute(readImmediateUShort()));
+
+            //TODO: Flags
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         private void setFlagTo(byte flag, bool enable)
         {
