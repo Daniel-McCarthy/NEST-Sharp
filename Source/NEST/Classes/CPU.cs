@@ -202,6 +202,16 @@ namespace NEST.Classes
             }
         }
 
+        /*
+         * @Name: getFlagStatus
+         * @Params: byte flag: This contains the bits to check in the status register.
+         * @Purpose: Allows checking if a specific flag bit is enabled or disabled in the status register.
+         */
+        private bool getFlagStatus(byte flag)
+        {
+            return (statusRegister & flag) == flag;
+        }
+
 
 
     }
