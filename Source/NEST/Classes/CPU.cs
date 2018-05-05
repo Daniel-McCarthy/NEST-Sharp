@@ -92,7 +92,8 @@ namespace NEST.Classes
             byte value = indexedIndirect(readCPURam(programCounter++));
             accumulator = ((byte)(accumulator | value));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 2;
             tClock += 8;
@@ -104,7 +105,8 @@ namespace NEST.Classes
 
             accumulator = ((byte)(accumulator | readCPURam(readImmediateByte())));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
@@ -116,7 +118,8 @@ namespace NEST.Classes
 
             accumulator = ((byte)(accumulator | readImmediateByte()));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
@@ -128,7 +131,8 @@ namespace NEST.Classes
 
             accumulator = (byte)(accumulator | absolute(readImmediateUShort()));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
@@ -141,7 +145,8 @@ namespace NEST.Classes
             byte value = indirectIndexed(readCPURam(programCounter++));
             accumulator = ((byte)(accumulator | value));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 2;
             tClock += 8;
@@ -153,7 +158,8 @@ namespace NEST.Classes
 
             accumulator = ((byte)(accumulator | zeroPageIndexed(readImmediateByte(), xAddress)));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
@@ -165,7 +171,8 @@ namespace NEST.Classes
 
             accumulator = (byte)(accumulator | absolute(readImmediateUShort(), yAddress));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
