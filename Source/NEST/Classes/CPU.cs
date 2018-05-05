@@ -36,6 +36,7 @@ namespace NEST.Classes
             tClock += 4;
 
             return readCPURam(programCounter++);
+        }
 
         private ushort readImmediateUShort()
         {
@@ -48,7 +49,7 @@ namespace NEST.Classes
             return cpuRam[address];
         }
 
-        }
+
 
     }
 }
