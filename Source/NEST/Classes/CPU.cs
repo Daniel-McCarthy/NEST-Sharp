@@ -184,7 +184,8 @@ namespace NEST.Classes
 
             accumulator = (byte)(accumulator | absolute(readImmediateUShort(), xAddress));
 
-            //TODO: Flags
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
 
             mClock += 1;
             tClock += 4;
