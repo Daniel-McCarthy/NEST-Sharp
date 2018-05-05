@@ -51,9 +51,6 @@ namespace NEST.Classes
 
         private byte absolute(ushort address, byte offset = 0)
         {
-            mClock += 1;
-            tClock += 4;
-
             return readCPURam((ushort)(address + offset));
         }
 
