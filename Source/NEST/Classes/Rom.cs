@@ -12,6 +12,16 @@ namespace NEST.Classes
     class Rom
     {
         private byte[] romData;
+        private int programRomSize = 0; // x * 16 KB data size.
+        private int programRamSize = 0; // x * 8  KB data size. // If this value is zero, it should be assumed to be 8 KB.
+        private int chrRomSize = 0; // X * 8  KB data size. // If this value is zero, then CHR Ram is to be used.
+        private byte mapperSetting = 0;
+
+        private bool verticalMirroring = false;
+        private bool programRamBattery = false;
+        private bool trainerIncluded = false;
+        private bool ignoreMirroring = false; // True infers use of 4 screen vram.
+        private bool usesProgramRam = false; // INES 2.0 feature.
         public Rom(byte[] fileData)
         {
             romData = fileData;
@@ -40,6 +50,34 @@ namespace NEST.Classes
             }
 
             return false;
+        }
+
+        void parseINESHeader()
+        {
+            if (romData != null && romData.Length >= 16)
+            {
+                programRomSize = romData[4];
+                chrRomSize = romData[5];
+
+                byte flags6 = romData[6];
+
+                verticalMirroring = ((flags6 & 0x01) != 0);
+                programRamBattery = ((flags6 & 0x02) != 0);
+                trainerIncluded = ((flags6 & 0x04) != 0);
+                ignoreMirroring = ((flags6 & 0x08) != 0);
+
+                mapperSetting = (byte)((flags6 & 0xF0) >> 4);
+
+                byte flags7 = romData[7];
+
+                mapperSetting |= (byte)((flags7 & 0xF0));
+
+                programRamSize = romData[8];
+
+                //TODO: Support other Flags 7 data.
+                //TODO: Support flags 9 and 10.
+            }
+
         }
 
 
