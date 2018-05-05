@@ -25,6 +25,8 @@ namespace NEST.Classes
         private const byte Overflow_Flag        = 0x1 << 6;     //V
         private const byte Negative_Flag        = 0x1 << 7;     //S
 
+        private byte[] cpuRam = new byte[0x10000];
+
         public int tClock = 0;
         public int mClock = 0;
 

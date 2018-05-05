@@ -10,7 +10,6 @@ namespace NEST.Classes
 {
     class Memory
     {
-        private byte[] cpuRam = new byte[0x10000];
         private byte[] ppuRam = new byte[0x4000];
 
 
