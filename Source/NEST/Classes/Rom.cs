@@ -24,10 +24,14 @@ namespace NEST.Classes
         private bool trainerIncluded = false;
         private bool ignoreMirroring = false; // True infers use of 4 screen vram.
         private bool usesProgramRam = false; // INES 2.0 feature.
+
+
         public Rom(byte[] fileData)
         {
             romData = fileData;
 
+            readRomHeader();
+        }
 
         void readRomHeader()
         {
