@@ -9,13 +9,12 @@ namespace NEST.Classes
     class CPU
     {
         //NEST CPU Registers
-        private byte accumulator = 0;
-        private byte xAddress = 0;
-        private byte yAddress = 0;
-        public ushort programCounter = 0;
-        private byte stackPointer = 0;
-        private byte statusRegister = 0 | Empty_Flag;
-
+        private byte accumulator = 0;                   //Contains results of arithmetic functions
+        private byte xAddress = 0;                      //X Index Value
+        private byte yAddress = 0;                      //Y Index Value
+        public ushort programCounter = 0;               //Tracks position in the program
+        private byte stackPointer = 0;                  //Tracks position in the stack
+        private byte statusRegister = 0 | Empty_Flag;   //Tracks what flags are set in the CPU
 
         private const byte Carry_Flag           = 0x1;          //C
         private const byte Zero_Flag            = 0x1 << 1;     //Z
