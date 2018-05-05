@@ -85,6 +85,19 @@ namespace NEST.Classes
             return cpuRam[address];
         }
 
+        private void opcode01()
+        {
+            //Bitwise OR A Indexed Indirect X
+
+            byte value = indexedIndirect(readCPURam(programCounter++));
+            accumulator = ((byte)(accumulator | value));
+
+            //TODO: Flags
+
+            mClock += 2;
+            tClock += 8;
+        }
+
 
         private void setFlagTo(byte flag, bool enable)
         {
