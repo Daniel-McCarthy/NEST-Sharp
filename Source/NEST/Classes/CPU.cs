@@ -184,6 +184,12 @@ namespace NEST.Classes
         }
 
 
+        /*
+         * @Name: setFlagTo
+         * @Params: byte flag: This contains the bits representing the flag to modify status with.
+         * @Params: bool enable: This tells whether to enable or disable this particular flag.
+         * @Purpose: Allows enabling and disabling specific flags in the CPU status register.
+         */
         private void setFlagTo(byte flag, bool enable)
         {
             if (enable)
