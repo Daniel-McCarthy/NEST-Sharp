@@ -37,6 +37,12 @@ namespace NEST.Classes
 
             return readCPURam(programCounter++);
 
+        private ushort readImmediateUShort()
+        {
+            return (ushort)((readImmediateByte() << 8) | readImmediateByte());
+        }
+
+
         public byte readCPURam(ushort address)
         {
             return cpuRam[address];
