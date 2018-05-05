@@ -35,7 +35,7 @@ namespace NEST.Classes
             mClock += 1;
             tClock += 4;
 
-            return Core.beakMemory.readMemory(programCounter++);
+            return readCPURam(programCounter++);
 
         public byte readCPURam(ushort address)
         {
