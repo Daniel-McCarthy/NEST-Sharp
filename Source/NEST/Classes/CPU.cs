@@ -32,9 +32,6 @@ namespace NEST.Classes
 
         private byte readImmediateByte()
         {
-            mClock += 1;
-            tClock += 4;
-
             return readCPURam(programCounter++);
         }
 
@@ -92,7 +89,7 @@ namespace NEST.Classes
         {
             //Bitwise OR A Indexed Indirect X
 
-            byte value = indexedIndirect(readCPURam(programCounter++));
+            byte value = indexedIndirect(readImmediateByte());
             accumulator = ((byte)(accumulator | value));
 
             setFlagTo(Zero_Flag, (accumulator == 0));
