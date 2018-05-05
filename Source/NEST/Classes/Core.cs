@@ -31,6 +31,7 @@ namespace NEST.Classes
         {
 
             while(Core.run)
+            {
                 if (!Core.paused || Core.step)
                 {
 
