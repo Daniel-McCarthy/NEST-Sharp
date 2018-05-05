@@ -12,6 +12,8 @@ namespace NEST.Classes
     class Rom
     {
         private byte[] romData;
+        public bool loadSuccessful = false;
+
         private int programRomSize = 0; // x * 16 KB data size.
         private int programRamSize = 0; // x * 8  KB data size. // If this value is zero, it should be assumed to be 8 KB.
         private int chrRomSize = 0; // X * 8  KB data size. // If this value is zero, then CHR Ram is to be used.
@@ -25,6 +27,19 @@ namespace NEST.Classes
         public Rom(byte[] fileData)
         {
             romData = fileData;
+
+
+        void readRomHeader()
+        {
+            if (checkForINESFormat())
+            {
+                // Read INES.
+
+                parseINESHeader();
+
+                loadSuccessful = true;
+            }
+        }
 
         bool checkForINESFormat()
         {
