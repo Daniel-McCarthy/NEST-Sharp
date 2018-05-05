@@ -134,6 +134,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode11()
+        {
+            //Bitwise OR A Indirect Indexed Y
+
+            byte value = indirectIndexed(readCPURam(programCounter++));
+            accumulator = ((byte)(accumulator | value));
+
+            //TODO: Flags
+
+            mClock += 2;
+            tClock += 8;
+        }
+
 
         private void setFlagTo(byte flag, bool enable)
         {
