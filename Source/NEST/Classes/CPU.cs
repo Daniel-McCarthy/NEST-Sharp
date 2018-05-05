@@ -71,6 +71,14 @@ namespace NEST.Classes
             return readCPURam((ushort)(addressLower | addressUpper));
         }
 
+        private byte indirectIndexed(byte argument)
+        {
+            //(d), y
+            ushort a =readCPURam(argument);
+            ushort b = (ushort)(zeroPageIndexed(argument, 0, 1) << 8);
+            return readCPURam((ushort)((a | b) + yAddress));
+        }
+
 
         public byte readCPURam(ushort address)
         {
