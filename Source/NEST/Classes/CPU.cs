@@ -110,6 +110,18 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode09()
+        {
+            //Bitwise OR A Immediate Byte
+
+            accumulator = ((byte)(accumulator | readImmediateByte()));
+
+            //TODO: Flags
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         private void setFlagTo(byte flag, bool enable)
         {
