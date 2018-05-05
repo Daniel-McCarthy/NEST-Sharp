@@ -75,7 +75,7 @@
     <Compile Include="Classes\GameWindow.cs" />
     <Compile Include="Classes\GPU.cs" />
     <Compile Include="Classes\Input.cs" />
-    <Compile Include="Classes\Memory.cs" />
+    <Compile Include="Classes\PPU.cs" />
     <Compile Include="Classes\Rom.cs" />
     <Compile Include="Forms\AssemblyView.cs">
       <SubType>Form</SubType>
