@@ -43,6 +43,12 @@ namespace NEST.Classes
             return (ushort)((readImmediateByte() << 8) | readImmediateByte());
         }
 
+        private byte zeroPageIndexed(byte argument, byte index, byte offset = 0)
+        {
+            //d, x  //d, y
+            return readCPURam((ushort)((argument + index + offset) % 256));
+        }
+
 
         public byte readCPURam(ushort address)
         {
