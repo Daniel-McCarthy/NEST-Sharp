@@ -98,6 +98,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode05()
+        {
+            //Bitwise OR A Zero Page
+
+            accumulator = ((byte)(accumulator | readCPURam(readImmediateByte())));
+
+            //TODO: Flags
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         private void setFlagTo(byte flag, bool enable)
         {
