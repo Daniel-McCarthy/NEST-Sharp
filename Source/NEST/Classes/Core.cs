@@ -11,12 +11,19 @@ namespace NEST.Classes
     {
         static Core()
         {
+            ppu = new PPU();
+            cpu = new CPU();
+            input = new Input();
             clocks = 0;
 
             run = true;
             paused = false;
             step = false;
         }
+
+        public static PPU ppu;
+        public static CPU cpu;
+        public static Input input;
 
         public static int clocks;
 
