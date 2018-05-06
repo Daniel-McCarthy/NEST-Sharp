@@ -646,6 +646,25 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode4E()
+        {
+            //Bitwise Right Shift of value at absolute address
+
+            ushort address = readImmediateUShort();
+            byte value = readCPURam(address);
+
+            setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
+
+            value >>= 1;
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode4D()
         {
             //Bitwise XOR A with absolute address
