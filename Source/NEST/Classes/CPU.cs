@@ -481,6 +481,32 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode36()
+        {
+            //Bitwise Left Rotate of value at Zero Page X address
+
+            ushort address = (ushort)(readImmediateByte() + xAddress);
+            byte value = readCPURam(address);
+
+            bool oldCarry = getFlagStatus(Carry_Flag);
+            setFlagTo(Carry_Flag, (value & 0x80) == 0x80);          //Set carry flag to old bit 7
+
+            value <<= 1;
+
+            if(oldCarry)
+            {
+                value |= 0x01;
+            }
+
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode39()
         {
             //Bitwise And A with Absolute + Y Address
