@@ -327,6 +327,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode49()
+        {
+            //Bitwise XOR A with Immediate byte
+
+            accumulator = (byte)(accumulator ^ readImmediateByte());
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
