@@ -191,6 +191,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode21()
+        {
+            //Bitwise And A with Indexed Indirect X
+
+            byte value = indexedIndirect(readImmediateByte());
+            accumulator = ((byte)(accumulator & value));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
