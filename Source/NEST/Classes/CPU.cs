@@ -750,6 +750,25 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode5E()
+        {
+            //Bitwise Right Shift of value at absolute X address
+
+            ushort address = readImmediateUShort();
+            byte value = absolute(address, xAddress);
+
+            setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
+
+            value <<= 1;
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
