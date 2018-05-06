@@ -340,6 +340,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode4D()
+        {
+            //Bitwise XOR A with absolute address
+
+            accumulator = (byte)(accumulator ^ readCPURam(readImmediateUShort()));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
