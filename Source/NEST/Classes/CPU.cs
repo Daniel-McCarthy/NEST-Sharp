@@ -205,6 +205,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode25()
+        {
+            //Bitwise And A with Zero Page Immediate Byte
+
+            accumulator = ((byte)(accumulator & readCPURam(readImmediateByte())));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
