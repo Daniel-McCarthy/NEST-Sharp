@@ -300,6 +300,20 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode41()
+        {
+            //Bitwise XOR A Indexed Indirect X
+
+            byte value = indexedIndirect(readCPURam(programCounter++));
+            accumulator = ((byte)(accumulator ^ value));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
 
         /*
          * @Name: setFlagTo
