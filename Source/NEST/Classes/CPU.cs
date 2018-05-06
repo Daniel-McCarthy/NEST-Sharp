@@ -599,6 +599,25 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode46()
+        {
+            //Bitwise Right Shift of Zero Page Value
+
+            ushort address = readImmediateByte();
+            byte value = readCPURam(address);
+
+            setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
+
+            value >>= 1;
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode49()
         {
             //Bitwise XOR A with Immediate byte
