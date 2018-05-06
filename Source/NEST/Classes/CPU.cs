@@ -795,6 +795,28 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode6A()
+        {
+            //Bitwise Right Rotate of Accumulator
+
+            //Set carry flag to old bit 0
+            bool oldCarry = getFlagStatus(Carry_Flag);
+            setFlagTo(Carry_Flag, (accumulator & 0x01) == 0x01);
+            accumulator >>= 1;
+
+            //Set new bit 7 to previous carry flag
+            if (oldCarry)
+            {
+                accumulator |= 0x80;
+            }
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
