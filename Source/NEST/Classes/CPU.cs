@@ -271,6 +271,25 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode1E()
+        {
+            //Bitwise Left Shift of value at absolute X address
+
+            ushort address = readImmediateUShort();
+            byte value = absolute(address, xAddress);
+
+            setFlagTo(Carry_Flag, (value & 0x80) == 0x80);          //Set carry flag to old bit 7
+
+            value <<= 1;
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode21()
         {
             //Bitwise And A with Indexed Indirect X
