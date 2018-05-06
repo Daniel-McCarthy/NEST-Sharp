@@ -93,6 +93,17 @@ namespace NEST.Classes
             return cpuRam[address];
         }
 
+        public void writeCPURam(ushort address, byte value, bool ignoreCycles = false)
+        {
+            if (!ignoreCycles)
+            {
+                mClock += 1;
+                tClock += 4;
+            }
+
+            cpuRam[address] = value;
+        }
+
         private void opcode01()
         {
             //Bitwise OR A Indexed Indirect X
