@@ -231,6 +231,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode2D()
+        {
+            //Bitwise And A with absolute 16 bit Address
+
+            accumulator = ((byte)(accumulator & absolute(readImmediateUShort())));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
