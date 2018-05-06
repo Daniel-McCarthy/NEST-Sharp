@@ -12,7 +12,7 @@ namespace NEST.Classes
         private byte accumulator = 0;                   //Contains results of arithmetic functions
         private byte xAddress = 0;                      //X Index Value
         private byte yAddress = 0;                      //Y Index Value
-        public ushort programCounter = 0;               //Tracks position in the program
+        public ushort programCounter = 0x8000;          //Tracks position in the program
         private byte stackPointer = 0;                  //Tracks position in the stack
         private byte statusRegister = 0 | Empty_Flag;   //Tracks what flags are set in the CPU
 
