@@ -380,6 +380,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode59()
+        {
+            //Bitwise XOR A with Absolute Y address
+
+            accumulator = (byte)(accumulator ^ absolute(readImmediateUShort(), yAddress));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
