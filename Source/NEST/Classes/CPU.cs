@@ -213,6 +213,23 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode24()
+        {
+            //Bitwise Test of Zero Page value with Bit Mask in Accumulator
+
+            ushort address = readImmediateByte();
+
+            //Store bit 7 and 6 in Negative and Overflow flags respectively.
+            byte value = readCPURam(address);
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+            setFlagTo(Overflow_Flag, (value & 0x40) != 0);
+
+            value &= accumulator;
+            setFlagTo(Zero_Flag, (value == 0));
+
+            // 3 cycles total. Read opcode byte, operand byte, and read value from address.
+        }
+
         private void opcode25()
         {
             //Bitwise And A with Zero Page Immediate Byte
