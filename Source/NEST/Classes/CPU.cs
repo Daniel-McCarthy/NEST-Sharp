@@ -314,6 +314,19 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode45()
+        {
+            //Bitwise XOR A with Zero Page address
+
+            accumulator = ((byte)(accumulator ^ zeroPageIndexed(readImmediateByte(),0)));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
