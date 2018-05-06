@@ -393,6 +393,18 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode5D()
+        {
+            //Bitwise XOR A with Absolute X address
+
+            accumulator = (byte)(accumulator ^ absolute(readImmediateUShort(), xAddress));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
 
         /*
          * @Name: setFlagTo
