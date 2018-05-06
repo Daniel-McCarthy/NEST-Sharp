@@ -25,6 +25,14 @@ namespace NEST.Classes
         private const byte Overflow_Flag        = 0x1 << 6;     //V
         private const byte Negative_Flag        = 0x1 << 7;     //S
 
+        //CPU Ram Map:
+        //0x0000-0x07FF: Internal Ram
+        //0x0800-0x1FFF: Mirroring of Internal Ram
+        //0x2000-0x2007: PPU Registers
+        //0x2008-0x3FFF: Mirroring of PPU Registers
+        //0x4000-0x4017: APU & I/O Registers
+        //0x4018-0x401F: APU & I/O Functionality
+        //0x4020-0xFFFF: Cartridge Space
         private byte[] cpuRam = new byte[0x10000];
 
         public int tClock = 0;
