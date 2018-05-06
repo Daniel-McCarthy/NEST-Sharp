@@ -817,6 +817,32 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode6E()
+        {
+            //Bitwise Right Rotate of value at absolute address
+
+            ushort address = readImmediateUShort();
+            byte value = readCPURam(address);
+
+            bool oldCarry = getFlagStatus(Carry_Flag);
+            setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
+
+            value >>= 1;
+
+            if(oldCarry)
+            {
+                value |= 0x80;
+            }
+
+            writeCPURam(address, (byte)(value));
+
+            setFlagTo(Zero_Flag, (value == 0));
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
