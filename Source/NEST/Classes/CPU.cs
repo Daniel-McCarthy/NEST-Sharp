@@ -152,6 +152,21 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode0A()
+        {
+            //Bitwise Left Shift of Accumulator
+
+            //Set carry flag to old bit 7
+            setFlagTo(Carry_Flag, (accumulator & 0x80) == 0x80);
+            accumulator <<= 1;
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode0D()
         {
             //Bitwise OR A Absolute 16 Bit Address
