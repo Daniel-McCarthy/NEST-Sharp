@@ -256,6 +256,26 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+
+        private void opcode2C()
+        {
+            //Bitwise Test of value at absolute address with Bit Mask in Accumulator
+
+            ushort address = readImmediateUShort();
+
+            //Store bit 7 and 6 in Negative and Overflow flags respectively.
+            byte value = readCPURam(address);
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
+            setFlagTo(Overflow_Flag, (value & 0x40) != 0);
+
+            //Mask value with accumulator value and set Zero flag
+            value &= accumulator;
+            setFlagTo(Zero_Flag, (value == 0));
+            
+
+            // 4 cycles total. Read opcode byte, 2 operand bytes, and read value from address.
+        }
+
         private void opcode2D()
         {
             //Bitwise And A with absolute 16 bit Address
