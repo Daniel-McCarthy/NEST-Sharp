@@ -244,6 +244,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode31()
+        {
+            //Bitwise And A Indirect Indexed Y
+
+            byte value = indirectIndexed(readCPURam(programCounter++));
+            accumulator = ((byte)(accumulator & value));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 2;
+            tClock += 8;
+        }
+
 
         /*
          * @Name: setFlagTo
