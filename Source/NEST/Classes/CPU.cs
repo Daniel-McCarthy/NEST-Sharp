@@ -367,6 +367,19 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode55()
+        {
+            //Bitwise XOR A with Zero Page X address
+
+            accumulator = ((byte)(accumulator ^ zeroPageIndexed(readImmediateByte(), xAddress)));
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            mClock += 1;
+            tClock += 4;
+        }
+
 
         /*
          * @Name: setFlagTo
