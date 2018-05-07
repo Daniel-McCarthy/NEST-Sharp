@@ -993,6 +993,20 @@ namespace NEST.Classes
             //5 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for getting yAddress. 1 cycle for reading from Zero Page.
         }
 
+        private void opcodeDD()
+        {
+            //Compare value of accumulator with value at absolute + X Address
+
+            int value = accumulator;
+            value -= absolute(readImmediateUShort(), xAddress);
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //5 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for getting xAddress. 1 cycle for reading from Zero Page.
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
