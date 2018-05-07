@@ -923,6 +923,20 @@ namespace NEST.Classes
             //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
         }
 
+        private void opcodeC9()
+        {
+            //Compare value of accumulator with Immediate byte
+
+            int value = accumulator;
+            value -= readImmediateByte();
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //2 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument byte.
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
