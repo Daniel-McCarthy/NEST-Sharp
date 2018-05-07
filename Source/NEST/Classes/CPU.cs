@@ -895,6 +895,20 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcodeC1()
+        {
+            //Compare value of accumulator with value at indexedIndirect address
+
+            int value = accumulator;
+            value -= indexedIndirect(readImmediateByte());
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //6 Cycles. 1 cycle for opcode byte. 1 cycles for immediate byte. 1 cycle for getting xAddress. 3 for indexed Indirect addressing.
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
