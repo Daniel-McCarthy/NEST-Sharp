@@ -1038,6 +1038,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeBE()
+        {
+            //Load value at absolute + Y address into X Register
+
+            xAddress = absolute(readImmediateUShort(), yAddress);
+
+            setFlagTo(Zero_Flag, (xAddress == 0));
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+
+            //Add cycle to account for retrieving y address
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeC1()
         {
             //Compare value of accumulator with value at indexedIndirect address
