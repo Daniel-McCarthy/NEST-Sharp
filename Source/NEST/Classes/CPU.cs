@@ -116,6 +116,17 @@ namespace NEST.Classes
             pushStackU8((byte)((value >> 8) & 0xFF));
         }
 
+        public byte popStackU8()
+        {
+            stackPointer++;
+            return readCPURam((ushort)(0x100 | stackPointer));
+        }
+
+        public ushort popStackU16()
+        {
+            return (ushort)(popStackU8() | (popStackU8() << 8));
+        }
+
         private void opcode01()
         {
             //Bitwise OR A Indexed Indirect X
