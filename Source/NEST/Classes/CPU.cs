@@ -1156,6 +1156,21 @@ namespace NEST.Classes
             //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
         }
 
+        private void opcodeC8()
+        {
+            //Increment data at Zero page address
+
+            ++yAddress;
+
+            setFlagTo(Zero_Flag, yAddress == 0);
+            setFlagTo(Negative_Flag, (yAddress & 0x80) == 0x80);
+
+            mClock += 1;
+            tClock += 4;
+
+            //2 cycles
+        }
+
         private void opcodeC9()
         {
             //Compare value of accumulator with Immediate byte
