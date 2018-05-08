@@ -941,6 +941,18 @@ namespace NEST.Classes
         }
 
 
+        private void opcodeB1()
+        {
+            //Load value at indirectIndexed address into accumulator
+
+            accumulator = indirectIndexed(readImmediateByte());
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+        }
+
+
         private void opcodeB5()
         {
             //Load zero page + x value into accumulator
