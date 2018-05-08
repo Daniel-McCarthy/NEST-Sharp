@@ -928,6 +928,15 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
         }
 
+        private void opcodeA6()
+        {
+            //Load zero page value into X Register
+
+            xAddress = readCPURam(readImmediateByte());
+
+            setFlagTo(Zero_Flag, (xAddress == 0));
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+        }
 
         private void opcodeA9()
         {
