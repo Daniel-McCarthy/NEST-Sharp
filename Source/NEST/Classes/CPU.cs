@@ -918,6 +918,17 @@ namespace NEST.Classes
         }
 
 
+        private void opcodeAD()
+        {
+            //Load value at absolute address into accumulator
+
+            accumulator = absolute(readImmediateUShort());
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+        }
+
+
         private void opcodeB5()
         {
             //Load zero page + x value into accumulator
