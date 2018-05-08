@@ -646,6 +646,15 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode4C()
+        {
+            //Jump to absolute address
+
+            programCounter = readImmediateUShort();
+
+            //3 cycles
+        }
+
         private void opcode4E()
         {
             //Bitwise Right Shift of value at absolute address
