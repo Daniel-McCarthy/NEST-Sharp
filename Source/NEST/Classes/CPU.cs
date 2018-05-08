@@ -324,6 +324,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode20()
+        {
+            //Jump to subroutine at absolute address
+
+            pushStackU16((ushort)(programCounter - 1));
+            programCounter = readImmediateUShort();
+
+            //6 cycles
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode21()
         {
             //Bitwise And A with Indexed Indirect X
