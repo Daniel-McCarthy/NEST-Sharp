@@ -104,6 +104,18 @@ namespace NEST.Classes
             cpuRam[address] = value;
         }
 
+        public void pushStackU8(byte value)
+        {
+            writeCPURam((ushort)(0x100 | stackPointer), value);
+            stackPointer--;
+        }
+
+        public void pushStackU16(ushort value)
+        {
+            pushStackU8((byte)(value & 0xFF));
+            pushStackU8((byte)((value >> 8) & 0xFF));
+        }
+
         private void opcode01()
         {
             //Bitwise OR A Indexed Indirect X
