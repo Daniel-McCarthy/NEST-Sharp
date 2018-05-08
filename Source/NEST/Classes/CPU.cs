@@ -998,6 +998,19 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeB4()
+        {
+            //Load zero page + x value into Y Register
+
+            yAddress = zeroPageIndexed(readImmediateByte(), xAddress);
+
+            setFlagTo(Zero_Flag, (yAddress == 0));
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //Add cycle to account for retrieving X address
+            mClock += 1;
+            tClock += 4;
+        }
 
         private void opcodeB5()
         {
