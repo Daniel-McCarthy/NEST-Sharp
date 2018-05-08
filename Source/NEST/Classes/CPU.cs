@@ -1246,6 +1246,21 @@ namespace NEST.Classes
             //2 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument byte.
         }
 
+        private void opcodeCA()
+        {
+            //Decrement X Register
+
+            --xAddress;
+
+            setFlagTo(Zero_Flag, xAddress == 0);
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+
+            //2 Cycles
+            mClock += 1;
+            tClock += 4;
+
+        }
+
         private void opcodeCD()
         {
             //Compare value of accumulator with value at absolute Address
