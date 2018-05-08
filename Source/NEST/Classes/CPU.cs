@@ -964,6 +964,21 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode88()
+        {
+            //Decrement Y Register
+
+            --yAddress;
+
+            setFlagTo(Zero_Flag, yAddress == 0);
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //2 Cycles
+            mClock += 1;
+            tClock += 4;
+
+        }
+
         private void opcodeA0()
         {
             //Load immediate byte into Y Register
