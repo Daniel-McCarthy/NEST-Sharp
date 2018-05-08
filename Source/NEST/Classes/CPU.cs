@@ -1289,6 +1289,25 @@ namespace NEST.Classes
             //2 cycles
         }
 
+        private void opcodeEE()
+        {
+            //Increment data at absolute address
+
+            ushort address = readImmediateUShort();
+            byte value = readCPURam(address);
+            ++value;
+
+            writeCPURam(address, value);
+
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            mClock += 2;
+            tClock += 8;
+
+            //6 cycles
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
