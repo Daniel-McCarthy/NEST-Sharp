@@ -943,6 +943,21 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+
+        private void opcodeBD()
+        {
+            //Load value at absolute + X address into accumulator
+
+            accumulator = absolute(readImmediateUShort(), xAddress);
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            //Add cycle to account for retrieving X address
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeC1()
         {
             //Compare value of accumulator with value at indexedIndirect address
