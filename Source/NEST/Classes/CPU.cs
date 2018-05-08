@@ -966,6 +966,15 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
         }
 
+        private void opcodeAC()
+        {
+            //Load value at absolute address into Y Register
+
+            yAddress = absolute(readImmediateUShort());
+
+            setFlagTo(Zero_Flag, (yAddress == 0));
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+        }
 
         private void opcodeAD()
         {
