@@ -1386,6 +1386,25 @@ namespace NEST.Classes
             //5 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for getting xAddress. 1 cycle for reading from Zero Page.
         }
 
+        private void opcodeDE()
+        {
+            //Decrement value at absolute + X address
+
+            ushort address = readImmediateUShort();
+            address += xAddress;
+            byte value = readCPURam(address);
+
+            writeCPURam(address, --value);
+
+            setFlagTo(Zero_Flag, yAddress == 0);
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //7 Cycles
+            mClock += 2;
+            tClock += 8;
+
+        }
+
         private void opcodeE6()
         {
             //Increment data at Zero page address
