@@ -826,6 +826,20 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode6C()
+        {
+            //Jump to indirect address
+
+            ushort addressLocation = readImmediateUShort();
+            ushort address = 0;
+            address |= readCPURam(addressLocation);
+            address |= (ushort)(readCPURam(addressLocation) << 8);
+
+            programCounter = address;
+
+            //3 cycles
+        }
+
         private void opcode6E()
         {
             //Bitwise Right Rotate of value at absolute address
