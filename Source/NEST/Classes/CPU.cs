@@ -907,6 +907,16 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeA2()
+        {
+            //Load immediate byte into X Register
+
+            xAddress = readImmediateByte();
+
+            setFlagTo(Zero_Flag, (xAddress == 0));
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+        }
+
 
         private void opcodeA5()
         {
