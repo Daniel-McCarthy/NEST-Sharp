@@ -944,6 +944,21 @@ namespace NEST.Classes
         }
 
 
+        private void opcodeB9()
+        {
+            //Load value at absolute + Y address into accumulator
+
+            accumulator = absolute(readImmediateUShort(), yAddress);
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            //Add cycle to account for retrieving y address
+            mClock += 1;
+            tClock += 4;
+        }
+
+
         private void opcodeBD()
         {
             //Load value at absolute + X address into accumulator
