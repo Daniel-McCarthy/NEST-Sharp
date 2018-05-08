@@ -1339,6 +1339,25 @@ namespace NEST.Classes
             //4 Cycles. 1 cycle for opcode byte. 1 cycle for immediate byte. 1 cycle for getting xAddress. 1 cycle for reading from Zero Page.
         }
 
+        private void opcodeD6()
+        {
+            //Decrement value at Zero Page + X address
+
+            byte address = readImmediateByte();
+            address += xAddress;
+            byte value = readCPURam(address);
+
+            writeCPURam(address, --value);
+
+            setFlagTo(Zero_Flag, yAddress == 0);
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //6 Cycles
+            mClock += 2;
+            tClock += 8;
+
+        }
+
         private void opcodeD9()
         {
             //Compare value of accumulator with value at absolute + Y Address
