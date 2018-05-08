@@ -896,6 +896,17 @@ namespace NEST.Classes
         }
 
 
+        private void opcodeA5()
+        {
+            //Load zero page value into accumulator
+
+            accumulator = readCPURam(readImmediateByte());
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+        }
+
+
         private void opcodeA9()
         {
             //Load immediate byte into accumulator
