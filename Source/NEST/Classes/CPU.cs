@@ -1217,6 +1217,24 @@ namespace NEST.Classes
             //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
         }
 
+        private void opcodeC6()
+        {
+            //Decrement value at Zero Page address
+
+            byte address = readImmediateByte();
+            byte value = readCPURam(address);
+
+            writeCPURam(address, --value);
+
+            setFlagTo(Zero_Flag, yAddress == 0);
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //5 Cycles
+            mClock += 1;
+            tClock += 4;
+
+        }
+
         private void opcodeC8()
         {
             //Increment data at Zero page address
