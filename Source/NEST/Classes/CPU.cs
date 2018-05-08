@@ -1255,6 +1255,22 @@ namespace NEST.Classes
             //5 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for getting xAddress. 1 cycle for reading from Zero Page.
         }
 
+
+        private void opcodeE8()
+        {
+            //Increment data at Zero page address
+
+            ++xAddress;
+
+            setFlagTo(Zero_Flag, xAddress == 0);
+            setFlagTo(Negative_Flag, (xAddress & 0x80) == 0x80);
+
+            mClock += 1;
+            tClock += 4;
+
+            //2 cycles
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
