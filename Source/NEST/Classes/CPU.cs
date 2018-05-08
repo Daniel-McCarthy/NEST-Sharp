@@ -895,6 +895,17 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+
+        private void opcodeA9()
+        {
+            //Load immediate byte into accumulator
+
+            accumulator = readImmediateByte();
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+        }
+
         private void opcodeC1()
         {
             //Compare value of accumulator with value at indexedIndirect address
