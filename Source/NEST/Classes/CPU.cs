@@ -1063,6 +1063,19 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeBC()
+        {
+            //Load value at absolute + X address into Y Register
+
+            yAddress = absolute(readImmediateUShort(), xAddress);
+
+            setFlagTo(Zero_Flag, (yAddress == 0));
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //Add cycle to account for retrieving X address
+            mClock += 1;
+            tClock += 4;
+        }
 
         private void opcodeBD()
         {
