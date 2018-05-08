@@ -1308,6 +1308,26 @@ namespace NEST.Classes
             //6 cycles
         }
 
+        private void opcodeF6()
+        {
+            //Increment data at Zero page + X address
+
+            byte address = readImmediateByte();
+            address += xAddress;
+            byte value = readCPURam(address);
+            ++value;
+
+            writeCPURam(address, value);
+
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            mClock += 3;
+            tClock += 12;
+
+            //6 cycles
+        }
+
         /*
          * @Name: setFlagTo
          * @Params: byte flag: This contains the bits representing the flag to modify status with.
