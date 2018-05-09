@@ -41,6 +41,36 @@ namespace NEST.Classes
         bool joy2KeyA = false;
         bool joy2KeyB = false;
 
+        void joyPadRegisterWrite(byte newValue, bool isJoyPad2 = false)
+        {
+            bool newStrobeValue = (newValue != 0);
+
+            if(!isJoyPad2)
+            {
+                joy1PreviousStrobeValue = joy1Strobing;
+                joy1Strobing = newStrobeValue;
+
+                if(joy1PreviousStrobeValue && !joy1Strobing)
+                {
+                    //Reset joy input reading
+                    joy1NextInputRead = 0;
+                }
+            }
+            else
+            {
+                joy2PreviousStrobeValue = joy2Strobing;
+                joy2Strobing = newStrobeValue;
+
+                if (joy2PreviousStrobeValue && !joy2Strobing)
+                {
+                    //Reset joy input reading
+                    joy2NextInputRead = 0;
+                }
+            }
+            
+
+        }
+
 
         public void setJoy1KeyInput(int keyCode, bool enabled)
         {
