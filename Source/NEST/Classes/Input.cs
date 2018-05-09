@@ -71,6 +71,132 @@ namespace NEST.Classes
 
         }
 
+        byte joyPadRegisterRead(bool isJoyPad2 = false)
+        {
+            byte status = 0;
+
+            if (!isJoyPad2)
+            {
+                if(joy1Strobing)
+                {
+                    //Reset input cycle
+                    joy1NextInputRead = 0;
+                }
+
+                if (joy1Connected)
+                {
+                    switch(joy1NextInputRead)
+                    {
+                        case 0:
+                            {
+                                status = (byte)(joy1KeyA ? 1 : 0);
+                                break;
+                            }
+                        case 1:
+                            {
+                                status = (byte)(joy1KeyB ? 1 : 0);
+                                break;
+                            }
+                        case 2:
+                            {
+                                status = (byte)(joy1KeySelect ? 1 : 0);
+                                break;
+                            }
+                        case 3:
+                            {
+                                status = (byte)(joy1KeyStart ? 1 : 0);
+                                break;
+                            }
+                        case 4:
+                            {
+                                status = (byte)(joy1KeyUp ? 1 : 0);
+                                break;
+                            }
+                        case 5:
+                            {
+                                status = (byte)(joy1KeyDown ? 1 : 0);
+                                break;
+                            }
+                        case 6:
+                            {
+                                status = (byte)(joy1KeyLeft ? 1 : 0);
+                                break;
+                            }
+                        case 7:
+                            {
+                                status = (byte)(joy1KeyRight ? 1 : 0);
+                                break;
+                            }
+                    }
+
+                    joy1NextInputRead = (joy1NextInputRead + 1) % 8;
+
+                    return (byte)(status | 0x40);
+                }
+
+            }
+            else
+            {
+                if (joy2Strobing)
+                {
+                    //Reset input cycle
+                    joy2NextInputRead = 0;
+                }
+
+                if (joy2Connected)
+                {
+                    switch (joy2NextInputRead)
+                    {
+                        case 0:
+                            {
+                                status = (byte)(joy2KeyA ? 1 : 0);
+                                break;
+                            }
+                        case 1:
+                            {
+                                status = (byte)(joy2KeyB ? 1 : 0);
+                                break;
+                            }
+                        case 2:
+                            {
+                                status = (byte)(joy2KeySelect ? 1 : 0);
+                                break;
+                            }
+                        case 3:
+                            {
+                                status = (byte)(joy2KeyStart ? 1 : 0);
+                                break;
+                            }
+                        case 4:
+                            {
+                                status = (byte)(joy2KeyUp ? 1 : 0);
+                                break;
+                            }
+                        case 5:
+                            {
+                                status = (byte)(joy2KeyDown ? 1 : 0);
+                                break;
+                            }
+                        case 6:
+                            {
+                                status = (byte)(joy2KeyLeft ? 1 : 0);
+                                break;
+                            }
+                        case 7:
+                            {
+                                status = (byte)(joy2KeyRight ? 1 : 0);
+                                break;
+                            }
+                    }
+
+                    joy2NextInputRead = (joy2NextInputRead + 1) % 8;
+
+                    return (byte)(status | 0x40);
+                }
+            }
+
+            return 0x01;
+        }
 
         public void setJoy1KeyInput(int keyCode, bool enabled)
         {
