@@ -121,51 +121,52 @@ namespace NEST.Classes
             if (e.KeyCode == Keys.Up)
             {
                 //this.BackColor = System.Drawing.Color.Aqua;
-                Core.beakInput.setJoy1KeyInput(0, true);
+                Core.input.setJoy1KeyInput(0, true);
             }
 
             if (e.KeyCode == Keys.Down)
             {
-                Core.beakInput.setJoy1KeyInput(1, true);
+                Core.input.setJoy1KeyInput(1, true);
             }
 
             if (e.KeyCode == Keys.Left)
             {
-                Core.beakInput.setJoy1KeyInput(2, true);
+                Core.input.setJoy1KeyInput(2, true);
             }
 
             if (e.KeyCode == Keys.Right)
             {
-                Core.beakInput.setJoy1KeyInput(3, true);
+                Core.input.setJoy1KeyInput(3, true);
             }
 
             if (e.KeyCode == Keys.Enter)
             {
-                Core.beakInput.setJoy1KeyInput(4, true);
+                Core.input.setJoy1KeyInput(4, true);
             }
 
             if (e.KeyCode == Keys.ShiftKey)
             {
-                Core.beakInput.setJoy1KeyInput(5, true);
+                Core.input.setJoy1KeyInput(5, true);
             }
 
             if (e.KeyCode == Keys.Z)
             {
-                Core.beakInput.setJoy1KeyInput(6, true);
+                Core.input.setJoy1KeyInput(6, true);
             }
 
             if (e.KeyCode == Keys.X)
             {
-                Core.beakInput.setJoy1KeyInput(7, true);
+                Core.input.setJoy1KeyInput(7, true);
             }
 
+            /*
             if (e.KeyCode == Keys.F1)
             {
                 if (Core.beakMemory.romFilePath != "")
                 {
                     Core.beakMemory.createSaveFile(Core.beakMemory.romFilePath, true);
                 }
-            }
+            }*/
         }
 
         public void Canvas_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -174,42 +175,42 @@ namespace NEST.Classes
             if (e.KeyCode == Keys.Up)
             {
                 //this.BackColor = System.Drawing.Color.Aqua;
-                Core.beakInput.setJoy1KeyInput(0, false);
+                Core.input.setJoy1KeyInput(0, false);
             }
 
             if (e.KeyCode == Keys.Down)
             {
-                Core.beakInput.setJoy1KeyInput(1, false);
+                Core.input.setJoy1KeyInput(1, false);
             }
 
             if (e.KeyCode == Keys.Left)
             {
-                Core.beakInput.setJoy1KeyInput(2, false);
+                Core.input.setJoy1KeyInput(2, false);
             }
 
             if (e.KeyCode == Keys.Right)
             {
-                Core.beakInput.setJoy1KeyInput(3, false);
+                Core.input.setJoy1KeyInput(3, false);
             }
 
             if (e.KeyCode == Keys.Enter)
             {
-                Core.beakInput.setJoy1KeyInput(4, false);
+                Core.input.setJoy1KeyInput(4, false);
             }
 
             if (e.KeyCode == Keys.ShiftKey)
             {
-                Core.beakInput.setJoy1KeyInput(5, false);
+                Core.input.setJoy1KeyInput(5, false);
             }
 
             if (e.KeyCode == Keys.Z)
             {
-                Core.beakInput.setJoy1KeyInput(6, false);
+                Core.input.setJoy1KeyInput(6, false);
             }
 
             if (e.KeyCode == Keys.X)
             {
-                Core.beakInput.setJoy1KeyInput(7, false);
+                Core.input.setJoy1KeyInput(7, false);
             }
 
         }
