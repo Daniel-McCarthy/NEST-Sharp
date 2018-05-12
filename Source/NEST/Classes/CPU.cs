@@ -1078,6 +1078,21 @@ namespace NEST.Classes
 
         }
 
+        private void opcode8A()
+        {
+            //TXA: Copy value in x register to accumulator
+
+            accumulator = xAddress;
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeA0()
         {
             //Load immediate byte into Y Register
