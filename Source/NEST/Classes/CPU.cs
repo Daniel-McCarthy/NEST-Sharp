@@ -1184,6 +1184,21 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
         }
 
+        private void opcodeA8()
+        {
+            //TAY: Copy value in accumulator to Y Register
+
+            yAddress = accumulator;
+
+            setFlagTo(Zero_Flag, (yAddress == 0));
+            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeA9()
         {
             //Load immediate byte into accumulator
