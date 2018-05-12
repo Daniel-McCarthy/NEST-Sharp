@@ -1129,6 +1129,20 @@ namespace NEST.Classes
             //4 Cycles
         }
 
+        private void opcode94()
+        {
+            //STY: Copy value in y register to zero page + x address
+
+            byte address = readImmediateByte();
+            address += xAddress;
+            writeCPURam(address, yAddress);
+
+            //4 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode96()
         {
             //STX: Copy value in x register to zero page + y address
