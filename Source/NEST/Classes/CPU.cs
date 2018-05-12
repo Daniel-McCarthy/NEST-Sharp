@@ -1333,6 +1333,21 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeBA()
+        {
+            //TSX: Copy value in stack pointer to X Register
+
+            xAddress = stackPointer;
+
+            setFlagTo(Zero_Flag, (xAddress == 0));
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeBC()
         {
             //Load value at absolute + X address into Y Register
