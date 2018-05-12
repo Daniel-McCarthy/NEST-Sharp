@@ -9,5 +9,11 @@ namespace NEST.Classes
     class PPU
     {
         private byte[] ppuRam = new byte[0x4000];
+
+        private byte getPPURegister()
+        {
+            return Core.cpu.readCPURam(0x2000, true);
+        }
+
     }
 }
