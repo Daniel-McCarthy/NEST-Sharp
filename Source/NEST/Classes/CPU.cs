@@ -1108,6 +1108,21 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode9A()
+        {
+            //TXS: Copy value in x register to stack pointer
+
+            stackPointer = xAddress;
+
+            setFlagTo(Zero_Flag, (stackPointer == 0));
+            setFlagTo(Negative_Flag, (stackPointer & 0x80) != 0);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeA0()
         {
             //Load immediate byte into Y Register
