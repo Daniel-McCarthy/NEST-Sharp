@@ -291,6 +291,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode18()
+        {
+            //CLC: Set carry flag to disabled
+
+            setFlagTo(Carry_Flag, false);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode19()
         {
             //Bitwise OR A Absolute Y Index 16 Bit Address
