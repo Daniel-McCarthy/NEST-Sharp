@@ -1469,6 +1469,18 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeD8()
+        {
+            //CLD: Set decimal flag to disabled
+
+            setFlagTo(Decimal_Mode_Flag, false);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeD9()
         {
             //Compare value of accumulator with value at absolute + Y Address
