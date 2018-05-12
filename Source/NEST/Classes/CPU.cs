@@ -886,6 +886,21 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode68()
+        {
+            //PLA: Pops value from stack into accumulator
+
+            accumulator = popStackU8();
+
+            setFlagTo(Zero_Flag, (accumulator == 0));
+            setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
+
+            //4 cycles
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode6A()
         {
             //Bitwise Right Rotate of Accumulator
