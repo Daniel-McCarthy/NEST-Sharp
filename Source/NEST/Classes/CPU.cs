@@ -1001,6 +1001,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode78()
+        {
+            //SEI: Set interrupt disable flag to enabled
+
+            setFlagTo(Interrupt_Disable_Flag, true);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode7E()
         {
             //Bitwise Right Rotate of value at absolute X address
