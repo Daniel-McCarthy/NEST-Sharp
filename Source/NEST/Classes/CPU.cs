@@ -1102,6 +1102,15 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode8E()
+        {
+            //STX: Copy value in x register to absolute address
+
+            writeCPURam(readImmediateUShort(), xAddress);
+
+            //4 Cycles
+        }
+
         private void opcode98()
         {
             //TYA: Copy value in y register to accumulator
