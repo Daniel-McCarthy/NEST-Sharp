@@ -828,6 +828,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode58()
+        {
+            //CLI: Set interrupt disable flag to disabled
+
+            setFlagTo(Interrupt_Disable_Flag, false);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode59()
         {
             //Bitwise XOR A with Absolute Y address
