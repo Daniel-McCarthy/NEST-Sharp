@@ -577,6 +577,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode38()
+        {
+            //SEC: Set carry flag to enabled
+
+            setFlagTo(Carry_Flag, true);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode39()
         {
             //Bitwise And A with Absolute + Y Address
