@@ -653,6 +653,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode48()
+        {
+            //PHA: Pushes value in accumulator onto stack
+
+            pushStackU8(accumulator);
+
+            //3 cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode49()
         {
             //Bitwise XOR A with Immediate byte
