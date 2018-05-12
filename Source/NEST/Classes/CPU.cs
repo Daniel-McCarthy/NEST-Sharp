@@ -173,6 +173,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode08()
+        {
+            //PHP: Pushes value in status onto stack
+
+            pushStackU8((byte)(statusRegister | Empty_Flag | Breakpoint_Flag));
+
+            //3 cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode09()
         {
             //Bitwise OR A Immediate Byte
