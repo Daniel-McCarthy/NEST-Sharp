@@ -1563,6 +1563,18 @@ namespace NEST.Classes
             //6 cycles
         }
 
+        private void opcodeF8()
+        {
+            //SED: Set decimal flag to enabled
+
+            setFlagTo(Decimal_Mode_Flag, true);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeFE()
         {
             //Increment data at absolute + X address
