@@ -1209,6 +1209,21 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) != 0);
         }
 
+        private void opcodeAA()
+        {
+            //TAX: Copy value in accumulator to X Register
+
+            xAddress = accumulator;
+
+            setFlagTo(Zero_Flag, (xAddress == 0));
+            setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeAC()
         {
             //Load value at absolute address into Y Register
