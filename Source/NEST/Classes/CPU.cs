@@ -16,14 +16,14 @@ namespace NEST.Classes
         private byte stackPointer = 0;                  //Tracks position in the stack
         private byte statusRegister = 0 | Empty_Flag;   //Tracks what flags are set in the CPU
 
-        private const byte Carry_Flag           = 0x1;          //C
-        private const byte Zero_Flag            = 0x1 << 1;     //Z
-        private const byte Interrupt_Flag       = 0x1 << 2;     //I
-        private const byte Decimal_Mode_Flag    = 0x1 << 3;     //D
-        private const byte Breakpoint_Flag      = 0x1 << 4;     //B
-        private const byte Empty_Flag           = 0x1 << 5;     //-
-        private const byte Overflow_Flag        = 0x1 << 6;     //V
-        private const byte Negative_Flag        = 0x1 << 7;     //S
+        private const byte Carry_Flag               = 0x1;          //C
+        private const byte Zero_Flag                = 0x1 << 1;     //Z
+        private const byte Interrupt_Disable_Flag   = 0x1 << 2;     //I
+        private const byte Decimal_Mode_Flag        = 0x1 << 3;     //D
+        private const byte Breakpoint_Flag          = 0x1 << 4;     //B
+        private const byte Empty_Flag               = 0x1 << 5;     //-
+        private const byte Overflow_Flag            = 0x1 << 6;     //V
+        private const byte Negative_Flag            = 0x1 << 7;     //S
 
         //CPU Ram Map:
         //0x0000-0x07FF: Internal Ram
