@@ -418,6 +418,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode28()
+        {
+            //PLP: Pops value from stack into status register
+
+            statusRegister = popStackU8();
+
+            //4 cycles
+
+            mClock += 2;
+            tClock += 8;
+        }
+
         private void opcode29()
         {
             //Bitwise And A with Immediate Byte
