@@ -1439,6 +1439,16 @@ namespace NEST.Classes
             //2 cycles
         }
 
+        private void opcodeEA()
+        {
+            //NOP
+
+            mClock += 1;
+            tClock += 4;
+
+            //2 cycles
+        }
+
         private void opcodeEE()
         {
             //Increment data at absolute address
