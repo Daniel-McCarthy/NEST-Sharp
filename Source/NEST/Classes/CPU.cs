@@ -1063,6 +1063,15 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode84()
+        {
+            //STY: Copy value in y register to zero page addres
+
+            writeCPURam(readImmediateByte(), yAddress);
+
+            //3 Cycles
+        }
+
         private void opcode86()
         {
             //STX: Copy value in x register to zero page addres
