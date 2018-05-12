@@ -1232,6 +1232,18 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeB8()
+        {
+            //CLV: Set overflow flag to disabled
+
+            setFlagTo(Overflow_Flag, false);
+
+            //2 Cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeB9()
         {
             //Load value at absolute + Y address into accumulator
