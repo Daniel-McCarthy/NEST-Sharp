@@ -22,5 +22,12 @@ namespace NEST.Classes
             return (byte)(getPPURegister() & 0b00000111);
         }
 
+        private bool getPPURegisterSpritePatternTableSetting()
+        {
+            //Pattern Table address for 8x8 sprites
+            //0: 0x0000, 1: 0x1000
+            return (getPPURegister() & 0b0001000) != 0;
+        }
+
     }
 }
