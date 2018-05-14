@@ -125,12 +125,12 @@ namespace NEST.Classes
                         //byte colorAddress = (byte)((tilePalette * 4) + tileColorIndices[i]);
                         byte colorAddress = (byte)((tilePalette << 2) | tileColorIndices[i]);
                         byte colorIndex = ppuRam[0x3F00 + colorAddress];
-                        pixelColor = tempPalette[colorIndex];
+                        pixelColor = palette[colorIndex];
                     }
                     else
                     {
                         //Read Default BG Color.
-                        pixelColor = tempPalette[ppuRam[0x3F00]];
+                        pixelColor = palette[ppuRam[0x3F00]];
                     }
 
                     line[(tileIndex * 8) + i] = pixelColor;
