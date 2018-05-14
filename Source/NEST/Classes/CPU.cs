@@ -1383,6 +1383,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode99()
+        {
+            //STA: Copy value in accumulator to Absolute + Y Address
+
+            ushort address = readImmediateUShort();
+            address += yAddress;
+            writeCPURam(address, accumulator);
+
+            //5 cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode9A()
         {
             //TXS: Copy value in x register to stack pointer
