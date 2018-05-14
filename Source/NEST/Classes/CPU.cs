@@ -1223,6 +1223,23 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
         }
 
+        private void opcode75()
+        {
+            //ADC: Add Zero Page + X Byte + Carry Flag and copy it to Accumulator
+
+            int originalValue = accumulator;
+            int additionByte = zeroPageIndexed(readImmediateByte(), xAddress);
+            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum > 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcode76()
         {
             //Bitwise Right Rotate of value at Zero Page X address
