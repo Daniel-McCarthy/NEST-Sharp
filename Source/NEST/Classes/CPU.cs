@@ -1275,6 +1275,15 @@ namespace NEST.Classes
             //4 Cycles
         }
 
+        private void opcode8D()
+        {
+            //STA: Copy value in accumulator to Absolute Address
+
+            writeCPURam(readImmediateUShort(), accumulator);
+
+            //4 cycles
+        }
+
         private void opcode8E()
         {
             //STX: Copy value in x register to absolute address
