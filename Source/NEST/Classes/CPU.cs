@@ -147,6 +147,11 @@ namespace NEST.Classes
             return (ushort)(popStackU8() | (popStackU8() << 8));
         }
 
+        private bool detectOverflow(int value, int addition, int sum)
+        {
+            return (!(((value ^ addition) & 0x80) > 0)) && (((value ^ sum) & 0x80) > 0);
+        }
+
         private void opcode00()
         {
             //BRK: Force Interrupt
