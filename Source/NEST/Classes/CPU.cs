@@ -1757,6 +1757,27 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeD0()
+        {
+            //BNE: Branch if Zero Flag disabled
+
+            if (!getFlagStatus(Zero_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeD1()
         {
             //Compare value of accumulator with value at indirectIndexed address
