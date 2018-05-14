@@ -1572,6 +1572,20 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeCC()
+        {
+            //CPY: Compare value of Y Register with value at absolute Address
+
+            int value = yAddress;
+            value -= absolute(readImmediateUShort());
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //4 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for reading from Zero Page.
+        }
+
         private void opcodeCD()
         {
             //Compare value of accumulator with value at absolute Address
