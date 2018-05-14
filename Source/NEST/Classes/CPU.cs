@@ -1482,6 +1482,20 @@ namespace NEST.Classes
             //6 Cycles. 1 cycle for opcode byte. 1 cycles for immediate byte. 1 cycle for getting xAddress. 3 for indexed Indirect addressing.
         }
 
+        private void opcodeC4()
+        {
+            //CPY: Compare value of Y Register with value at Zero Page Address
+
+            int value = yAddress;
+            value -= readCPURam(readImmediateByte());
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
+        }
+
         private void opcodeC5()
         {
             //Compare value of accumulator with value at Zero Page Address
