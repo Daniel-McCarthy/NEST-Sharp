@@ -82,6 +82,13 @@ namespace NEST.Classes
             return readCPURam((ushort)((a | b) + yAddress));
         }
 
+        private void writeIndirectIndexed(byte address, byte data)
+        {
+            ushort a = readCPURam(address);
+            ushort b = (ushort)(zeroPageIndexed(address, 0, 1) << 8);
+            writeCPURam((ushort)((a | b) + yAddress), data);
+        }
+
         public byte readCPURam(ushort address, bool ignoreCycles = false)
         {
             if(!ignoreCycles)
