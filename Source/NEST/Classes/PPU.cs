@@ -9,6 +9,7 @@ namespace NEST.Classes
     class PPU
     {
         private byte[] ppuRam = new byte[0x4000];
+        private byte[] oamRam = new byte[0x100];
 
         private byte getPPURegister()
         {
