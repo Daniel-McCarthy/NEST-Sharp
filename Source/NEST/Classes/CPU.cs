@@ -1014,6 +1014,23 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode61()
+        {
+            //ADC: Add Byte at Indexed Indirect address + Carry Flag and copy it to Accumulator
+
+            int originalValue = accumulator;
+            int additionByte = indexedIndirect(readImmediateByte());
+            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum > 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcode66()
         {
             //Bitwise Right Rotate of Zero Page Value
