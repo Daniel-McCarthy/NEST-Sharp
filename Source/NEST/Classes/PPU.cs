@@ -140,5 +140,78 @@ namespace NEST.Classes
             return line;
         }
 
+        public Color[] drawSpriteLineFromNameTable1(byte lineNumber)
+        {
+            Color[] line = new Color[256];
+
+            int spriteCount = oamRam.Length / 4;
+
+            for (int spriteIndex = 0; spriteIndex < spriteCount; spriteIndex++)
+            {
+                byte spriteYPos = oamRam[spriteIndex * 4];
+                byte tileID     = oamRam[(spriteIndex * 4) + 1];
+                byte spriteXPos = oamRam[(spriteIndex * 4) + 3];
+                byte attributes = oamRam[(spriteIndex * 4) + 2];
+
+                byte spritePalette      = (byte)(4 + (attributes & 0b11));
+                byte spriteHeight       = getPPURegisterSpriteSizeSetting() ? (byte)16 : (byte)8;
+                bool isBelowBackground  = (attributes & 0b00100000) != 0;
+                bool isXFlipped         = (attributes & 0b01000000) != 0;
+                bool isYFlipped         = (attributes & 0b10000000) != 0;
+
+                bool isSpriteOnLine = (spriteYPos <= lineNumber) && ((spriteYPos + (spriteHeight)) > lineNumber);
+
+                if(isSpriteOnLine && !isBelowBackground)
+                {
+                    //Read current line of sprite tile
+                    //int yLineOffset = lineNumber % spriteHeight; //This lets us know which line of the tile we are drawing, so that we can read the correct line data.
+                    int yLineOffset = lineNumber - spriteYPos;
+                    yLineOffset = (isYFlipped) ? ((spriteHeight - 1) - yLineOffset) : yLineOffset; 
+
+
+                    ushort patternAddressTemp = (ushort)((tileID * 16) + (yLineOffset * 2));
+                    byte tileDataRow1 = ppuRam[((tileID * 16) + (yLineOffset))];
+                    byte tileDataRow2 = ppuRam[((tileID * 16) + (yLineOffset)) + 8];
+
+                    byte[] tileColorIndices = new byte[8];
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        //Patterns are defined by 16 bytes that detail an 8x8 pixel pattern. 2 bytes per line.
+                        //Each pixel can be one of four colors. 2 bytes are read in. The first bit
+                        //in the first byte and the first bit in the second byte define the color of the first pixel.
+                        tileColorIndices[i] = (byte)(((tileDataRow1 & 0x01)) | (tileDataRow2 & 0x01) << 1);
+                        tileDataRow1 >>= 1;
+                        tileDataRow2 >>= 1;
+                    }
+
+                    if(!isXFlipped)
+                        Array.Reverse(tileColorIndices);
+
+                    //Draw current tile data to line
+                    for (int i = 0; i < 8; i++)
+                    {
+                        Color pixelColor;
+
+                        if (tileColorIndices[i] != 0)
+                        {
+                            //Use the palette index retrieved from the attribute table to select the proper palette from 0x3F00-0x3F20
+                            //Select pixel color index from selected palette using tile color index retrieved from the tile data rows.
+                            //Use this final color index to index a color from the NES color palette.
+                            //byte colorAddress = (byte)((tilePalette * 4) + tileColorIndices[i]);
+                            byte colorAddress = (byte)((spritePalette << 2) | tileColorIndices[i]);
+                            byte colorIndex = ppuRam[0x3F00 + colorAddress];
+                            pixelColor = palette[colorIndex];
+
+                            if ((spriteXPos + i) < line.Length)
+                                line[spriteXPos + i] = pixelColor;
+                        }
+                    }
+                }
+            }
+
+            return line;
+        }
+
     }
 }
