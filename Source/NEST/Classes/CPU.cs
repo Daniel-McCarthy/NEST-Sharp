@@ -837,6 +837,27 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode50()
+        {
+            //BVC: Branch if Overflow Flag disabled
+
+            if (!getFlagStatus(Overflow_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode51()
         {
             //Bitwise XOR A Indirect Indexed Y
