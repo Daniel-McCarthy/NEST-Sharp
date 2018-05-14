@@ -1218,6 +1218,15 @@ namespace NEST.Classes
             //3 Cycles
         }
 
+        private void opcode85()
+        {
+            //STA: Copy value in accumulator to Zero Page Address
+
+            writeCPURam(readImmediateByte(), accumulator);
+
+            //3 cycles
+        }
+
         private void opcode86()
         {
             //STX: Copy value in x register to zero page addres
