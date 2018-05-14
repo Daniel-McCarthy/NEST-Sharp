@@ -1682,6 +1682,20 @@ namespace NEST.Classes
 
         }
 
+        private void opcodeE0()
+        {
+            //CPX: Compare value of X register with Immediate byte
+
+            int value = xAddress;
+            value -= readImmediateByte();
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //2 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument byte.
+        }
+
         private void opcodeE6()
         {
             //Increment data at Zero page address
