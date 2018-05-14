@@ -1436,6 +1436,27 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (xAddress & 0x80) != 0);
         }
 
+        private void opcodeB0()
+        {
+            //BCS: Branch if Carry Flag enabled
+
+            if (getFlagStatus(Carry_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcodeB1()
         {
             //Load value at indirectIndexed address into accumulator
