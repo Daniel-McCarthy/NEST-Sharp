@@ -556,6 +556,27 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode30()
+        {
+            //BMI: Branch if Negative Flag enabled
+
+            if (getFlagStatus(Negative_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode31()
         {
             //Bitwise And A Indirect Indexed Y
