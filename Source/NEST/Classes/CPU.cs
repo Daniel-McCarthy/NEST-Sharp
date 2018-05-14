@@ -1197,6 +1197,18 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode81()
+        {
+            //STA: Copy value in accumulator to Indexed Indirect Address
+
+            writeIndexedIndirect(readImmediateByte(), accumulator);
+
+            //6 cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode84()
         {
             //STY: Copy value in y register to zero page addres
