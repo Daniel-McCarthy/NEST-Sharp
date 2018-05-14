@@ -1454,6 +1454,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeC0()
+        {
+            //CPY: Compare value of Y register with Immediate byte
+
+            int value = yAddress;
+            value -= readImmediateByte();
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //2 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument byte.
+        }
+
         private void opcodeC1()
         {
             //Compare value of accumulator with value at indexedIndirect address
