@@ -1226,6 +1226,27 @@ namespace NEST.Classes
             //4 Cycles
         }
 
+        private void opcode90()
+        {
+            //BCC: Branch if Carry Flag disabled
+
+            if(!getFlagStatus(Carry_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode94()
         {
             //STY: Copy value in y register to zero page + x address
