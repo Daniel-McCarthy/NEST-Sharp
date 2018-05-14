@@ -198,6 +198,27 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode10()
+        {
+            //BPL: Branch if Negative Flag disabled
+
+            if (!getFlagStatus(Negative_Flag))
+            {
+                programCounter += readImmediateByte();
+            }
+            else
+            {
+                // Skip operand byte.
+                programCounter++;
+            }
+
+            //TODO: Add Cycle if branched to a new page
+            //2 cycles. +1 cycle if branch successful. +2 cycles if branched to a new page.
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode0A()
         {
             //Bitwise Left Shift of Accumulator
