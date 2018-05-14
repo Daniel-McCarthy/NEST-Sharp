@@ -1729,6 +1729,20 @@ namespace NEST.Classes
             //5 cycles
         }
 
+        private void opcodeEC()
+        {
+            //CPX: Compare value of X Register with value at absolute Address
+
+            int value = xAddress;
+            value -= absolute(readImmediateUShort());
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //4 Cycles. 1 cycle for opcode byte. 2 cycles for immediate ushort. 1 cycle for reading from Zero Page.
+        }
+
         private void opcodeE8()
         {
             //Increment data at Zero page address
