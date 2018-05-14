@@ -1340,6 +1340,20 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcode95()
+        {
+            //STA: Copy value in accumulator to Zero Page + X Address
+
+            ushort address = readImmediateByte();
+            address += xAddress;
+            writeCPURam(address, accumulator);
+
+            //4 cycles
+
+            mClock += 1;
+            tClock += 4;
+        }
+
         private void opcode96()
         {
             //STX: Copy value in x register to zero page + y address
