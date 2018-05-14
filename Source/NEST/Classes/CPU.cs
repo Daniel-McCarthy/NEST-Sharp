@@ -1696,6 +1696,20 @@ namespace NEST.Classes
             //2 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument byte.
         }
 
+        private void opcodeE4()
+        {
+            //CPX: Compare value of X Register with value at Zero Page Address
+
+            int value = xAddress;
+            value -= readCPURam(readImmediateByte());
+
+            setFlagTo(Carry_Flag, value >= 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) == 0x80);
+
+            //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
+        }
+
         private void opcodeE6()
         {
             //Increment data at Zero page address
