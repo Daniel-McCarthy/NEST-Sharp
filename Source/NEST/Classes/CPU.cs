@@ -127,6 +127,23 @@ namespace NEST.Classes
             return (ushort)(popStackU8() | (popStackU8() << 8));
         }
 
+        private void opcode00()
+        {
+            //BRK: Force Interrupt
+
+            readImmediateByte(); // Empty padding byte.
+            setFlagTo(Breakpoint_Flag, true);
+            pushStackU16(programCounter);
+            pushStackU8(statusRegister);
+
+            ushort address = readCPURam(0xFFFE);
+            address |= (ushort)(readCPURam(0xFFFF) << 8);
+
+            programCounter = --address;
+
+            //7 Cycles
+        }
+        
         private void opcode01()
         {
             //Bitwise OR A Indexed Indirect X
