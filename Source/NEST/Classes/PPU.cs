@@ -17,6 +17,11 @@ namespace NEST.Classes
             return ppuRam[address];
         }
 
+        public byte readOAMRamByte(ushort address)
+        {
+            return oamRam[address];
+        }
+
         private byte getPPURegister()
         {
             return Core.cpu.readCPURam(0x2000, true);
