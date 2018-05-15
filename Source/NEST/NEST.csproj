@@ -74,6 +74,7 @@
     <Compile Include="Classes\CPU.cs" />
     <Compile Include="Classes\GameWindow.cs" />
     <Compile Include="Classes\Input.cs" />
+    <Compile Include="Classes\Mappers\NROM.cs" />
     <Compile Include="Classes\PPU.cs" />
     <Compile Include="Classes\Rom.cs" />
     <Compile Include="Forms\AssemblyView.cs">
