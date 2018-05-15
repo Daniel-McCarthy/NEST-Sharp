@@ -2358,5 +2358,11 @@ namespace NEST.Classes
 
 
 
+
+        public byte getAccumulator()
+        {
+            return accumulator;
+        }
+
     }
 }
