@@ -2370,5 +2370,10 @@ namespace NEST.Classes
             return stackPointer;
         }
 
+        public byte getStatus()
+        {
+            return statusRegister;
+        }
+
     }
 }
