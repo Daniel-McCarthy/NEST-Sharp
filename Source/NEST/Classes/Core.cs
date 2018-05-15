@@ -43,6 +43,7 @@ namespace NEST.Classes
                 if (!Core.paused || Core.step)
                 {
 
+                    Core.cpu.fetchAndExecute();
                 }
             }
         }
