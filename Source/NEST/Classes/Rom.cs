@@ -123,5 +123,11 @@ namespace NEST.Classes
                 return false;
             }
         }
+
+        public int getExactDataLength()
+        {
+            return romData.Length;
+        }
+
     }
 }
