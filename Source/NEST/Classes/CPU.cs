@@ -2380,5 +2380,14 @@ namespace NEST.Classes
             return programCounter;
         }
 
+        public byte getXRegister()
+        {
+            return xAddress;
+        }
+
+        public byte getYRegister()
+        {
+            return yAddress;
+        }
     }
 }
