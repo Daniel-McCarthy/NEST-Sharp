@@ -124,6 +124,28 @@ namespace NEST.Classes
             }
         }
 
+        public byte readByte(ushort address)
+        {
+            return romData[address];
+        }
+
+        public byte[] readBytes(ushort address, int byteCount)
+        {
+            if((address + (byteCount - 1)) < (getExactDataLength()))
+            {
+                byte[] data = new byte[byteCount];
+
+                for(int i = 0; i < byteCount; i++)
+                {
+                    data[i] = romData[address + i];
+                }
+
+                return data;
+            }
+
+            return null;
+        }
+
         public int getExactDataLength()
         {
             return romData.Length;
