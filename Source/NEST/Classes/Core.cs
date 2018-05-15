@@ -24,6 +24,7 @@ namespace NEST.Classes
         public static PPU ppu;
         public static CPU cpu;
         public static Input input;
+        public static Rom rom;
 
         public static int clocks;
 
