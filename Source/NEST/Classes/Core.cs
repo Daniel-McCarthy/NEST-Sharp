@@ -13,6 +13,7 @@ namespace NEST.Classes
         {
             ppu = new PPU();
             cpu = new CPU();
+            mainWindow = new MainWindow();
             input = new Input();
             clocks = 0;
 
@@ -21,6 +22,8 @@ namespace NEST.Classes
             step = false;
         }
 
+
+        public static MainWindow mainWindow;
         public static PPU ppu;
         public static CPU cpu;
         public static Input input;
