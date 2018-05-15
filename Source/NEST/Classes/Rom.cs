@@ -161,5 +161,39 @@ namespace NEST.Classes
             return programRamSize;
         }
 
+        public int getCHRRomSize()
+        {
+            return chrRomSize;
+        }
+
+        public int getMapperSetting()
+        {
+            return mapperSetting;
+        }
+
+        public bool getVerticalMirroring()
+        {
+            return verticalMirroring;
+        }
+
+        public bool getProgramRamBattery()
+        {
+            return programRamBattery;
+        }
+
+        public bool getTrainerIncluded()
+        {
+            return trainerIncluded;
+        }
+
+        public bool getIgnoreMirroring()
+        {
+            return ignoreMirroring;
+        }
+
+        public bool getUsesProgramRam()
+        {
+            return usesProgramRam;
+        }
     }
 }
