@@ -2375,5 +2375,10 @@ namespace NEST.Classes
             return statusRegister;
         }
 
+        public ushort getProgramCounter()
+        {
+            return programCounter;
+        }
+
     }
 }
