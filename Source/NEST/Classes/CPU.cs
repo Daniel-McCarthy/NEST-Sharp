@@ -2359,9 +2359,15 @@ namespace NEST.Classes
 
 
 
+
         public byte getAccumulator()
         {
             return accumulator;
+        }
+
+        public byte getStackPointer()
+        {
+            return stackPointer;
         }
 
     }
