@@ -129,5 +129,10 @@ namespace NEST.Classes
             return romData.Length;
         }
 
+        public int getProgramRomSize()
+        {
+            return programRomSize;
+        }
+
     }
 }
