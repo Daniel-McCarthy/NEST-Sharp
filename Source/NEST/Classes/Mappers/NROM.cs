@@ -17,5 +17,66 @@ namespace NEST.Classes.Mappers
         // CPU RAM 0x8000-0xBFFF contains the first 16 KB of the ROM.
         // CPU RAM 0xC000-0xFFFF contains the last 16 KB of the ROM.
 
+        public static void loadRom(Rom romFile)
+        {
+            if (romFile.getMapperSetting() == 0)
+            {
+                loadRomBank0(ref romFile);
+                loadRomBank1(ref romFile);
+            }
+        }
+
+        public static void loadRomBank0(ref Rom romFile)
+        {
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            if (dataLength >= (16 * 1024))
+            {
+                data = romFile.readBytes(16, 16 * 1024);
+            }
+            else
+            {
+                data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+            }
+
+            if(data != null)
+            {
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Core.cpu.writeCPURam((ushort)(0x8000 + i), data[i], true);
+                }
+            }
+        }
+
+        public static void loadRomBank1(ref Rom romFile)
+        {
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            if (dataLength >= (16 * 1024))
+            {
+                ushort address = (ushort)(dataLength - (16 * 1024));
+
+                if(address < 16)
+                {
+                    address = 16;
+                }
+
+                data = romFile.readBytes(address, (16 * 1024));
+            }
+            else
+            {
+                data = romFile.readBytesFromAddressToEnd(16);
+            }
+
+            if (data != null)
+            {
+                for (int i = 0; i < data.Length; i++)
+                {
+                    Core.cpu.writeCPURam((ushort)(0xC000 + i), data[i], true);
+                }
+            }
+        }
     }
 }
