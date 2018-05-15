@@ -134,5 +134,10 @@ namespace NEST.Classes
             return programRomSize;
         }
 
+        public int getProgramRamSize()
+        {
+            return programRamSize;
+        }
+
     }
 }
