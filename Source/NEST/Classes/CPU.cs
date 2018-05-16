@@ -45,7 +45,7 @@ namespace NEST.Classes
 
         private ushort readImmediateUShort()
         {
-            return (ushort)((readImmediateByte() << 8) | readImmediateByte());
+            return (ushort)(readImmediateByte() | (readImmediateByte() << 8));
         }
 
         private byte zeroPageIndexed(byte argument, byte index, byte offset = 0)
