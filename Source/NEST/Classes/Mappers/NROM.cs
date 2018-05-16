@@ -31,14 +31,8 @@ namespace NEST.Classes.Mappers
             int dataLength = romFile.getExactDataLength();
             byte[] data = null;
 
-            if (dataLength >= (16 * 1024))
-            {
-                data = romFile.readBytes(16, 16 * 1024);
-            }
-            else
-            {
-                data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
-            }
+            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+
 
             if(data != null)
             {
