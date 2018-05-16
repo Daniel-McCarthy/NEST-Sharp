@@ -34,6 +34,9 @@ namespace NEST.Classes
         public static bool run;
         public static bool paused;
         public static bool step;
+
+        public static bool breakPointEnabled = true;
+        public static ConcurrentDictionary<string, ushort> breakpoints = new ConcurrentDictionary<string, ushort>();
     }
 
     public static class NEST_Main
