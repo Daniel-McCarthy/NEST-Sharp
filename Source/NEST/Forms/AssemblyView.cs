@@ -1642,6 +1642,7 @@ namespace NEST
                             case 0x0B:
                                 {
                                     opcodeString = "CB Illegal Opcode";
+                                    bytesRead = 1;
                                     break;
                                 }
                             case 0x0C:
