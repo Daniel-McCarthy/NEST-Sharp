@@ -17,27 +17,28 @@ namespace NEST.Forms
 
         private void BreakpointInputBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string textToVerify = inputTextBox.Text;
-            int textLength = textToVerify.Length;
-
-            if(textLength == 0 || textLength > 4)
+            if (DialogResult == DialogResult.OK)
             {
-                e.Cancel = true;
+                string textToVerify = inputTextBox.Text;
+                int textLength = textToVerify.Length;
 
-                MessageBox.Show("Address length must be 1 to 4 hexadecimal characters.");
+                if (textLength == 0 || textLength > 4)
+                {
+                    e.Cancel = true;
+
+                    MessageBox.Show("Address length must be 1 to 4 hexadecimal characters.");
+                }
+
+                ushort address = 0;
+                bool parseSuccess = ushort.TryParse(textToVerify, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.CurrentCulture, out address);
+
+                if (!parseSuccess)
+                {
+                    e.Cancel = true;
+
+                    MessageBox.Show("This is not a valid hexadecimal address.");
+                }
             }
-
-            ushort address = 0;
-            bool parseSuccess = ushort.TryParse(textToVerify, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.CurrentCulture, out address);
-
-            if(!parseSuccess)
-            {
-                e.Cancel = true;
-
-                MessageBox.Show("This is not a valid hexadecimal address.");
-            }
-
-
         }
     }
 }
