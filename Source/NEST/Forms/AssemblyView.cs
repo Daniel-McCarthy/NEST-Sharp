@@ -1686,7 +1686,7 @@ namespace NEST
                                 {
                                     byte argument = Core.cpu.readCPURam((ushort)(address + 1), true);
                                     string argumentHex = argument.ToString("X2");
-                                    opcodeString = "D0 " + argumentHex + " dne, " + argumentHex;
+                                    opcodeString = "D0 " + argumentHex + " bne, " + argumentHex;
                                     bytesRead = 2;
                                     break;
                                 }
