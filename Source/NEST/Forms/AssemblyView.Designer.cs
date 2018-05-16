@@ -36,6 +36,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.interruptGroupBox = new System.Windows.Forms.GroupBox();
             this.flagsGroupBox = new System.Windows.Forms.GroupBox();
+            this.sFlagValue = new System.Windows.Forms.Label();
+            this.vFlagValue = new System.Windows.Forms.Label();
+            this.bFlagValue = new System.Windows.Forms.Label();
+            this.dFlagValue = new System.Windows.Forms.Label();
+            this.iFlagValue = new System.Windows.Forms.Label();
+            this.negativeFlagLabel = new System.Windows.Forms.Label();
+            this.overflowFlagLabel = new System.Windows.Forms.Label();
+            this.emptyFlagLabel = new System.Windows.Forms.Label();
+            this.breakFlagLabel = new System.Windows.Forms.Label();
+            this.decimalFlagLabel = new System.Windows.Forms.Label();
+            this.intDisableFlagLabel = new System.Windows.Forms.Label();
+            this.zeroFlagLabel = new System.Windows.Forms.Label();
             this.carryFlagLabel = new System.Windows.Forms.Label();
             this.cFlagValue = new System.Windows.Forms.Label();
             this.zFlagValue = new System.Windows.Forms.Label();
@@ -44,6 +56,12 @@
             this.pcValue = new System.Windows.Forms.Label();
             this.programCounterLabel = new System.Windows.Forms.Label();
             this.registersGroupBox = new System.Windows.Forms.GroupBox();
+            this.statusRegisterValueLabel = new System.Windows.Forms.Label();
+            this.statusRegisterLabel = new System.Windows.Forms.Label();
+            this.yValueLabel = new System.Windows.Forms.Label();
+            this.yRegisterLabel = new System.Windows.Forms.Label();
+            this.xValueLabel = new System.Windows.Forms.Label();
+            this.xRegisterLabel = new System.Windows.Forms.Label();
             this.accumulatorValueLabel = new System.Windows.Forms.Label();
             this.accumulatorLabel = new System.Windows.Forms.Label();
             this.stackGroupBox = new System.Windows.Forms.GroupBox();
@@ -53,29 +71,15 @@
             this.spLabel = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
-            this.xValueLabel = new System.Windows.Forms.Label();
-            this.xRegisterLabel = new System.Windows.Forms.Label();
-            this.yValueLabel = new System.Windows.Forms.Label();
-            this.yRegisterLabel = new System.Windows.Forms.Label();
-            this.statusRegisterValueLabel = new System.Windows.Forms.Label();
-            this.statusRegisterLabel = new System.Windows.Forms.Label();
-            this.zeroFlagLabel = new System.Windows.Forms.Label();
-            this.intDisableFlagLabel = new System.Windows.Forms.Label();
-            this.decimalFlagLabel = new System.Windows.Forms.Label();
-            this.negativeFlagLabel = new System.Windows.Forms.Label();
-            this.overflowFlagLabel = new System.Windows.Forms.Label();
-            this.emptyFlagLabel = new System.Windows.Forms.Label();
-            this.breakFlagLabel = new System.Windows.Forms.Label();
-            this.iFlagValue = new System.Windows.Forms.Label();
-            this.dFlagValue = new System.Windows.Forms.Label();
-            this.bFlagValue = new System.Windows.Forms.Label();
-            this.vFlagValue = new System.Windows.Forms.Label();
-            this.sFlagValue = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.breakpointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBreakpointByAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.flagsGroupBox.SuspendLayout();
             this.otherGroupBox.SuspendLayout();
             this.registersGroupBox.SuspendLayout();
             this.stackGroupBox.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -84,7 +88,7 @@
             this.listBox1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(272, 12);
+            this.listBox1.Location = new System.Drawing.Point(272, 32);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(357, 292);
             this.listBox1.TabIndex = 2;
@@ -93,7 +97,7 @@
             // 
             // stepButton
             // 
-            this.stepButton.Location = new System.Drawing.Point(272, 310);
+            this.stepButton.Location = new System.Drawing.Point(272, 330);
             this.stepButton.Name = "stepButton";
             this.stepButton.Size = new System.Drawing.Size(69, 44);
             this.stepButton.TabIndex = 4;
@@ -103,7 +107,7 @@
             // 
             // runButton
             // 
-            this.runButton.Location = new System.Drawing.Point(419, 310);
+            this.runButton.Location = new System.Drawing.Point(419, 330);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(65, 44);
             this.runButton.TabIndex = 5;
@@ -113,7 +117,7 @@
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(490, 310);
+            this.pauseButton.Location = new System.Drawing.Point(490, 330);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(64, 44);
             this.pauseButton.TabIndex = 6;
@@ -130,7 +134,7 @@
             this.panel1.Controls.Add(this.otherGroupBox);
             this.panel1.Controls.Add(this.registersGroupBox);
             this.panel1.Controls.Add(this.stackGroupBox);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 342);
             this.panel1.TabIndex = 3;
@@ -170,6 +174,121 @@
             this.flagsGroupBox.TabIndex = 8;
             this.flagsGroupBox.TabStop = false;
             this.flagsGroupBox.Text = "Flags";
+            // 
+            // sFlagValue
+            // 
+            this.sFlagValue.AutoSize = true;
+            this.sFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sFlagValue.Location = new System.Drawing.Point(73, 57);
+            this.sFlagValue.Name = "sFlagValue";
+            this.sFlagValue.Size = new System.Drawing.Size(0, 13);
+            this.sFlagValue.TabIndex = 22;
+            // 
+            // vFlagValue
+            // 
+            this.vFlagValue.AutoSize = true;
+            this.vFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vFlagValue.Location = new System.Drawing.Point(73, 42);
+            this.vFlagValue.Name = "vFlagValue";
+            this.vFlagValue.Size = new System.Drawing.Size(0, 13);
+            this.vFlagValue.TabIndex = 21;
+            // 
+            // bFlagValue
+            // 
+            this.bFlagValue.AutoSize = true;
+            this.bFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bFlagValue.Location = new System.Drawing.Point(73, 14);
+            this.bFlagValue.Name = "bFlagValue";
+            this.bFlagValue.Size = new System.Drawing.Size(0, 13);
+            this.bFlagValue.TabIndex = 20;
+            // 
+            // dFlagValue
+            // 
+            this.dFlagValue.AutoSize = true;
+            this.dFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dFlagValue.Location = new System.Drawing.Point(29, 59);
+            this.dFlagValue.Name = "dFlagValue";
+            this.dFlagValue.Size = new System.Drawing.Size(0, 13);
+            this.dFlagValue.TabIndex = 19;
+            // 
+            // iFlagValue
+            // 
+            this.iFlagValue.AutoSize = true;
+            this.iFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iFlagValue.Location = new System.Drawing.Point(29, 41);
+            this.iFlagValue.Name = "iFlagValue";
+            this.iFlagValue.Size = new System.Drawing.Size(0, 13);
+            this.iFlagValue.TabIndex = 18;
+            // 
+            // negativeFlagLabel
+            // 
+            this.negativeFlagLabel.AutoSize = true;
+            this.negativeFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.negativeFlagLabel.Location = new System.Drawing.Point(52, 57);
+            this.negativeFlagLabel.Name = "negativeFlagLabel";
+            this.negativeFlagLabel.Size = new System.Drawing.Size(19, 13);
+            this.negativeFlagLabel.TabIndex = 17;
+            this.negativeFlagLabel.Text = "S:";
+            // 
+            // overflowFlagLabel
+            // 
+            this.overflowFlagLabel.AutoSize = true;
+            this.overflowFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.overflowFlagLabel.Location = new System.Drawing.Point(52, 42);
+            this.overflowFlagLabel.Name = "overflowFlagLabel";
+            this.overflowFlagLabel.Size = new System.Drawing.Size(19, 13);
+            this.overflowFlagLabel.TabIndex = 16;
+            this.overflowFlagLabel.Text = "V:";
+            // 
+            // emptyFlagLabel
+            // 
+            this.emptyFlagLabel.AutoSize = true;
+            this.emptyFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.emptyFlagLabel.Location = new System.Drawing.Point(54, 28);
+            this.emptyFlagLabel.Name = "emptyFlagLabel";
+            this.emptyFlagLabel.Size = new System.Drawing.Size(11, 13);
+            this.emptyFlagLabel.TabIndex = 15;
+            this.emptyFlagLabel.Text = "-";
+            // 
+            // breakFlagLabel
+            // 
+            this.breakFlagLabel.AutoSize = true;
+            this.breakFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.breakFlagLabel.Location = new System.Drawing.Point(52, 15);
+            this.breakFlagLabel.Name = "breakFlagLabel";
+            this.breakFlagLabel.Size = new System.Drawing.Size(19, 13);
+            this.breakFlagLabel.TabIndex = 14;
+            this.breakFlagLabel.Text = "B:";
+            // 
+            // decimalFlagLabel
+            // 
+            this.decimalFlagLabel.AutoSize = true;
+            this.decimalFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.decimalFlagLabel.Location = new System.Drawing.Point(5, 58);
+            this.decimalFlagLabel.Name = "decimalFlagLabel";
+            this.decimalFlagLabel.Size = new System.Drawing.Size(20, 13);
+            this.decimalFlagLabel.TabIndex = 13;
+            this.decimalFlagLabel.Text = "D:";
+            // 
+            // intDisableFlagLabel
+            // 
+            this.intDisableFlagLabel.AutoSize = true;
+            this.intDisableFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.intDisableFlagLabel.Location = new System.Drawing.Point(8, 43);
+            this.intDisableFlagLabel.Name = "intDisableFlagLabel";
+            this.intDisableFlagLabel.Size = new System.Drawing.Size(15, 13);
+            this.intDisableFlagLabel.TabIndex = 12;
+            this.intDisableFlagLabel.Text = "I:";
+            // 
+            // zeroFlagLabel
+            // 
+            this.zeroFlagLabel.AutoSize = true;
+            this.zeroFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.zeroFlagLabel.Location = new System.Drawing.Point(5, 29);
+            this.zeroFlagLabel.Name = "zeroFlagLabel";
+            this.zeroFlagLabel.Size = new System.Drawing.Size(19, 13);
+            this.zeroFlagLabel.TabIndex = 11;
+            this.zeroFlagLabel.Text = "Z:";
             // 
             // carryFlagLabel
             // 
@@ -257,6 +376,63 @@
             this.registersGroupBox.TabStop = false;
             this.registersGroupBox.Text = "Registers";
             // 
+            // statusRegisterValueLabel
+            // 
+            this.statusRegisterValueLabel.AutoSize = true;
+            this.statusRegisterValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusRegisterValueLabel.Location = new System.Drawing.Point(119, 74);
+            this.statusRegisterValueLabel.Name = "statusRegisterValueLabel";
+            this.statusRegisterValueLabel.Size = new System.Drawing.Size(0, 16);
+            this.statusRegisterValueLabel.TabIndex = 10;
+            // 
+            // statusRegisterLabel
+            // 
+            this.statusRegisterLabel.AutoSize = true;
+            this.statusRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusRegisterLabel.Location = new System.Drawing.Point(2, 71);
+            this.statusRegisterLabel.Name = "statusRegisterLabel";
+            this.statusRegisterLabel.Size = new System.Drawing.Size(118, 16);
+            this.statusRegisterLabel.TabIndex = 9;
+            this.statusRegisterLabel.Text = "Status Register:";
+            // 
+            // yValueLabel
+            // 
+            this.yValueLabel.AutoSize = true;
+            this.yValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yValueLabel.Location = new System.Drawing.Point(119, 58);
+            this.yValueLabel.Name = "yValueLabel";
+            this.yValueLabel.Size = new System.Drawing.Size(0, 16);
+            this.yValueLabel.TabIndex = 8;
+            // 
+            // yRegisterLabel
+            // 
+            this.yRegisterLabel.AutoSize = true;
+            this.yRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yRegisterLabel.Location = new System.Drawing.Point(2, 55);
+            this.yRegisterLabel.Name = "yRegisterLabel";
+            this.yRegisterLabel.Size = new System.Drawing.Size(85, 16);
+            this.yRegisterLabel.TabIndex = 7;
+            this.yRegisterLabel.Text = "Y Register:";
+            // 
+            // xValueLabel
+            // 
+            this.xValueLabel.AutoSize = true;
+            this.xValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xValueLabel.Location = new System.Drawing.Point(119, 42);
+            this.xValueLabel.Name = "xValueLabel";
+            this.xValueLabel.Size = new System.Drawing.Size(0, 16);
+            this.xValueLabel.TabIndex = 6;
+            // 
+            // xRegisterLabel
+            // 
+            this.xRegisterLabel.AutoSize = true;
+            this.xRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xRegisterLabel.Location = new System.Drawing.Point(2, 39);
+            this.xRegisterLabel.Name = "xRegisterLabel";
+            this.xRegisterLabel.Size = new System.Drawing.Size(84, 16);
+            this.xRegisterLabel.TabIndex = 5;
+            this.xRegisterLabel.Text = "X Register:";
+            // 
             // accumulatorValueLabel
             // 
             this.accumulatorValueLabel.AutoSize = true;
@@ -330,7 +506,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(347, 310);
+            this.refreshButton.Location = new System.Drawing.Point(347, 330);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(66, 44);
             this.refreshButton.TabIndex = 7;
@@ -340,7 +516,7 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(560, 310);
+            this.resetButton.Location = new System.Drawing.Point(560, 330);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(69, 44);
             this.resetButton.TabIndex = 8;
@@ -348,184 +524,38 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // xValueLabel
+            // menuStrip1
             // 
-            this.xValueLabel.AutoSize = true;
-            this.xValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xValueLabel.Location = new System.Drawing.Point(119, 42);
-            this.xValueLabel.Name = "xValueLabel";
-            this.xValueLabel.Size = new System.Drawing.Size(0, 16);
-            this.xValueLabel.TabIndex = 6;
+            this.menuStrip1.BackColor = System.Drawing.Color.LightGray;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.breakpointsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(641, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // xRegisterLabel
+            // breakpointsToolStripMenuItem
             // 
-            this.xRegisterLabel.AutoSize = true;
-            this.xRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xRegisterLabel.Location = new System.Drawing.Point(2, 39);
-            this.xRegisterLabel.Name = "xRegisterLabel";
-            this.xRegisterLabel.Size = new System.Drawing.Size(84, 16);
-            this.xRegisterLabel.TabIndex = 5;
-            this.xRegisterLabel.Text = "X Register:";
+            this.breakpointsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addBreakpointByAddressToolStripMenuItem});
+            this.breakpointsToolStripMenuItem.Name = "breakpointsToolStripMenuItem";
+            this.breakpointsToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.breakpointsToolStripMenuItem.Text = "Breakpoints";
             // 
-            // yValueLabel
+            // addBreakpointByAddressToolStripMenuItem
             // 
-            this.yValueLabel.AutoSize = true;
-            this.yValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yValueLabel.Location = new System.Drawing.Point(119, 58);
-            this.yValueLabel.Name = "yValueLabel";
-            this.yValueLabel.Size = new System.Drawing.Size(0, 16);
-            this.yValueLabel.TabIndex = 8;
-            // 
-            // yRegisterLabel
-            // 
-            this.yRegisterLabel.AutoSize = true;
-            this.yRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yRegisterLabel.Location = new System.Drawing.Point(2, 55);
-            this.yRegisterLabel.Name = "yRegisterLabel";
-            this.yRegisterLabel.Size = new System.Drawing.Size(85, 16);
-            this.yRegisterLabel.TabIndex = 7;
-            this.yRegisterLabel.Text = "Y Register:";
-            // 
-            // statusRegisterValueLabel
-            // 
-            this.statusRegisterValueLabel.AutoSize = true;
-            this.statusRegisterValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusRegisterValueLabel.Location = new System.Drawing.Point(119, 74);
-            this.statusRegisterValueLabel.Name = "statusRegisterValueLabel";
-            this.statusRegisterValueLabel.Size = new System.Drawing.Size(0, 16);
-            this.statusRegisterValueLabel.TabIndex = 10;
-            // 
-            // statusRegisterLabel
-            // 
-            this.statusRegisterLabel.AutoSize = true;
-            this.statusRegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusRegisterLabel.Location = new System.Drawing.Point(2, 71);
-            this.statusRegisterLabel.Name = "statusRegisterLabel";
-            this.statusRegisterLabel.Size = new System.Drawing.Size(118, 16);
-            this.statusRegisterLabel.TabIndex = 9;
-            this.statusRegisterLabel.Text = "Status Register:";
-            // 
-            // zeroFlagLabel
-            // 
-            this.zeroFlagLabel.AutoSize = true;
-            this.zeroFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.zeroFlagLabel.Location = new System.Drawing.Point(5, 29);
-            this.zeroFlagLabel.Name = "zeroFlagLabel";
-            this.zeroFlagLabel.Size = new System.Drawing.Size(19, 13);
-            this.zeroFlagLabel.TabIndex = 11;
-            this.zeroFlagLabel.Text = "Z:";
-            // 
-            // intDisableFlagLabel
-            // 
-            this.intDisableFlagLabel.AutoSize = true;
-            this.intDisableFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.intDisableFlagLabel.Location = new System.Drawing.Point(8, 43);
-            this.intDisableFlagLabel.Name = "intDisableFlagLabel";
-            this.intDisableFlagLabel.Size = new System.Drawing.Size(15, 13);
-            this.intDisableFlagLabel.TabIndex = 12;
-            this.intDisableFlagLabel.Text = "I:";
-            // 
-            // decimalFlagLabel
-            // 
-            this.decimalFlagLabel.AutoSize = true;
-            this.decimalFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.decimalFlagLabel.Location = new System.Drawing.Point(5, 58);
-            this.decimalFlagLabel.Name = "decimalFlagLabel";
-            this.decimalFlagLabel.Size = new System.Drawing.Size(20, 13);
-            this.decimalFlagLabel.TabIndex = 13;
-            this.decimalFlagLabel.Text = "D:";
-            // 
-            // negativeFlagLabel
-            // 
-            this.negativeFlagLabel.AutoSize = true;
-            this.negativeFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.negativeFlagLabel.Location = new System.Drawing.Point(52, 57);
-            this.negativeFlagLabel.Name = "negativeFlagLabel";
-            this.negativeFlagLabel.Size = new System.Drawing.Size(19, 13);
-            this.negativeFlagLabel.TabIndex = 17;
-            this.negativeFlagLabel.Text = "S:";
-            // 
-            // overflowFlagLabel
-            // 
-            this.overflowFlagLabel.AutoSize = true;
-            this.overflowFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.overflowFlagLabel.Location = new System.Drawing.Point(52, 42);
-            this.overflowFlagLabel.Name = "overflowFlagLabel";
-            this.overflowFlagLabel.Size = new System.Drawing.Size(19, 13);
-            this.overflowFlagLabel.TabIndex = 16;
-            this.overflowFlagLabel.Text = "V:";
-            // 
-            // emptyFlagLabel
-            // 
-            this.emptyFlagLabel.AutoSize = true;
-            this.emptyFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.emptyFlagLabel.Location = new System.Drawing.Point(54, 28);
-            this.emptyFlagLabel.Name = "emptyFlagLabel";
-            this.emptyFlagLabel.Size = new System.Drawing.Size(11, 13);
-            this.emptyFlagLabel.TabIndex = 15;
-            this.emptyFlagLabel.Text = "-";
-            // 
-            // breakFlagLabel
-            // 
-            this.breakFlagLabel.AutoSize = true;
-            this.breakFlagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.breakFlagLabel.Location = new System.Drawing.Point(52, 15);
-            this.breakFlagLabel.Name = "breakFlagLabel";
-            this.breakFlagLabel.Size = new System.Drawing.Size(19, 13);
-            this.breakFlagLabel.TabIndex = 14;
-            this.breakFlagLabel.Text = "B:";
-            // 
-            // iFlagValue
-            // 
-            this.iFlagValue.AutoSize = true;
-            this.iFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iFlagValue.Location = new System.Drawing.Point(29, 41);
-            this.iFlagValue.Name = "iFlagValue";
-            this.iFlagValue.Size = new System.Drawing.Size(0, 13);
-            this.iFlagValue.TabIndex = 18;
-            // 
-            // dFlagValue
-            // 
-            this.dFlagValue.AutoSize = true;
-            this.dFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dFlagValue.Location = new System.Drawing.Point(29, 59);
-            this.dFlagValue.Name = "dFlagValue";
-            this.dFlagValue.Size = new System.Drawing.Size(0, 13);
-            this.dFlagValue.TabIndex = 19;
-            // 
-            // bFlagValue
-            // 
-            this.bFlagValue.AutoSize = true;
-            this.bFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bFlagValue.Location = new System.Drawing.Point(73, 14);
-            this.bFlagValue.Name = "bFlagValue";
-            this.bFlagValue.Size = new System.Drawing.Size(0, 13);
-            this.bFlagValue.TabIndex = 20;
-            // 
-            // vFlagValue
-            // 
-            this.vFlagValue.AutoSize = true;
-            this.vFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vFlagValue.Location = new System.Drawing.Point(73, 42);
-            this.vFlagValue.Name = "vFlagValue";
-            this.vFlagValue.Size = new System.Drawing.Size(0, 13);
-            this.vFlagValue.TabIndex = 21;
-            // 
-            // sFlagValue
-            // 
-            this.sFlagValue.AutoSize = true;
-            this.sFlagValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sFlagValue.Location = new System.Drawing.Point(73, 57);
-            this.sFlagValue.Name = "sFlagValue";
-            this.sFlagValue.Size = new System.Drawing.Size(0, 13);
-            this.sFlagValue.TabIndex = 22;
+            this.addBreakpointByAddressToolStripMenuItem.Name = "addBreakpointByAddressToolStripMenuItem";
+            this.addBreakpointByAddressToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.addBreakpointByAddressToolStripMenuItem.Text = "Add Breakpoint by Address";
+            this.addBreakpointByAddressToolStripMenuItem.Click += new System.EventHandler(this.addBreakpointByAddressToolStripMenuItem_Click);
             // 
             // AssemblyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(641, 360);
+            this.ClientSize = new System.Drawing.Size(641, 381);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.pauseButton);
@@ -533,7 +563,9 @@
             this.Controls.Add(this.stepButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "AssemblyView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NEST - Assembly View";
@@ -547,7 +579,10 @@
             this.registersGroupBox.PerformLayout();
             this.stackGroupBox.ResumeLayout(false);
             this.stackGroupBox.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -594,5 +629,8 @@
         private System.Windows.Forms.Label bFlagValue;
         private System.Windows.Forms.Label dFlagValue;
         private System.Windows.Forms.Label iFlagValue;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem breakpointsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addBreakpointByAddressToolStripMenuItem;
     }
 }

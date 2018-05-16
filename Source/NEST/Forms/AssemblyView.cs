@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 
 using Core = NEST.Classes.Core;
 using NEST = NEST.Classes;
+using NEST.Forms;
 
 namespace NEST
 {
@@ -2133,6 +2134,22 @@ namespace NEST
 
             Core.paused = false;*/
         }
-        
+
+        private void addBreakpointByAddressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (BreakpointInputBox hexInputBox = new BreakpointInputBox())
+            {
+                if(hexInputBox.ShowDialog() == DialogResult.OK)
+                {
+                    string userAddressInput = hexInputBox.inputTextBox.Text;
+                    ushort address = ushort.Parse(userAddressInput, System.Globalization.NumberStyles.HexNumber);
+
+                    if (!Core.breakpoints.ContainsKey(userAddressInput))
+                    {
+                        Core.breakpoints.TryAdd(userAddressInput, address);
+                    }
+                }
+            }
+        }
     }
 }
