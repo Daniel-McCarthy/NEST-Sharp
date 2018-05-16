@@ -416,8 +416,9 @@ namespace NEST.Classes
         {
             //Jump to subroutine at absolute address
 
+            ushort newPC = readImmediateUShort();
             pushStackU16((ushort)(programCounter - 1));
-            programCounter = readImmediateUShort();
+            programCounter = newPC;
 
             //6 cycles
             mClock += 2;
