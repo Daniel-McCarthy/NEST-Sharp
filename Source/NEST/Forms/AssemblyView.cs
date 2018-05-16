@@ -1636,7 +1636,7 @@ namespace NEST
                             case 0x0A:
                                 {
                                     opcodeString = "CA dex";
-                                    bytesRead = 3;
+                                    bytesRead = 1;
                                     break;
                                 }
                             case 0x0B:
