@@ -1859,10 +1859,8 @@ namespace NEST
                                 }
                             case 8:
                                 {
-                                    byte argument = Core.cpu.readCPURam((ushort)(address + 1), true);
-                                    string argumentHex = argument.ToString("X2");
-                                    opcodeString = "E8 " + argumentHex + " inx, " + argumentHex;
-                                    bytesRead = 2;
+                                    opcodeString = "E8 inx";
+                                    bytesRead = 1;
                                     break;
                                 }
                             case 9:
