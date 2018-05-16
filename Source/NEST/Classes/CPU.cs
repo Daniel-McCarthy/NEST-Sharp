@@ -246,7 +246,8 @@ namespace NEST.Classes
 
             if (!getFlagStatus(Negative_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -604,7 +605,8 @@ namespace NEST.Classes
 
             if (getFlagStatus(Negative_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -885,7 +887,8 @@ namespace NEST.Classes
 
             if (!getFlagStatus(Overflow_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -1191,7 +1194,8 @@ namespace NEST.Classes
 
             if (getFlagStatus(Overflow_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -1444,7 +1448,8 @@ namespace NEST.Classes
 
             if(!getFlagStatus(Carry_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -1708,7 +1713,8 @@ namespace NEST.Classes
 
             if (getFlagStatus(Carry_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -2029,7 +2035,8 @@ namespace NEST.Classes
 
             if (!getFlagStatus(Zero_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
@@ -2261,7 +2268,8 @@ namespace NEST.Classes
 
             if (getFlagStatus(Zero_Flag))
             {
-                programCounter += readImmediateByte();
+                sbyte signedByte = (sbyte)readImmediateByte();
+                programCounter = (ushort)(programCounter + signedByte);
             }
             else
             {
