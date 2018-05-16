@@ -22,7 +22,7 @@ namespace NEST.Classes.Mappers
             if (romFile.getMapperSetting() == 0)
             {
                 loadRomBank0(ref romFile);
-                loadRomBank1(ref romFile);
+                //loadRomBank1(ref romFile);
             }
         }
 
@@ -44,7 +44,24 @@ namespace NEST.Classes.Mappers
             {
                 for (int i = 0; i < data.Length; i++)
                 {
-                    Core.cpu.writeCPURam((ushort)(0x8000 + i), data[i], true);
+                    ushort address = (ushort)(0x8000 + i);
+                    if (address >= 0x8000 && address <= 0xFFFF)
+                    {
+                        Core.cpu.writeCPURam(address, data[i], true);
+                    }
+                }
+
+                // If there is only one bank, then mirror
+                if(romFile.getProgramRomSize() == 1)
+                {
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        ushort address = (ushort)(0xC000 + i);
+                        if (address >= 0xC000 && address <= 0xFFFF)
+                        {
+                            Core.cpu.writeCPURam(address, data[i], true);
+                        }
+                    }
                 }
             }
         }
