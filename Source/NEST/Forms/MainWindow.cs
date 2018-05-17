@@ -44,9 +44,6 @@ namespace NEST
 
             if(File.Exists(filePath))
             {
-
-                Core.cpu.programCounter = 0x8000;
-
                 Core.rom = new Rom(File.ReadAllBytes(filePath));
 
                 int mapperSetting = Core.rom.getMapperSetting();
@@ -55,6 +52,11 @@ namespace NEST
                 {
                     NROM.loadRom(Core.rom);
                 }
+
+                ushort resetAddress = 0;
+                resetAddress |= Core.cpu.readCPURam(0xFFFC, true);
+                resetAddress |= (ushort)(Core.cpu.readCPURam(0xFFFD, true) << 8);
+                Core.cpu.programCounter = resetAddress;
 
                 //Core.beakMemory.initializeGameBoyValues();
                 //Core.beakMemory.readRomHeader();
