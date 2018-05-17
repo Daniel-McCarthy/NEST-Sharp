@@ -83,16 +83,16 @@
     <Compile Include="Forms\AssemblyView.Designer.cs">
       <DependentUpon>AssemblyView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BreakpointInputBox.cs">
+    <Compile Include="Forms\General Use\BreakpointInputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BreakpointInputBox.Designer.cs">
+    <Compile Include="Forms\General Use\BreakpointInputBox.Designer.cs">
       <DependentUpon>BreakpointInputBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InputBox.cs">
+    <Compile Include="Forms\General Use\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InputBox.Designer.cs">
+    <Compile Include="Forms\General Use\InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainWindow.cs">
@@ -115,10 +115,10 @@
     <EmbeddedResource Include="Forms\AssemblyView.resx">
       <DependentUpon>AssemblyView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BreakpointInputBox.resx">
+    <EmbeddedResource Include="Forms\General Use\BreakpointInputBox.resx">
       <DependentUpon>BreakpointInputBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InputBox.resx">
+    <EmbeddedResource Include="Forms\General Use\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
