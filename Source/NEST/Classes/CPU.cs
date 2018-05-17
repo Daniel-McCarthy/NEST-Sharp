@@ -144,7 +144,7 @@ namespace NEST.Classes
 
         public ushort popStackU16()
         {
-            return (ushort)(popStackU8() | (popStackU8() << 8));
+            return (ushort)((popStackU8() << 8) | popStackU8());
         }
 
         private bool detectOverflow(int value, int addition, int sum)
