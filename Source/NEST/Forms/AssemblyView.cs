@@ -1876,7 +1876,7 @@ namespace NEST
                             case 0xA:
                                 {
                                     opcodeString = "EA nop";
-                                    bytesRead = 2;
+                                    bytesRead = 1;
                                     break;
                                 }
                             case 0xB:
