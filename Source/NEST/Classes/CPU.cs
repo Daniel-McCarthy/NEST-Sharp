@@ -132,8 +132,8 @@ namespace NEST.Classes
 
         public void pushStackU16(ushort value)
         {
-            pushStackU8((byte)(value & 0xFF));
             pushStackU8((byte)((value >> 8) & 0xFF));
+            pushStackU8((byte)(value & 0xFF));
         }
 
         public byte popStackU8()
