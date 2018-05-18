@@ -1024,8 +1024,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = indexedIndirect(readImmediateByte());
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1041,8 +1041,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = readCPURam(readImmediateByte());
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1099,8 +1099,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = readImmediateByte();
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);   
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);   
             
             accumulator = (byte)(sum & 0xFF);
 
@@ -1152,8 +1152,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = readCPURam(readImmediateUShort());
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1217,8 +1217,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = indirectIndexed(readImmediateByte());
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1234,8 +1234,8 @@ namespace NEST.Classes
 
             int originalValue = accumulator;
             int additionByte = zeroPageIndexed(readImmediateByte(), xAddress);
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1291,8 +1291,8 @@ namespace NEST.Classes
             ushort address = readImmediateUShort();
             address += yAddress;
             int additionByte = readCPURam(address);
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
@@ -1310,8 +1310,8 @@ namespace NEST.Classes
             ushort address = readImmediateUShort();
             address += xAddress;
             int additionByte = readCPURam(address);
-            int carryAmmount = getFlagStatus(Carry_Flag) ? 1 : 0;
-            int sum = (byte)(originalValue + additionByte + Carry_Flag);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = (byte)(originalValue + additionByte + carryAmount);
 
             accumulator = (byte)(sum & 0xFF);
 
