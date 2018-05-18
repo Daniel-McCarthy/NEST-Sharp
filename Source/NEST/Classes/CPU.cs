@@ -2804,5 +2804,10 @@ namespace NEST.Classes
         {
             return yAddress;
         }
+
+        public void setStackPointer(byte newSP)
+        {
+            stackPointer = newSP;
+        }
     }
 }
