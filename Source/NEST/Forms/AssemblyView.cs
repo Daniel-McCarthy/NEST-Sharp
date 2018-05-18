@@ -238,7 +238,7 @@ namespace NEST
                                 }
                             case 8:
                                 {
-                                    opcodeString = "08 " + " php";
+                                    opcodeString = "08 php";
                                     bytesRead = 1;
                                     break;
                                 }
