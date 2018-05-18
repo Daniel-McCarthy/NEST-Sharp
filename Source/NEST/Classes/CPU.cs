@@ -147,7 +147,7 @@ namespace NEST.Classes
             return (ushort)((popStackU8() << 8) | popStackU8());
         }
 
-        private bool detectOverflow(int value, int addition, int sum)
+        private bool detectADCOverflow(int value, int addition, int sum)
         {
             return (!(((value ^ addition) & 0x80) > 0)) && (((value ^ sum) & 0x80) > 0);
         }
@@ -1029,7 +1029,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1046,7 +1046,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1104,7 +1104,7 @@ namespace NEST.Classes
             
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1157,7 +1157,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1222,7 +1222,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1239,7 +1239,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1296,7 +1296,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
@@ -1315,7 +1315,7 @@ namespace NEST.Classes
 
             accumulator = (byte)(sum & 0xFF);
 
-            setFlagTo(Overflow_Flag, detectOverflow(originalValue, additionByte, sum));
+            setFlagTo(Overflow_Flag, detectADCOverflow(originalValue, additionByte, sum));
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
