@@ -446,7 +446,7 @@ namespace NEST
                                 {
                                     byte argument = Core.cpu.readCPURam((ushort)(address + 1), true);
                                     string argumentHex = argument.ToString("X2");
-                                    opcodeString = "29 " + argumentHex + " asl, " + argumentHex;
+                                    opcodeString = "29 " + argumentHex + " and, " + argumentHex;
                                     bytesRead = 2;
                                     break;
                                 }
