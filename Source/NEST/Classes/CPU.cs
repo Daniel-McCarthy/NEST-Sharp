@@ -2290,6 +2290,23 @@ namespace NEST.Classes
             //2 cycles
         }
 
+        private void opcodeE9()
+        {
+            //Subtract Immedate byte and Carry Flag value from A
+
+            int originalValue = accumulator;
+            int additionByte = readImmediateByte();
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = originalValue - additionByte - carryAmount;
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectSBCOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum <= 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcodeEA()
         {
             //NOP
