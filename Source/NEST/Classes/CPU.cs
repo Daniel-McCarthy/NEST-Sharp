@@ -1559,9 +1559,6 @@ namespace NEST.Classes
 
             stackPointer = xAddress;
 
-            setFlagTo(Zero_Flag, (stackPointer == 0));
-            setFlagTo(Negative_Flag, (stackPointer & 0x80) != 0);
-
             //2 Cycles
 
             mClock += 1;
