@@ -152,6 +152,11 @@ namespace NEST.Classes
             return (!(((value ^ addition) & 0x80) > 0)) && (((value ^ sum) & 0x80) > 0);
         }
 
+        private bool detectSBCOverflow(int value, int addition, int sum)
+        {
+            return ((((value ^ sum) & 0x80) > 0)) && (((value ^ addition) & 0x80) > 0);
+        }
+
         private void opcode00()
         {
             //BRK: Force Interrupt
