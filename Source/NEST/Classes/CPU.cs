@@ -2208,6 +2208,23 @@ namespace NEST.Classes
             //3 Cycles. 1 cycle reading opcode byte and 1 cycle reading opcode argument address byte, 1 cycle reading value from Zero Page.
         }
 
+        private void opcodeE5()
+        {
+            //Subtract Zero Page Byte + Carry Flag value from Accumulator
+
+            int originalValue = accumulator;
+            int additionByte = readCPURam(readImmediateByte());
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = originalValue - additionByte - carryAmount;
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectSBCOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum <= 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcodeE6()
         {
             //Increment data at Zero page address
