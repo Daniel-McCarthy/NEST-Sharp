@@ -86,7 +86,7 @@ namespace NEST
         void updateStackDisplay()
         {
             byte stackPointer = Core.cpu.getStackPointer();
-            short data = Core.cpu.readCPURam(stackPointer, true);
+            short data = Core.cpu.readCPURam((ushort)(0x100 | stackPointer), true);
 
             spValue.Text = stackPointer.ToString("X2");
             stackValue.Text = data.ToString("X2");
