@@ -2743,35 +2743,35 @@ namespace NEST.Classes
             if (opcode == 0xDE) { opcodeDE(); }
             //if (opcode == 0xDF) { opcodeDF(); }
             if (opcode == 0xE0) { opcodeE0(); }
-            //if (opcode == 0xE1) { opcodeE1(); } //TODO: SBC
+            if (opcode == 0xE1) { opcodeE1(); }
             //if (opcode == 0xE2) { opcodeE2(); }
             //if (opcode == 0xE3) { opcodeE3(); }
             if (opcode == 0xE4) { opcodeE4(); }
-            //if (opcode == 0xE5) { opcodeE5(); } //TODO: SBC
+            if (opcode == 0xE5) { opcodeE5(); }
             if (opcode == 0xE6) { opcodeE6(); }
             //if (opcode == 0xE7) { opcodeE7(); }
             if (opcode == 0xE8) { opcodeE8(); }
-            //if (opcode == 0xE9) { opcodeE9(); } //TODO: SBC
+            if (opcode == 0xE9) { opcodeE9(); }
             if (opcode == 0xEA) { opcodeEA(); }
             //if (opcode == 0xEB) { opcodeEB(); }
             if (opcode == 0xEC) { opcodeEC(); }
-           // if (opcode == 0xED) { opcodeED(); } //TOOD: SBC
+            if (opcode == 0xED) { opcodeED(); }
             if (opcode == 0xEE) { opcodeEE(); }
             //if (opcode == 0xEF) { opcodeEF(); }
             if (opcode == 0xF0) { opcodeF0(); }
-            //if (opcode == 0xF1) { opcodeF1(); } //TODO: SBC
+            if (opcode == 0xF1) { opcodeF1(); }
             //if (opcode == 0xF2) { opcodeF2(); }
             //if (opcode == 0xF3) { opcodeF3(); }
             //if (opcode == 0xF4) { opcodeF4(); }
-            //if (opcode == 0xF5) { opcodeF5(); } //TODO: SBC
+            if (opcode == 0xF5) { opcodeF5(); }
             if (opcode == 0xF6) { opcodeF6(); }
             //if (opcode == 0xF7) { opcodeF7(); }
             if (opcode == 0xF8) { opcodeF8(); }
-            //if (opcode == 0xF9) { opcodeF9(); } //TODO: SBC
+            if (opcode == 0xF9) { opcodeF9(); }
             //if (opcode == 0xFA) { opcodeFA(); }
             //if (opcode == 0xFB) { opcodeFB(); }
             //if (opcode == 0xFC) { opcodeFC(); }
-            //if (opcode == 0xFD) { opcodeFD(); } //TODO: SBC
+            if (opcode == 0xFD) { opcodeFD(); }
             if (opcode == 0xFE) { opcodeFE(); }
             //if (opcode == 0xFF) { opcodeFF(); }
 
