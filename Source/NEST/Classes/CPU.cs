@@ -499,7 +499,7 @@ namespace NEST.Classes
         {
             //PLP: Pops value from stack into status register
 
-            statusRegister = popStackU8();
+            statusRegister = (byte)(popStackU8() | Empty_Flag);
 
             //4 cycles
 
