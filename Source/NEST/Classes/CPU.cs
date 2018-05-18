@@ -2424,6 +2424,25 @@ namespace NEST.Classes
             tClock += 4;
         }
 
+        private void opcodeF9()
+        {
+            //SBC: Subtract Byte at (absolute + Y) address and Carry Flag value from Accumulator
+
+            int originalValue = accumulator;
+            ushort address = readImmediateUShort();
+            address += yAddress;
+            int additionByte = readCPURam(address);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = originalValue - additionByte - carryAmount;
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectSBCOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum <= 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcodeFE()
         {
             //Increment data at absolute + X address
