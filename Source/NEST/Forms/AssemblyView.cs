@@ -1980,10 +1980,8 @@ namespace NEST
                                 }
                             case 8:
                                 {
-                                    byte argument = Core.cpu.readCPURam((ushort)(address + 1), true);
-                                    string argumentHex = argument.ToString("X2");
-                                    opcodeString = "F8 " + argumentHex + " sed, " + argumentHex;
-                                    bytesRead = 2;
+                                    opcodeString = "F8 sed";
+                                    bytesRead = 1;
                                     break;
                                 }
                             case 9:
