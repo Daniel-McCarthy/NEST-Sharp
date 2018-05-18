@@ -2375,6 +2375,23 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
         }
 
+        private void opcodeF5()
+        {
+            //SBC: Subtract (Zero Page + X Byte) address value and Carry Flag value from Accumulator
+
+            int originalValue = accumulator;
+            int additionByte = zeroPageIndexed(readImmediateByte(), xAddress);
+            int carryAmount = getFlagStatus(Carry_Flag) ? 1 : 0;
+            int sum = originalValue - additionByte - carryAmount;
+
+            accumulator = (byte)(sum & 0xFF);
+
+            setFlagTo(Overflow_Flag, detectSBCOverflow(originalValue, additionByte, sum));
+            setFlagTo(Carry_Flag, sum <= 0xFF);
+            setFlagTo(Zero_Flag, accumulator == 0);
+            setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
         private void opcodeF6()
         {
             //Increment data at Zero page + X address
