@@ -1945,7 +1945,7 @@ namespace NEST.Classes
 
         private void opcodeC8()
         {
-            //Increment data at Zero page address
+            //Increment Y address value
 
             ++yAddress;
 
