@@ -68,8 +68,8 @@ namespace NEST.Classes
         private byte indexedIndirect(byte argument)
         {
             //(d, x)
-            ushort addressLower = readCPURam(zeroPageIndexed(argument, xAddress));
-            ushort addressUpper = (ushort)(readCPURam(zeroPageIndexed(argument, xAddress, 1)) << 8);
+            ushort addressLower = readCPURam((ushort)((argument + xAddress) % 256));
+            ushort addressUpper = (ushort)(readCPURam((ushort)((argument + xAddress + 1) % 256)) << 8);
             return readCPURam((ushort)(addressLower | addressUpper));
 
             //May need extra logic for if argument is 0xFF, and the next byte would be at 00?
@@ -78,8 +78,8 @@ namespace NEST.Classes
         private void writeIndexedIndirect(byte address, byte data)
         {
             //(d, x)
-            ushort addressLower = readCPURam(zeroPageIndexed(address, xAddress));
-            ushort addressUpper = (ushort)(readCPURam(zeroPageIndexed(address, xAddress, 1)) << 8);
+            ushort addressLower = readCPURam((ushort)((address + xAddress) % 256));
+            ushort addressUpper = (ushort)(readCPURam((ushort)((address + xAddress + 1) % 256)) << 8);
             writeCPURam((ushort)(addressLower | addressUpper), data);
 
             //May need extra logic for if argument is 0xFF, and the next byte would be at 00?
