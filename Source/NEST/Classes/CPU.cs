@@ -2151,11 +2151,12 @@ namespace NEST.Classes
             ushort address = readImmediateUShort();
             address += xAddress;
             byte value = readCPURam(address);
+            --value;
 
-            writeCPURam(address, --value);
+            writeCPURam(address, value);
 
-            setFlagTo(Zero_Flag, yAddress == 0);
-            setFlagTo(Negative_Flag, (yAddress & 0x80) != 0);
+            setFlagTo(Zero_Flag, value == 0);
+            setFlagTo(Negative_Flag, (value & 0x80) != 0);
 
             //7 Cycles
             mClock += 2;
