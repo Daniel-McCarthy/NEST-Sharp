@@ -1015,7 +1015,8 @@ namespace NEST.Classes
             //Bitwise Right Shift of value at absolute X address
 
             ushort address = readImmediateUShort();
-            byte value = absolute(address, xAddress);
+            address += xAddress;
+            byte value = readCPURam(address);
 
             setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
 
