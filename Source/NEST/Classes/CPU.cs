@@ -1169,8 +1169,19 @@ namespace NEST.Classes
 
             ushort addressLocation = readImmediateUShort();
             ushort address = 0;
-            address |= readCPURam(addressLocation);
-            address |= (ushort)(readCPURam(addressLocation) << 8);
+            bool jumpBug = (addressLocation & 0xFF) == 0xFF;
+
+            //6502 Bug:
+            if (jumpBug)
+            {
+                address |= readCPURam(addressLocation);
+                address |= (ushort)(readCPURam((ushort)(addressLocation & 0xFF00)) << 8);
+            }
+            else
+            {
+                address |= readCPURam(addressLocation);
+                address |= (ushort)(readCPURam((ushort)(addressLocation + 1)) << 8);
+            }
 
             programCounter = address;
 
