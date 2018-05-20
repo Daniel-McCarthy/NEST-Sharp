@@ -344,6 +344,17 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode14()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
+        }
+
         private void opcode15()
         {
             //Bitwise OR A Zero Page X
@@ -658,6 +669,17 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode34()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
+        }
+
         private void opcode35()
         {
             //Bitwise And A with Zero Page X
@@ -946,6 +968,17 @@ namespace NEST.Classes
 
             mClock += 2;
             tClock += 8;
+        }
+
+        private void opcode54()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
         }
 
         private void opcode55()
@@ -1276,6 +1309,17 @@ namespace NEST.Classes
             setFlagTo(Carry_Flag, sum > 0xFF);
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
+        private void opcode74()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
         }
 
         private void opcode75()
@@ -2115,6 +2159,17 @@ namespace NEST.Classes
             //6 Cycles. 1 cycle for opcode byte. 1 cycles for immediate byte. 1 cycle for getting xAddress. 3 for indirect Indexed addressing.
         }
 
+        private void opcodeD4()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
+        }
+
         private void opcodeD5()
         {
             //Compare value of accumulator with value at Zero Page X Address
@@ -2421,6 +2476,17 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
         }
 
+        private void opcodeF4()
+        {
+            //Unofficial Opcode: NOP with zero page + X read
+            programCounter++;
+
+            mClock += 3;
+            tClock += 12;
+
+            // 4 cycles total. Read opcode byte, operand byte, and read value from address, and index of X address.
+        }
+
         private void opcodeF5()
         {
             //SBC: Subtract (Zero Page + X Byte) address value and Carry Flag value from Accumulator
@@ -2584,7 +2650,7 @@ namespace NEST.Classes
             if (opcode == 0x11) { opcode11(); }
             //if (opcode == 0x12) { opcode12(); }
             //if (opcode == 0x13) { opcode13(); }
-            //if (opcode == 0x14) { opcode14(); }
+            if (opcode == 0x14) { opcode14(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x15) { opcode15(); }
             if (opcode == 0x16) { opcode16(); }
             //if (opcode == 0x17) { opcode17(); }
@@ -2616,7 +2682,7 @@ namespace NEST.Classes
             if (opcode == 0x31) { opcode31(); }
             //if (opcode == 0x32) { opcode32(); }
             //if (opcode == 0x33) { opcode33(); }
-            //if (opcode == 0x34) { opcode34(); }
+            if (opcode == 0x34) { opcode34(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x35) { opcode35(); }
             if (opcode == 0x36) { opcode36(); }
             //if (opcode == 0x37) { opcode37(); }
@@ -2648,7 +2714,7 @@ namespace NEST.Classes
             if (opcode == 0x51) { opcode51(); }
             //if (opcode == 0x52) { opcode52(); }
             //if (opcode == 0x53) { opcode53(); }
-            //if (opcode == 0x54) { opcode54(); }
+            if (opcode == 0x54) { opcode54(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x55) { opcode55(); }
             if (opcode == 0x56) { opcode56(); }
             //if (opcode == 0x57) { opcode57(); }
@@ -2680,7 +2746,7 @@ namespace NEST.Classes
             if (opcode == 0x71) { opcode71(); }
             //if (opcode == 0x72) { opcode72(); }
             //if (opcode == 0x73) { opcode73(); }
-            //if (opcode == 0x74) { opcode74(); }
+            if (opcode == 0x74) { opcode74(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x75) { opcode75(); }
             if (opcode == 0x76) { opcode76(); }
             //if (opcode == 0x77) { opcode77(); }
@@ -2776,7 +2842,7 @@ namespace NEST.Classes
             if (opcode == 0xD1) { opcodeD1(); }
             //if (opcode == 0xD2) { opcodeD2(); }
             //if (opcode == 0xD3) { opcodeD3(); }
-            //if (opcode == 0xD4) { opcodeD4(); }
+            if (opcode == 0xD4) { opcodeD4(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0xD5) { opcodeD5(); }
             if (opcode == 0xD6) { opcodeD6(); }
             //if (opcode == 0xD7) { opcodeD7(); }
@@ -2808,7 +2874,7 @@ namespace NEST.Classes
             if (opcode == 0xF1) { opcodeF1(); }
             //if (opcode == 0xF2) { opcodeF2(); }
             //if (opcode == 0xF3) { opcodeF3(); }
-            //if (opcode == 0xF4) { opcodeF4(); }
+            if (opcode == 0xF4) { opcodeF4(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0xF5) { opcodeF5(); }
             if (opcode == 0xF6) { opcodeF6(); }
             //if (opcode == 0xF7) { opcodeF7(); }
