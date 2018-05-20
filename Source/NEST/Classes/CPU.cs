@@ -782,6 +782,14 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode44()
+        {
+            //Unofficial Opcode: NOP with zero page read
+            readCPURam(readImmediateByte());
+
+            // 3 cycles total. Read opcode byte, operand byte, and read value from address.
+        }
+
         private void opcode45()
         {
             //Bitwise XOR A with Zero Page address
@@ -2595,7 +2603,7 @@ namespace NEST.Classes
             if (opcode == 0x41) { opcode41(); }
             //if (opcode == 0x42) { opcode42(); }
             //if (opcode == 0x43) { opcode43(); }
-            //if (opcode == 0x44) { opcode44(); }
+            if (opcode == 0x44) { opcode44(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x45) { opcode45(); }
             if (opcode == 0x46) { opcode46(); }
             //if (opcode == 0x47) { opcode47(); }
