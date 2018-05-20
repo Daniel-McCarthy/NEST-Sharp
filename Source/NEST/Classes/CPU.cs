@@ -1020,7 +1020,7 @@ namespace NEST.Classes
 
             setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
 
-            value <<= 1;
+            value >>= 1;
             writeCPURam(address, (byte)(value));
 
             setFlagTo(Zero_Flag, (value == 0));
