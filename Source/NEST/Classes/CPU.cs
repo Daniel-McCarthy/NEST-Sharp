@@ -1441,6 +1441,17 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode80()
+        {
+            //Unofficial Opcode: NOP with immediate read
+            programCounter++;
+
+            mClock += 1;
+            tClock += 4;
+
+            // 2 cycles total. Read opcode byte, and operand byte.
+        }
+
         private void opcode81()
         {
             //STA: Copy value in accumulator to Indexed Indirect Address
@@ -1451,6 +1462,17 @@ namespace NEST.Classes
 
             mClock += 1;
             tClock += 4;
+        }
+
+        private void opcode82()
+        {
+            //Unofficial Opcode: NOP with immediate read
+            programCounter++;
+
+            mClock += 1;
+            tClock += 4;
+
+            // 2 cycles total. Read opcode byte, and operand byte.
         }
 
         private void opcode84()
@@ -1493,6 +1515,17 @@ namespace NEST.Classes
             mClock += 1;
             tClock += 4;
 
+        }
+
+        private void opcode89()
+        {
+            //Unofficial Opcode: NOP with immediate read
+            programCounter++;
+
+            mClock += 1;
+            tClock += 4;
+
+            // 2 cycles total. Read opcode byte, and operand byte.
         }
 
         private void opcode8A()
@@ -1985,6 +2018,17 @@ namespace NEST.Classes
             //6 Cycles. 1 cycle for opcode byte. 1 cycles for immediate byte. 1 cycle for getting xAddress. 3 for indexed Indirect addressing.
         }
 
+        private void opcodeC2()
+        {
+            //Unofficial Opcode: NOP with immediate read
+            programCounter++;
+
+            mClock += 1;
+            tClock += 4;
+
+            // 2 cycles total. Read opcode byte, and operand byte.
+        }
+
         private void opcodeC4()
         {
             //CPY: Compare value of Y Register with value at Zero Page Address
@@ -2293,6 +2337,17 @@ namespace NEST.Classes
             setFlagTo(Carry_Flag, (originalValue >= (additionByte + carryAmount)));
             setFlagTo(Zero_Flag, accumulator == 0);
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
+        }
+
+        private void opcodeE2()
+        {
+            //Unofficial Opcode: NOP with immediate read
+            programCounter++;
+
+            mClock += 1;
+            tClock += 4;
+
+            // 2 cycles total. Read opcode byte, and operand byte.
         }
 
         private void opcodeE4()
@@ -2758,16 +2813,16 @@ namespace NEST.Classes
             if (opcode == 0x7D) { opcode7D(); }
             if (opcode == 0x7E) { opcode7E(); }
             //if (opcode == 0x7F) { opcode7F(); }
-            //if (opcode == 0x80) { opcode80(); }
+            if (opcode == 0x80) { opcode80(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x81) { opcode81(); }
-            //if (opcode == 0x82) { opcode82(); }
+            if (opcode == 0x82) { opcode82(); } // Unofficial Opcode: 2 byte NOP.
             //if (opcode == 0x83) { opcode83(); }
             if (opcode == 0x84) { opcode84(); }
             if (opcode == 0x85) { opcode85(); }
             if (opcode == 0x86) { opcode86(); }
             //if (opcode == 0x87) { opcode87(); }
             if (opcode == 0x88) { opcode88(); }
-            //if (opcode == 0x89) { opcode89(); }
+            if (opcode == 0x89) { opcode89(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x8A) { opcode8A(); }
             //if (opcode == 0x8B) { opcode8B(); }
             if (opcode == 0x8C) { opcode8C(); }
@@ -2824,7 +2879,7 @@ namespace NEST.Classes
             //if (opcode == 0xBF) { opcodeBF(); }
             if (opcode == 0xC0) { opcodeC0(); }
             if (opcode == 0xC1) { opcodeC1(); }
-            //if (opcode == 0xC2) { opcodeC2(); }
+            if (opcode == 0xC2) { opcodeC2(); } // Unofficial Opcode: 2 byte NOP.
             //if (opcode == 0xC3) { opcodeC3(); }
             if (opcode == 0xC4) { opcodeC4(); }
             if (opcode == 0xC5) { opcodeC5(); }
@@ -2856,7 +2911,7 @@ namespace NEST.Classes
             //if (opcode == 0xDF) { opcodeDF(); }
             if (opcode == 0xE0) { opcodeE0(); }
             if (opcode == 0xE1) { opcodeE1(); }
-            //if (opcode == 0xE2) { opcodeE2(); }
+            if (opcode == 0xE2) { opcodeE2(); } // Unofficial Opcode: 2 byte NOP.
             //if (opcode == 0xE3) { opcodeE3(); }
             if (opcode == 0xE4) { opcodeE4(); }
             if (opcode == 0xE5) { opcodeE5(); }
