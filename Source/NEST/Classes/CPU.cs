@@ -1056,6 +1056,14 @@ namespace NEST.Classes
             setFlagTo(Negative_Flag, (accumulator & 0x80) == 0x80);
         }
 
+        private void opcode64()
+        {
+            //Unofficial Opcode: NOP with zero page read
+            readCPURam(readImmediateByte());
+
+            // 3 cycles total. Read opcode byte, operand byte, and read value from address.
+        }
+
         private void opcode65()
         {
             //ADC: Add Zero Page Byte + Carry Flag and copy it to Accumulator
@@ -2635,7 +2643,7 @@ namespace NEST.Classes
             if (opcode == 0x61) { opcode61(); }
             //if (opcode == 0x62) { opcode62(); }
             //if (opcode == 0x63) { opcode63(); }
-            //if (opcode == 0x64) { opcode64(); }
+            if (opcode == 0x64) { opcode64(); } // Unofficial Opcode: 2 byte NOP.
             if (opcode == 0x65) { opcode65(); }
             if (opcode == 0x66) { opcode66(); }
             //if (opcode == 0x67) { opcode67(); }
