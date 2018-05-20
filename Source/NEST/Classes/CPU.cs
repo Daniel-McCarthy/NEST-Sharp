@@ -290,6 +290,14 @@ namespace NEST.Classes
             tClock += 8;
         }
 
+        private void opcode0C()
+        {
+            //Unofficial Opcode: NOP with absolute address read
+            readCPURam(readImmediateUShort());
+
+            // 4 cycles total. Read opcode byte, 2 operand bytes, and read value from address.
+        }
+
         private void opcode0D()
         {
             //Bitwise OR A Absolute 16 Bit Address
@@ -2568,7 +2576,7 @@ namespace NEST.Classes
             if (opcode == 0x09) { opcode09(); }
             if (opcode == 0x0A) { opcode0A(); }
             //if (opcode == 0x0B) { opcode0B(); }
-            //if (opcode == 0x0C) { opcode0C(); }
+            if (opcode == 0x0C) { opcode0C(); } // Unofficial Opcode: 3 byte NOP.
             if (opcode == 0x0D) { opcode0D(); }
             if (opcode == 0x0E) { opcode0E(); }
             //if (opcode == 0x0F) { opcode0F(); }
