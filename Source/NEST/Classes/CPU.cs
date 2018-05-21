@@ -25,6 +25,17 @@ namespace NEST.Classes
         private const byte Overflow_Flag            = 0x1 << 6;     //V
         private const byte Negative_Flag            = 0x1 << 7;     //S
 
+        private const ushort PPU_CONTROL_REGISTER       = 0x2000;
+        private const ushort PPU_MASK_REGISTER          = 0x2001;
+        private const ushort PPU_STATUS_REGISTER        = 0x2002;
+        private const ushort OAM_DATA_ADDRESS_REGISTER  = 0x2003;
+        private const ushort OAM_DATA_REGISTER          = 0x2004;
+        private const ushort PPU_SCROLL_REGISTER        = 0x2005;
+        private const ushort PPU_DATA_ADDRESS_REGISTER  = 0x2006;
+        private const ushort PPU_DATA_REGISTER          = 0x2007;
+        private const ushort OAM_DMA_REGISTER           = 0x4014;
+
+
         //CPU Ram Map:
         //0x0000-0x07FF: Internal Ram
         //0x0800-0x1FFF: Mirroring of Internal Ram
