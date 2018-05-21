@@ -66,6 +66,14 @@ namespace NEST.Classes
             return (getPPURegister() & 0b01000000) != 0;
         }
 
+        public void oamDMATransfer(ushort address)
+        {
+            for (int i = 0; i < 0xFF; i++)
+            {
+                oamRam[i] = Core.cpu.readCPURam((ushort)(address + i), false);
+            }
+        }
+
 
         public Color[] drawBGLineFromNameTable1(byte lineNumber)
         {
