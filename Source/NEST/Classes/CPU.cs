@@ -132,7 +132,16 @@ namespace NEST.Classes
                 tClock += 4;
             }
 
-            cpuRam[address] = value;
+            if (address == OAM_DMA_REGISTER)
+            {
+                //Initiate DMA tranfer from (XX00 to XXFF) to OAM Ram
+                ushort oamAddress = (ushort)(value << 8);
+                Core.ppu.oamDMATransfer(oamAddress);
+            }
+            else
+            {
+                cpuRam[address] = value;
+            }
         }
 
         public void pushStackU8(byte value)
