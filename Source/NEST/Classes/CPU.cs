@@ -142,6 +142,10 @@ namespace NEST.Classes
             {
                 Core.ppu.writePPURamByte(Core.ppu.ppuWriteAddress, value);
             }
+            else if (address == OAM_DATA_REGISTER)
+            {
+                Core.ppu.writeOAMRamByte(Core.ppu.oamWriteAddress, value);
+            }
             else
             {
                 cpuRam[address] = value;
