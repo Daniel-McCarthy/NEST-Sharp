@@ -2990,5 +2990,17 @@ namespace NEST.Classes
         {
             stackPointer = newSP;
         }
+
+        public void serviceInterrupt()
+        {
+            if(!getFlagStatus(Interrupt_Disable_Flag) && pendingInterrupt)
+            {
+                pushStackU16(programCounter);
+                pushStackU8(statusRegister);
+
+                programCounter = (ushort)(readCPURam(0xFFFE) | (readCPURam(0xFFFF) << 8));
+                setFlagTo(Interrupt_Disable_Flag, true);
+            }
+        }
     }
 }
