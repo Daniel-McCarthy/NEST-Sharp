@@ -138,6 +138,10 @@ namespace NEST.Classes
                 ushort oamAddress = (ushort)(value << 8);
                 Core.ppu.oamDMATransfer(oamAddress);
             }
+            else if (address == PPU_DATA_REGISTER)
+            {
+                Core.ppu.writePPURamByte(Core.ppu.ppuWriteAddress, value);
+            }
             else
             {
                 cpuRam[address] = value;
