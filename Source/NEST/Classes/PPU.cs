@@ -28,6 +28,11 @@ namespace NEST.Classes
             return oamRam[address];
         }
 
+        public void writeOAMRamByte(ushort address, byte value)
+        {
+            oamRam[address] = value;
+        }
+
         private byte getPPURegister()
         {
             return Core.cpu.readCPURam(0x2000, true);
