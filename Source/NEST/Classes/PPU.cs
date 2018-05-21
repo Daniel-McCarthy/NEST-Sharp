@@ -18,6 +18,11 @@ namespace NEST.Classes
             return ppuRam[address];
         }
 
+        public void writePPURamByte(ushort address, byte value)
+        {
+            ppuRam[address] = value;
+        }
+
         public byte readOAMRamByte(ushort address)
         {
             return oamRam[address];
