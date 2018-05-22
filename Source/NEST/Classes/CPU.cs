@@ -46,6 +46,8 @@ namespace NEST.Classes
         //0x4020-0xFFFF: Cartridge Space
         private byte[] cpuRam = new byte[0x10000];
 
+        public bool pendingInterrupt = false;
+
         public int tClock = 0;
         public int mClock = 0;
 
