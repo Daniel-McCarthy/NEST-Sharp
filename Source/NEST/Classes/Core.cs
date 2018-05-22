@@ -15,7 +15,9 @@ namespace NEST.Classes
             cpu = new CPU();
             mainWindow = new MainWindow();
             input = new Input();
-            clocks = 0;
+
+            TOTAL_CPU_CLOCKS = 0;
+            TOTAL_PPU_CLOCKS = 0;
 
             run = true;
             paused = false;
@@ -29,7 +31,8 @@ namespace NEST.Classes
         public static Input input;
         public static Rom rom;
 
-        public static int clocks;
+        public static uint TOTAL_CPU_CLOCKS;
+        public static uint TOTAL_PPU_CLOCKS;
 
         public static bool run;
         public static bool paused;
