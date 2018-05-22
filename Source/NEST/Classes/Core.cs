@@ -52,6 +52,10 @@ namespace NEST.Classes
                 if (!Core.paused || Core.step)
                 {
 
+
+                    if ( Core.ppu.pendingNMI ) { Core.cpu.serviceNonMaskableInterrupt(); }
+                    else { Core.cpu.serviceInterrupt(); }
+
                     Core.cpu.fetchAndExecute();
                 }
             }
