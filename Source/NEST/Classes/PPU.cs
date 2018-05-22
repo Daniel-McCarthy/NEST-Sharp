@@ -22,9 +22,10 @@ namespace NEST.Classes
         public ushort oamWriteAddress      = 0;
         public bool pendingNMI             = false;
 
+        public byte scrollX     = 0;
+        public byte scrollY     = 0;
+        public int  ly          = 0;
 
-        public byte scrollX = 0;
-        public byte scrollY = 0;
 
         public byte readPPURamByte(ushort address)
         {
