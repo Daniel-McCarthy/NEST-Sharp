@@ -28,6 +28,10 @@ namespace NEST.Classes
         public byte ppuState    = 0;
         public uint frameCount  = 0;
 
+        public const byte PPU_STATE_PRERENDER   = 0b00000000;
+        public const byte PPU_STATE_DRAWING     = 0b00000001;
+        public const byte PPU_STATE_POSTRENDER  = 0b00000010;
+        public const byte PPU_STATE_VBLANK      = 0b00000011;
 
 
         public byte readPPURamByte(ushort address)
