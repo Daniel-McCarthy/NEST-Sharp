@@ -48,8 +48,8 @@ namespace NEST.Classes
 
         public bool pendingInterrupt = false;
 
-        public int tClock = 0;
-        public int mClock = 0;
+        public uint tClock = 0;
+        public uint mClock = 0;
 
         private byte readImmediateByte()
         {
