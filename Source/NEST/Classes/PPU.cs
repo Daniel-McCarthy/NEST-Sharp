@@ -26,6 +26,8 @@ namespace NEST.Classes
         public byte scrollY     = 0;
         public int  ly          = 0;
         public byte ppuState    = 0;
+        public uint frameCount  = 0;
+
 
 
         public byte readPPURamByte(ushort address)
