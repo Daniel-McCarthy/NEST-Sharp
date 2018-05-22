@@ -3066,5 +3066,17 @@ namespace NEST.Classes
                 setFlagTo(Interrupt_Disable_Flag, true);
             }
         }
+
+        public void serviceNonMaskableInterrupt()
+        {
+            if(Core.ppu.pendingNMI)
+            {
+                pushStackU16(programCounter);
+                pushStackU8(statusRegister);
+
+                programCounter = (ushort)(readCPURam(0xFFFA) | (readCPURam(0xFFFB) << 8));
+                Core.ppu.pendingNMI = false;
+            }
+        }
     }
 }
