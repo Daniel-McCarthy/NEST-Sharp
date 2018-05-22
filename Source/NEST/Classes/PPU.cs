@@ -96,6 +96,22 @@ namespace NEST.Classes
         }
 
 
+        public void drawLineToFrame(Color[] backGroundLine, Color[]  spriteLine, uint ly)
+        {
+            if( ly < 240)
+            {
+                for (uint x = 0; x < backGroundLine.Length; x++)
+                {
+                    Core.ppu.frame.SetPixel(x, ly, backGroundLine[x]);
+
+                    if (spriteLine[x] != null && spriteLine[x].A != 0)
+                    {
+                        Core.ppu.frame.SetPixel(x, ly, spriteLine[x]);
+                    }
+                }
+            }
+        }
+
         public Color[] drawBGLineFromNameTable1(byte lineNumber)
         {
             Color[] line = new Color[256];
