@@ -57,6 +57,13 @@ namespace NEST.Classes
                     else { Core.cpu.serviceInterrupt(); }
 
                     Core.cpu.fetchAndExecute();
+
+                    uint cpuClocks = Core.cpu.mClock;
+                    uint ppuClocks = cpuClocks * 3;
+
+                    Core.TOTAL_CPU_CLOCKS += cpuClocks;
+                    Core.TOTAL_PPU_CLOCKS += ppuClocks;
+
                 }
             }
         }
