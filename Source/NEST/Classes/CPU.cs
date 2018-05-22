@@ -178,6 +178,19 @@ namespace NEST.Classes
                     Core.ppu.oamAddressWrittenOnce = false;
                 }
             }
+            else if (address == PPU_SCROLL_REGISTER)
+            {
+                if (!Core.ppu.scrollWrittenOnce)
+                {
+                    Core.ppu.scrollX = value;
+                    Core.ppu.scrollWrittenOnce = true;
+                }
+                else
+                {
+                    Core.ppu.scrollY = value;
+                    Core.ppu.scrollWrittenOnce = false;
+                }
+            }
             else
             {
                 cpuRam[address] = value;
