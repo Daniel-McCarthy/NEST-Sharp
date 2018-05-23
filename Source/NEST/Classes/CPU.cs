@@ -123,7 +123,14 @@ namespace NEST.Classes
                 tClock += 4;
             }
 
-            return cpuRam[address];
+            if (address == PPU_STATUS_REGISTER)
+            {
+                return Core.ppu.getPPUStatus();
+            }
+            else
+            {
+                return cpuRam[address];
+            }
         }
 
         public void writeCPURam(ushort address, byte value, bool ignoreCycles = false)
