@@ -176,14 +176,14 @@ namespace NEST.Classes
                 //Set byte of OAM Write Address
                 if(!Core.ppu.oamAddressWrittenOnce)
                 {
-                    Core.ppu.oamWriteAddress &= 0xFF00;
-                    Core.ppu.oamWriteAddress |= value;
+                    Core.ppu.oamWriteAddress &= 0x00FF;
+                    Core.ppu.oamWriteAddress |= (ushort)(value << 8);
                     Core.ppu.oamAddressWrittenOnce = true;
                 }
                 else
                 {
-                    Core.ppu.oamWriteAddress &= 0x00FF;
-                    Core.ppu.oamWriteAddress |= (ushort)(value << 8);
+                    Core.ppu.oamWriteAddress &= 0xFF00;
+                    Core.ppu.oamWriteAddress |= value;
                     Core.ppu.oamAddressWrittenOnce = false;
                 }
             }
