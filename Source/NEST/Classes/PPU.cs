@@ -22,6 +22,7 @@ namespace NEST.Classes
         public ushort oamWriteAddress       = 0;
         public bool pendingNMI              = false;
         public bool spriteZeroHit           = false;
+        public bool spriteOverflow          = false;
 
         public byte scrollX     = 0;
         public byte scrollY     = 0;
