@@ -54,6 +54,31 @@ namespace NEST.Classes
             oamRam[address] = value;
         }
 
+        public byte getPPUStatus()
+        {
+            byte ppuStatus = 0;
+
+            byte PPU_STATE_VBLANK = 0b00000011;
+            if (Core.ppu.ppuState == PPU_STATE_VBLANK)
+            {
+                ppuStatus |= 0x80;
+            }
+
+            if (Core.ppu.spriteZeroHit)
+            {
+                ppuStatus |= 0x40;
+            }
+
+            if (Core.ppu.spriteOverflow)
+            {
+                ppuStatus |= 0x20;
+            }
+
+            //TODO: Bitwise Or the least significant bits of last byte written into PPU register
+
+            return ppuStatus;
+        }
+
         private byte getPPURegister()
         {
             return Core.cpu.readCPURam(0x2000, true);
