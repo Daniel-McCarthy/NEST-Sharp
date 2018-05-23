@@ -199,6 +199,11 @@ namespace NEST.Classes
             }
         }
 
+        public void directCPURamWrite(ushort address, byte value)
+        {
+            cpuRam[address] = value;
+        }
+
         public void pushStackU8(byte value)
         {
             writeCPURam((ushort)(0x100 | stackPointer), value);
