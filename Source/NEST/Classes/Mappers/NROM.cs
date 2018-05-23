@@ -41,7 +41,7 @@ namespace NEST.Classes.Mappers
                     ushort address = (ushort)(0x8000 + i);
                     if (address >= 0x8000 && address <= 0xFFFF)
                     {
-                        Core.cpu.writeCPURam(address, data[i], true);
+                        Core.cpu.directCPURamWrite(address, data[i]);
                     }
                 }
 
@@ -53,7 +53,7 @@ namespace NEST.Classes.Mappers
                         ushort address = (ushort)(0xC000 + i);
                         if (address >= 0xC000 && address <= 0xFFFF)
                         {
-                            Core.cpu.writeCPURam(address, data[i], true);
+                            Core.cpu.directCPURamWrite(address, data[i]);
                         }
                     }
                 }
