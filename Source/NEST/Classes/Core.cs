@@ -67,6 +67,9 @@ namespace NEST.Classes
 
                     Core.step = false;
 
+                    Core.cpu.mClock = 0;
+                    Core.cpu.tClock = 0;
+
                 }
             }
         }
