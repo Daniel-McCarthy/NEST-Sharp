@@ -64,6 +64,8 @@ namespace NEST.Classes
                     Core.TOTAL_CPU_CLOCKS += cpuClocks;
                     Core.TOTAL_PPU_CLOCKS += ppuClocks;
 
+                    Core.ppu.updatePPU(ref Core.TOTAL_PPU_CLOCKS);
+
 
                     Core.step = false;
 
