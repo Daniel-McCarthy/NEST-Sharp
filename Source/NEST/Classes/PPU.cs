@@ -122,6 +122,104 @@ namespace NEST.Classes
             }
         }
 
+        public void updatePPU(ref uint ppuClocks)
+        {
+            //Steps:
+            //Pre-render scan line 261 && -1
+            //Scan lines 0-239
+            //Post-render scan line 240
+            //V-Blank 241-260
+
+            //Information:
+            //262 scanlines
+            //240 screen drawn scan lines
+            //341 PPU clock cycles per scan line
+            //113 CPU clock cycles per scan line
+
+            //int CLOCKS_PER_SCANLINE = 341;
+
+            if (ppuState == PPU_STATE_PRERENDER)
+            {
+                if(ppuClocks >= 341)
+                {
+                    ppuClocks -= 341;
+
+                    if(ly == -1)
+                    {
+                        //If this was the final pre-render scanline, switch to drawing state
+                        ly++;
+                        ppuState = PPU_STATE_DRAWING;
+                    }
+                    else
+                    {
+                        //If this was pre-render scanline 261, then switch to final pre-render scanline
+                        ly = -1;
+                    }
+                }
+            }
+            else if (ppuState == PPU_STATE_DRAWING)
+            {
+                if (ppuClocks >= 341)
+                {
+                    ppuClocks -= 341;
+
+                    SFML.Graphics.Color[] bgLine = Core.ppu.drawBGLineFromNameTable1((byte)ly);
+                    SFML.Graphics.Color[] spriteLine = Core.ppu.drawSpriteLineFromNameTable1((byte)ly);
+
+                    drawLineToFrame(bgLine, spriteLine, (uint)ly);
+
+                    ly++;
+
+                    if(ly == 240)
+                    {
+                        ppuState = PPU_STATE_POSTRENDER;
+                    }
+                }
+
+            }
+            else if (ppuState == PPU_STATE_POSTRENDER)
+            {
+                if (ppuClocks >= 341)
+                {
+                    ppuClocks -= 341;
+
+                    //If this was the final pre-render scanline, switch to drawing state
+                    ly++;
+                    ppuState = PPU_STATE_VBLANK;
+
+                    //Draw frame to screen
+                    SFML.Graphics.Texture frameTexture = new SFML.Graphics.Texture(Core.ppu.frame);
+                    SFML.Graphics.Sprite frameSprite = new SFML.Graphics.Sprite(frameTexture);
+                    //frameSprite.Scale = new SFML.System.Vector2f(1, 1);
+                    Core.mainWindow.drawCanvas.drawFrame(frameSprite);
+                }
+            }
+            else if (ppuState == PPU_STATE_VBLANK)
+            {
+                if (ppuClocks >= 341)
+                {
+                    ppuClocks -= 341;
+                    ly++;
+                }
+
+                if (ly == 261)
+                {
+                    bool isEvenFrame = (frameCount % 2) == 0;
+                    if (isEvenFrame)
+                    {
+                        ppuState = PPU_STATE_PRERENDER;
+                    }
+                    else
+                    {
+                        ppuState = PPU_STATE_DRAWING;
+                        ly = 0;
+                    }
+
+                    frameCount++;
+                }
+            }
+
+        }
 
         public void drawLineToFrame(Color[] backGroundLine, Color[]  spriteLine, uint ly)
         {
