@@ -215,6 +215,10 @@ namespace NEST.Classes
                     Core.ppu.scrollWrittenOnce = false;
                 }
             }
+            else if (address == JOYPAD1_REGISTER)
+            {
+                Core.input.joyPadRegisterWrite(value);
+            }
             else
             {
                 cpuRam[address] = value;
