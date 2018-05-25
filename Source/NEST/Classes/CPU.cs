@@ -163,15 +163,16 @@ namespace NEST.Classes
                 //Set byte of PPU Write Address
                 if(!Core.ppu.ppuAddressWrittenOnce)
                 {
-                    Core.ppu.ppuWriteAddress &= 0x00FF;
-                    Core.ppu.ppuWriteAddress |= (ushort)(value << 8);
+                    Core.ppu.tempPPUWriteAddress &= 0x00FF;
+                    Core.ppu.tempPPUWriteAddress |= (ushort)(value << 8);
                     Core.ppu.ppuAddressWrittenOnce = true;
                 }
                 else
                 {
-                    Core.ppu.ppuWriteAddress &= 0xFF00;
-                    Core.ppu.ppuWriteAddress |= value;
+                    Core.ppu.tempPPUWriteAddress &= 0xFF00;
+                    Core.ppu.tempPPUWriteAddress |= value;
                     Core.ppu.ppuAddressWrittenOnce = false;
+                    Core.ppu.ppuWriteAddress = Core.ppu.tempPPUWriteAddress;
                 }
             }
             else if (address == OAM_DATA_REGISTER)
