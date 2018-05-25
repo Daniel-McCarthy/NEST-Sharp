@@ -156,6 +156,7 @@ namespace NEST.Classes
             else if (address == PPU_DATA_REGISTER)
             {
                 Core.ppu.writePPURamByte(Core.ppu.ppuWriteAddress, value);
+                Core.ppu.ppuWriteAddress += (ushort)(Core.ppu.getPPURegisterVRAMIncrement());
             }
             else if(address == PPU_DATA_ADDRESS_REGISTER)
             {
