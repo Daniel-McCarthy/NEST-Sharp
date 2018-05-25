@@ -206,6 +206,11 @@ namespace NEST.Classes
                     ly++;
                     ppuState = PPU_STATE_VBLANK;
 
+                    if(getPPURegisterNMISetting())
+                    {
+                        pendingNMI = true;
+                    }
+
                     //Draw frame to screen
                     SFML.Graphics.Texture frameTexture = new SFML.Graphics.Texture(Core.ppu.frame);
                     SFML.Graphics.Sprite frameSprite = new SFML.Graphics.Sprite(frameTexture);
