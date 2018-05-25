@@ -49,6 +49,17 @@ namespace NEST.Classes
 
             while(Core.run)
             {
+
+                if (Core.breakPointEnabled)
+                { 
+                    
+                    if(Core.breakpoints.ContainsKey(Core.cpu.programCounter.ToString("X4")))
+                    {
+                        Core.paused = true;
+                    }
+                    
+                }
+
                 if (!Core.paused || Core.step)
                 {
 
