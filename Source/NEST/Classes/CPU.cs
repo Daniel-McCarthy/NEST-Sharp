@@ -127,6 +127,12 @@ namespace NEST.Classes
             {
                 return Core.ppu.getPPUStatus();
             }
+            else if (address == PPU_DATA_REGISTER)
+            {
+                byte value = Core.ppu.readPPURamByte(Core.ppu.ppuWriteAddress);
+                Core.ppu.ppuWriteAddress += (ushort)(Core.ppu.getPPURegisterVRAMIncrement());
+                return value;
+            }
             else
             {
                 return cpuRam[address];
