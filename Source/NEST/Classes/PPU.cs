@@ -19,7 +19,9 @@ namespace NEST.Classes
         public bool ppuAddressWrittenOnce   = false;
         public bool oamAddressWrittenOnce   = false;
         public ushort ppuWriteAddress       = 0;
+        public ushort tempPPUWriteAddress   = 0;
         public ushort oamWriteAddress       = 0;
+        public ushort tempOAMWriteAddress   = 0;
         public bool pendingNMI              = false;
         public bool spriteZeroHit           = false;
         public bool spriteOverflow          = false;
