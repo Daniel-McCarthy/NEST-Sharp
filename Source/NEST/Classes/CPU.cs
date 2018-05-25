@@ -135,6 +135,10 @@ namespace NEST.Classes
                 Core.ppu.ppuWriteAddress += (ushort)(Core.ppu.getPPURegisterVRAMIncrement());
                 return value;
             }
+            else if (address == JOYPAD1_REGISTER)
+            {
+                return Core.input.joyPadRegisterRead();
+            }
             else
             {
                 return cpuRam[address];
