@@ -22,6 +22,31 @@ namespace NEST.Classes.Mappers
             if (romFile.getMapperSetting() == 0)
             {
                 loadPrgRom(ref romFile);
+                loadChrRom(ref romFile);
+            }
+        }
+
+        public static void loadChrRom(ref Rom romFile)
+        {
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+
+
+            if (data != null)
+            {
+                uint chrDataAddress = (uint)(0x4000 * romFile.getProgramRomSize());
+                if (romFile.getCHRRomSize() != 0)
+                {
+                    for (int i = 0; i < 0x4000; i++)
+                    {
+                        if ((chrDataAddress + i) < data.Length)
+                        {
+                            Core.ppu.writePPURamByte((ushort)i, data[chrDataAddress + i]);
+                        }
+                    }
+                }
             }
         }
 
