@@ -95,6 +95,15 @@ namespace NEST.Classes
             return (byte)(getPPURegister() & 0b00000011);
         }
 
+        public byte getPPURegisterVRAMIncrement()
+        {
+            //PPU Write Address Increment per read/write:
+            //0: Increment of 1 (left to right)
+            //1: Increment of 32 (traverses downward)
+
+            return (byte)(((getPPURegister() & 0b00000100) != 0) ? 32 : 1);
+        }
+
         private bool getPPURegisterSpritePatternTableSetting()
         {
             //Pattern Table address for 8x8 sprites
