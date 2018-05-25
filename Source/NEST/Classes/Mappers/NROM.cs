@@ -21,11 +21,11 @@ namespace NEST.Classes.Mappers
         {
             if (romFile.getMapperSetting() == 0)
             {
-                loadRomBank0(ref romFile);
+                loadPrgRom(ref romFile);
             }
         }
 
-        public static void loadRomBank0(ref Rom romFile)
+        public static void loadPrgRom(ref Rom romFile)
         {
             int dataLength = romFile.getExactDataLength();
             byte[] data = null;
