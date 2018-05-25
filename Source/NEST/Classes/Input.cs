@@ -41,7 +41,7 @@ namespace NEST.Classes
         bool joy2KeyA = false;
         bool joy2KeyB = false;
 
-        void joyPadRegisterWrite(byte newValue, bool isJoyPad2 = false)
+        public void joyPadRegisterWrite(byte newValue, bool isJoyPad2 = false)
         {
             bool newStrobeValue = (newValue != 0);
 
@@ -71,7 +71,7 @@ namespace NEST.Classes
 
         }
 
-        byte joyPadRegisterRead(bool isJoyPad2 = false)
+        public byte joyPadRegisterRead(bool isJoyPad2 = false)
         {
             byte status = 0;
 
