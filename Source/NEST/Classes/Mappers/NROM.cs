@@ -22,7 +22,6 @@ namespace NEST.Classes.Mappers
             if (romFile.getMapperSetting() == 0)
             {
                 loadRomBank0(ref romFile);
-                //loadRomBank1(ref romFile);
             }
         }
 
@@ -56,36 +55,6 @@ namespace NEST.Classes.Mappers
                             Core.cpu.directCPURamWrite(address, data[i]);
                         }
                     }
-                }
-            }
-        }
-
-        public static void loadRomBank1(ref Rom romFile)
-        {
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
-
-            if (dataLength >= (16 * 1024))
-            {
-                ushort address = (ushort)(dataLength - (16 * 1024));
-
-                if(address < 16)
-                {
-                    address = 16;
-                }
-
-                data = romFile.readBytes(address, (16 * 1024));
-            }
-            else
-            {
-                data = romFile.readBytesFromAddressToEnd(16);
-            }
-
-            if (data != null)
-            {
-                for (int i = 0; i < data.Length; i++)
-                {
-                    Core.cpu.writeCPURam((ushort)(0xC000 + i), data[i], true);
                 }
             }
         }
