@@ -90,7 +90,7 @@ namespace NEST.Classes
         {
             //Base Name Table Address Setting
             //0: 0x2000, 1: 0x2400, 2: 0x2800, 3: 0x2C00
-            return (byte)(getPPURegister() & 0b00000111);
+            return (byte)(getPPURegister() & 0b00000011);
         }
 
         private bool getPPURegisterSpritePatternTableSetting()
