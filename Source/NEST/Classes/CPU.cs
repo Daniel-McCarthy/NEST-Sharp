@@ -34,6 +34,8 @@ namespace NEST.Classes
         private const ushort PPU_DATA_ADDRESS_REGISTER  = 0x2006;
         private const ushort PPU_DATA_REGISTER          = 0x2007;
         private const ushort OAM_DMA_REGISTER           = 0x4014;
+        private const ushort JOYPAD1_REGISTER           = 0x4016;
+        private const ushort JOYPAD2_REGISTER           = 0x4017;
 
 
         //CPU Ram Map:
