@@ -60,7 +60,7 @@ namespace NEST.Classes.Mappers
 
             if(data != null)
             {
-                for (int i = 0; i < data.Length; i++)
+                for (int i = 0; i < 0x4000; i++)
                 {
                     ushort address = (ushort)(0x8000 + i);
                     if (address >= 0x8000 && address <= 0xFFFF)
@@ -72,7 +72,7 @@ namespace NEST.Classes.Mappers
                 // If there is only one bank, then mirror
                 if(romFile.getProgramRomSize() == 1)
                 {
-                    for (int i = 0; i < data.Length; i++)
+                    for (int i = 0; i < 0x4000; i++)
                     {
                         ushort address = (ushort)(0xC000 + i);
                         if (address >= 0xC000 && address <= 0xFFFF)
