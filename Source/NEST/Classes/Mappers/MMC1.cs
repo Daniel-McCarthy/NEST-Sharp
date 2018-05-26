@@ -8,6 +8,17 @@ namespace NEST.Classes.Mappers
 {
     class MMC1
     {
+        public static void loadRom(Rom romFile)
+        {
+            if (romFile.getMapperSetting() == 1)
+            {
+                loadPrgRomBank(ref romFile, 0x8000, 0);
+                loadPrgRomBank(ref romFile, 0xC000, (byte)(romFile.getProgramRomSize() - 1));
+                loadChrRomBank(ref romFile, 0x0000, 0);
+                loadChrRomBank(ref romFile, 0x1000, 1);
+
+            }
+        }
 
         public static void loadChrRomBank(ref Rom romFile, ushort address, byte bankNumber)
         {
