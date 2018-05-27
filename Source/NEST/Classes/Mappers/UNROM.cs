@@ -23,6 +23,16 @@ namespace NEST.Classes.Mappers
             return address >= 0x8000 && address <= 0xFFFF;
         }
 
+        public static void writeUNROM(ushort address, byte value)
+        {
+            bool writeToUNROMRomPageRegister = address >= 0x8000 && address <= 0xFFFF;
+
+            if (writeToUNROMRomPageRegister)
+            {
+                byte bankNumber = (byte)(value & 0x0F);
+                loadPrgRomBank(ref Core.rom, 0x8000, bankNumber);
+            }
+        }
 
         public static void loadPrgRomBank(ref Rom romFile, ushort address, byte bankNumber)
         {
