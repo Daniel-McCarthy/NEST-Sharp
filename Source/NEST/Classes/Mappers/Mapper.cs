@@ -32,8 +32,11 @@ namespace NEST.Classes.Mappers
 
                 if (mapperSetting == 1)
                 {
-                    //Attempt MMC1 write. Return success/failure.
                     MMC1.writeMMC1(address, value);
+                }
+                if (mapperSetting == 2)
+                {
+                    UNROM.writeUNROM(address, value);
                 }
             }
 
