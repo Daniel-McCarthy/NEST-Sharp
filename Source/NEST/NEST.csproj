@@ -76,6 +76,7 @@
     <Compile Include="Classes\Mappers\Mapper.cs" />
     <Compile Include="Classes\Mappers\MMC1.cs" />
     <Compile Include="Classes\Mappers\NROM.cs" />
+    <Compile Include="Classes\Mappers\UNROM.cs" />
     <Compile Include="Classes\PPU.cs" />
     <Compile Include="Classes\Rom.cs" />
     <Compile Include="Forms\AssemblyView.cs">
