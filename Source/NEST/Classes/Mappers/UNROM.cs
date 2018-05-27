@@ -8,6 +8,15 @@ namespace NEST.Classes.Mappers
 {
     class UNROM
     {
+        public static void loadRom(Rom romFile)
+        {
+            if (romFile.getMapperSetting() == 2)
+            {
+                loadPrgRomBank(ref romFile, 0x8000, 0);
+                loadPrgRomBank(ref romFile, 0xC000, (byte)(romFile.getProgramRomSize() - 1));
+                loadChrRomBank(ref romFile);
+            }
+        }
 
         public static bool isMapperWriteAddress(ushort address)
         {
