@@ -274,6 +274,23 @@ namespace NEST
                                     bytesRead = 1;
                                     break;
                                 }
+                            case 0xB:
+                                {
+                                    //Unused opcode
+                                    byte argument1 = Core.cpu.readCPURam((ushort)(address + 1), true);
+                                    opcodeString = "0B " + argument1.ToString("X2") + " and";
+                                    bytesRead = 1;
+                                    break;
+                                }
+                            case 0xC:
+                                {
+                                    //Unused opcode
+                                    byte argument1 = Core.cpu.readCPURam((ushort)(address + 1), true);
+                                    byte argument2 = Core.cpu.readCPURam((ushort)(address + 2), true);
+                                    opcodeString = "0C " + argument1.ToString("X2") + " " + argument2.ToString("X2") + " nop";
+                                    bytesRead = 1;
+                                    break;
+                                }
                             case 0xD:
                                 {
                                     ushort argument = (ushort)(Core.cpu.readCPURam((ushort)(address + 1), true) | (Core.cpu.readCPURam((ushort)(address + 2), true) << 8));
