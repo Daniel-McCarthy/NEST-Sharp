@@ -220,6 +220,24 @@ namespace NEST
                                     bytesRead = 2;
                                     break;
                                 }
+                            case 2:
+                                {
+                                    opcodeString = "02 Illegal Opcode";
+                                    bytesRead = 1;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    opcodeString = "03 Illegal Opcode";
+                                    bytesRead = 2;
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    opcodeString = "04 Illegal Opcode";
+                                    bytesRead = 2;
+                                    break;
+                                }
                             case 5:
                                 {
                                     byte argument = Core.cpu.readCPURam((ushort)(address + 1), true);
