@@ -20,6 +20,12 @@ namespace NEST.Classes.Mappers
             }
         }
 
+        public static bool isMapperWriteAddress(ushort address)
+        {
+            return address >= 0x8000 && address <= 0xFFFF;
+        }
+
+
         public static void loadChrRomBank(ref Rom romFile, ushort address, byte bankNumber)
         {
             //0x0000-0x0FFF Chr Rom Data Bank 1
