@@ -153,7 +153,11 @@ namespace NEST.Classes
                 tClock += 4;
             }
 
-            if (address == OAM_DMA_REGISTER)
+            if(Mappers.Mapper.isMapperWriteAddress(address))
+            {
+                Mappers.Mapper.writeToCurrentMapper(address, value);
+            }
+            else if (address == OAM_DMA_REGISTER)
             {
                 //Initiate DMA tranfer from (XX00 to XXFF) to OAM Ram
                 ushort oamAddress = (ushort)(value << 8);
