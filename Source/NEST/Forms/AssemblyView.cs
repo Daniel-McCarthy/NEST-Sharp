@@ -2179,7 +2179,8 @@ namespace NEST
 
                     if (!Core.breakpoints.ContainsKey(userAddressInput))
                     {
-                        Core.breakpoints.TryAdd(userAddressInput, address);
+                        //We must create hex string from address so that inputs of "100" and "0100" both display as "0100" in the dictionary.
+                        Core.breakpoints.TryAdd(address.ToString("X4"), address);
                     }
                 }
             }
