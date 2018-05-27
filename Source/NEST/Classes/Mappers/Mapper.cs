@@ -19,6 +19,10 @@ namespace NEST.Classes.Mappers
                 {
                     return MMC1.isMapperWriteAddress(address);
                 }
+                else if (mapperSetting == 2)
+                {
+                    return UNROM.isMapperWriteAddress(address);
+                }
             }
 
             return false;
