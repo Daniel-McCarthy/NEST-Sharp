@@ -2029,7 +2029,7 @@ namespace NEST
                             case 0xF:
                                 {
                                     opcodeString = "FF Illegal Opcode";
-                                    bytesRead = 1;
+                                    bytesRead = 3;
                                     break;
                                 }
                         }
