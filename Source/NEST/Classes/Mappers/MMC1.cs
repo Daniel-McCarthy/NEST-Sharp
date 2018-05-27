@@ -33,6 +33,65 @@ namespace NEST.Classes.Mappers
             return address >= 0x8000 && address <= 0xFFFF;
         }
 
+        public static void writeMMC1(ushort address, byte value)
+        {
+            
+            bool writeToMMC1ControlRegister     = address >= 0x8000 && address <= 0x9FFF;
+            bool writeToMMC1RamPage1Register    = address >= 0xA000 && address <= 0xBFFF;
+            bool writeToMMC1RamPage2Register    = address >= 0xC000 && address <= 0xDFFF;
+            bool writeToMMC1RomPageRegister     = address >= 0xE000 && address <= 0xFFFF;
+
+            if(address >= 0x8000 && address <= 0xFFFF)
+            {
+                if((value & 0x80) == 0x80)
+                {
+                    //Reset Shift if bit 7 is set
+                    writeRegisterShift = 0;
+                    writeRegisterValue = 0;
+                }
+                else
+                {
+                    writeRegisterValue >>= 1;
+                    writeRegisterValue |= (byte)((value & 0x01) << 4);
+
+                    writeRegisterShift++;
+                }
+
+                if(writeRegisterShift == 5)
+                {
+                    if(writeToMMC1ControlRegister)
+                    {
+                        controlRegisterValue = writeRegisterValue;
+
+                        //TODO: Set control register settings
+                    }
+                    else if(writeToMMC1RamPage1Register)
+                    {
+                        ramPage1RegisterValue = writeRegisterValue;
+                        if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                        {
+                            loadChrRomBank(ref Core.rom, 0x0000, ramPage1RegisterValue);
+                        }
+                    }
+                    else if (writeToMMC1RamPage2Register)
+                    {
+                        ramPage2RegisterValue = writeRegisterValue;
+                        if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                        {
+                            loadChrRomBank(ref Core.rom, 0x1000, ramPage1RegisterValue);
+                        }
+                    }
+                    else if(writeToMMC1RomPageRegister)
+                    {
+                        romPageRegisterValue = writeRegisterValue;
+                        if (romPageRegisterValue <= (Core.rom.getProgramRomSize() - 1))
+                        {
+                            loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
+                        }
+                    }
+                }
+            }
+        }
 
         public static void loadChrRomBank(ref Rom romFile, ushort address, byte bankNumber)
         {
