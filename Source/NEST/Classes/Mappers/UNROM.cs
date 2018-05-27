@@ -9,5 +9,11 @@ namespace NEST.Classes.Mappers
     class UNROM
     {
 
+        public static bool isMapperWriteAddress(ushort address)
+        {
+            return address >= 0x8000 && address <= 0xFFFF;
+        }
+
+
     }
 }
