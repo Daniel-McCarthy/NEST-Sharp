@@ -8,6 +8,14 @@ namespace NEST.Classes.Mappers
 {
     class MMC1
     {
+        public static byte writeRegisterShift = 0;
+        public static byte writeRegisterValue = 0;
+
+        public static byte controlRegisterValue = 0;
+        public static byte ramPage1RegisterValue = 0;
+        public static byte ramPage2RegisterValue = 0;
+        public static byte romPageRegisterValue = 0;
+
         public static void loadRom(Rom romFile)
         {
             if (romFile.getMapperSetting() == 1)
