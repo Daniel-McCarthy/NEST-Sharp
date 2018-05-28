@@ -24,6 +24,32 @@ namespace NEST.Classes.Mappers
             }
         }
 
+        public static void loadChrRomBank(ref Rom romFile, ushort address, byte bankNumber)
+        {
+            //0x0000-0x1FFF Chr Rom Data Bank
+
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+
+
+            if (data != null)
+            {
+                uint bankAddress = (uint)(0x2000 * (bankNumber));
+                uint prgRomDataAddress = (uint)(0x4000 * romFile.getProgramRomSize()); //Skip trainer if it exists
+
+                for (int i = 0; i < 0x2000; i++)
+                {
+                    ushort writeAddress = (ushort)(address + i);
+                    uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
+                    if (writeAddress >= 0x0000 && writeAddress <= 0x1FFF && readAddress < data.Length)
+                    {
+                        Core.ppu.writePPURamByte(writeAddress, data[readAddress]);
+                    }
+                }
+            }
+        }
 
         public static void loadPrgRomBank(ref Rom romFile, ushort address)
         {
