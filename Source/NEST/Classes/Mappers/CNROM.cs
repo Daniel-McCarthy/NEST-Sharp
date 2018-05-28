@@ -9,6 +9,17 @@ namespace NEST.Classes.Mappers
     class CNROM
     {
 
+        public static void loadRom(Rom romFile)
+        {
+            if (romFile.getMapperSetting() == 3)
+            {
+                loadPrgRomBank(ref romFile, 0x8000);
+                loadChrRomBank(ref romFile, 0x0000, 0);
+
+                Core.ppu.isNametableMirrored = true;
+                Core.ppu.isHorizNametableMirror = (!romFile.getVerticalMirroring());
+            }
+        }
 
         public static bool isMapperWriteAddress(ushort address)
         {
