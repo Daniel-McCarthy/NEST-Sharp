@@ -25,6 +25,8 @@ namespace NEST.Classes
         public bool pendingNMI              = false;
         public bool spriteZeroHit           = false;
         public bool spriteOverflow          = false;
+        public bool isNametableMirrored     = false;
+        public bool isHorizNametableMirror = false;
 
         public byte scrollX     = 0;
         public byte scrollY     = 0;
