@@ -23,6 +23,10 @@ namespace NEST.Classes.Mappers
                 {
                     return UNROM.isMapperWriteAddress(address);
                 }
+                else if (mapperSetting == 3)
+                {
+                    return CNROM.isMapperWriteAddress(address);
+                }
             }
 
             return false;
