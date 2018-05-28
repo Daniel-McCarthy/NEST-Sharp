@@ -73,6 +73,7 @@
     <Compile Include="Classes\Core.cs" />
     <Compile Include="Classes\CPU.cs" />
     <Compile Include="Classes\Input.cs" />
+    <Compile Include="Classes\Mappers\CNROM.cs" />
     <Compile Include="Classes\Mappers\Mapper.cs" />
     <Compile Include="Classes\Mappers\MMC1.cs" />
     <Compile Include="Classes\Mappers\NROM.cs" />
