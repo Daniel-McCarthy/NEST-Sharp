@@ -24,5 +24,32 @@ namespace NEST.Classes.Mappers
             }
         }
 
+
+        public static void loadPrgRomBank(ref Rom romFile, ushort address)
+        {
+            //0x8000 16kb - 32 kb non-switchable program rom
+
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+
+
+            if (data != null)
+            {
+                uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
+                uint prgRomSize = (uint)(romFile.getProgramRomSize() * 0x4000);
+
+                for (int i = 0; i < prgRomSize; i++)
+                {
+                    ushort writeAddress = (ushort)(address + i);
+                    uint readAddress = (uint)(prgRomDataAddress + i);
+                    if (writeAddress >= 0x8000 && writeAddress <= 0xFFFF && readAddress < data.Length)
+                    {
+                        Core.cpu.directCPURamWrite(writeAddress, data[readAddress]);
+                    }
+                }
+            }
+        }
     }
 }
