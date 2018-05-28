@@ -60,7 +60,9 @@ namespace NEST.Classes.Mappers
 
             if(data != null)
             {
-                for (int i = 0; i < 0x4000; i++)
+                int programSize = romFile.getProgramRomSize() * 0x4000;
+
+                for (int i = 0; i < programSize; i++)
                 {
                     ushort address = (ushort)(0x8000 + i);
                     if (address >= 0x8000 && address <= 0xFFFF)
