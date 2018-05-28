@@ -42,10 +42,15 @@ namespace NEST.Classes.Mappers
                 {
                     MMC1.writeMMC1(address, value);
                 }
-                if (mapperSetting == 2)
+                else if (mapperSetting == 2)
                 {
                     UNROM.writeUNROM(address, value);
                 }
+                else if (mapperSetting == 3)
+                {
+                    CNROM.writeCNROM(address, value);
+                }
+
             }
 
         }
