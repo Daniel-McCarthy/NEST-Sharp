@@ -460,8 +460,8 @@ namespace NEST.Classes
 
             bool isRightNametable = (getPPURegisterNameTableSetting() % 2) != 0; //Name table setting can be 0 to 3. 1 and 3 are both odd and both right side tables.
             bool isLowerNametable = (getPPURegisterNameTableSetting() > 1); //Name table setting can be 0 to 3. 2 and 3 are both greater than 1 and bottom tables.
-            uint xPosOffset = (uint)(isRightNametable ? 0xFF : 0x00);
-            uint yPosOffset = (uint)(isLowerNametable ? 0xFF : 0x00);
+            uint xPosOffset = (uint)(isRightNametable ? 0xFF : 0x00); //Add 256
+            uint yPosOffset = (uint)(isLowerNametable ? 0xF0 : 0x00); //Add 240
             uint actualXScroll = (scrollX + xPosOffset) % 512;
             uint actualYScroll = (scrollY + yPosOffset + lineNumber) % 512;
 
