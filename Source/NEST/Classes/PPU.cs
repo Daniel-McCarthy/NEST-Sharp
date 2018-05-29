@@ -318,7 +318,7 @@ namespace NEST.Classes
 
                 byte[] tileColorIndices = new byte[8];
                 
-                for(int i = 0; i < 8; i++)
+                for(int i = (scrollX % 8); i < 8; i++)
                 {
                     //Patterns are defined by 16 bytes that detail an 8x8 pixel pattern. 2 bytes per line.
                     //Each pixel can be one of four colors. 2 bytes are read in. The first bit
@@ -331,7 +331,7 @@ namespace NEST.Classes
                 Array.Reverse(tileColorIndices);
 
                 //Draw current tile data to line
-                for(int i = (scrollX % 8); i < 8; i++)
+                for(int i = 0; i < 8; i++)
                 {
                     Color pixelColor;
 
