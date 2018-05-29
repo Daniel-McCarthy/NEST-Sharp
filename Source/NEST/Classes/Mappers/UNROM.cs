@@ -79,9 +79,9 @@ namespace NEST.Classes.Mappers
 
             if (data != null)
             {
-                uint chrDataAddress = (uint)(0x4000 * romFile.getProgramRomSize());
+                uint chrDataAddress = (uint)(0x2000 * romFile.getProgramRomSize());
 
-                for (int i = 0; i < 0x4000; i++)
+                for (int i = 0; i < 0x2000; i++)
                 {
                     if ((chrDataAddress + i) < data.Length)
                     {
