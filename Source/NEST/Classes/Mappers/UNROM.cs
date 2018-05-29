@@ -14,7 +14,12 @@ namespace NEST.Classes.Mappers
             {
                 loadPrgRomBank(ref romFile, 0x8000, 0);
                 loadPrgRomBank(ref romFile, 0xC000, (byte)(romFile.getProgramRomSize() - 1));
-                loadChrRomBank(ref romFile);
+
+                if (romFile.getCHRRomSize() > 0)
+                {
+                    loadChrRomBank(ref romFile);
+                }
+
             }
         }
 
