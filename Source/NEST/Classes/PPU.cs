@@ -51,6 +51,44 @@ namespace NEST.Classes
             ppuRam[address] = value;
         }
 
+        public ushort adjustAddressForNameTableMirroring(ushort address)
+        {
+            if (address >= 0x2000 && address <= 0x2FFF)
+            {
+                if (isHorizNametableMirror)
+                {
+                    //Adjust address to left name table if it is not already
+                    if ((address >= 0x2400 && address < 0x2800) || (address >= 0x2C00 && address >= 0x2FFF))
+                    {
+                        //Address is in right name table so it is adjusted to the left.
+                        return (ushort)(address - 0x400);
+                    }
+                    else
+                    {
+                        return address;
+                    }
+                }
+                else
+                {
+                    //Adjust address to upper name table if it is not already
+                    if (address >= 0x2800)
+                    {
+                        //Writing to up name table so adjust and write to down name table also
+                        return (ushort)(address - 0x800);
+                    }
+                    else
+                    {
+                        return address;
+                    }
+                }
+            }
+            else
+            {
+                //Address was outside nametable range
+                return address;
+            }
+        }
+
         public byte readOAMRamByte(ushort address)
         {
             return oamRam[address];
