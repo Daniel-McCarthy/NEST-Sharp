@@ -248,6 +248,9 @@ namespace NEST.Classes
 
         }
 
+        /*
+         * This function accepts a 256px wide background and sprite line and writes them to the frame, with the background below and the sprites on top.
+         */
         public void drawLineToFrame(Color[] backGroundLine, Color[]  spriteLine, uint ly)
         {
             if( ly < 240)
