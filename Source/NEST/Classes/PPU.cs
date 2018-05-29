@@ -307,7 +307,8 @@ namespace NEST.Classes
                 ushort backgroundPatternTableAddress = getPPURegisterBackgroundPatternTableSetting() ? (ushort)(0x0000) : (ushort)(0x1000);
 
                 //Read tileID from name table
-                byte tileID = ppuRam[0x2000 + tileNumber];
+                ushort nameTableAddress = (ushort)(0x2000 + (getPPURegisterNameTableSetting() * 0x400));
+                byte tileID = ppuRam[nameTableAddress + tileNumber];
 
                 //Read current line of tile
                 int yLineOffset = lineNumber % 8; //This lets us know which line of the tile we are drawing, so that we can read the correct line data.
