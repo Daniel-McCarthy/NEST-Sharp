@@ -156,7 +156,7 @@ namespace NEST.Classes
         {
             //Pattern Table address for background
             //0: 0x0000, 1: 0x1000
-            return (getPPURegister() & 0b00100000) != 0;
+            return (getPPURegister() & 0b00010000) != 0;
         }
 
         private bool getPPURegisterSpriteSizeSetting()
