@@ -91,7 +91,7 @@ namespace NEST.Classes
             return Core.cpu.readCPURam(0x2000, true);
         }
 
-        private byte getPPURegisterTableSetting()
+        private byte getPPURegisterNameTableSetting()
         {
             //Base Name Table Address Setting
             //0: 0x2000, 1: 0x2400, 2: 0x2800, 3: 0x2C00
