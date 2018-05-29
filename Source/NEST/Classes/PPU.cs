@@ -563,7 +563,7 @@ namespace NEST.Classes
             tilePalette = (!leftCell) ? (byte)((tilePalette & 0b1100) >> 2) : (byte)(tilePalette & 0b0011);
 
             //Determine the background pattern address
-            ushort backgroundPatternTableAddress = getPPURegisterBackgroundPatternTableSetting() ? (ushort)(0x0000) : (ushort)(0x1000);
+            ushort backgroundPatternTableAddress = getPPURegisterBackgroundPatternTableSetting() ? (ushort)(0x1000) : (ushort)(0x0000);
 
             //Read tileID from name table
             ushort nameTableAddress = (ushort)(0x2000 + (nameTableSelection * 0x400));
