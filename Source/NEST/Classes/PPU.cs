@@ -224,7 +224,7 @@ namespace NEST.Classes
                     ppuClocks -= 341;
 
                     SFML.Graphics.Color[] bgLine = drawBGFrameLine((uint)ly);
-                    SFML.Graphics.Color[] spriteLine = Core.ppu.drawSpriteLineFromNameTable1((byte)ly);
+                    SFML.Graphics.Color[] spriteLine = Core.ppu.drawSpriteLine((byte)ly);
 
                     drawLineToFrame(bgLine, spriteLine, (uint)ly);
 
@@ -616,7 +616,7 @@ namespace NEST.Classes
             return line;
         }
 
-        public Color[] drawSpriteLineFromNameTable1(byte lineNumber)
+        public Color[] drawSpriteLine(byte lineNumber)
         {
             Color[] line = new Color[256];
 
