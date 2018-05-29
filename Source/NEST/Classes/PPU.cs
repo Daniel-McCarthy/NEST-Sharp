@@ -163,7 +163,7 @@ namespace NEST.Classes
         {
             //Sprite size Setting
             //0: 8x8 Sprites, 1: 8x16 Sprites
-            return (getPPURegister() & 0b01000000) != 0;
+            return (getPPURegister() & 0b00100000) != 0;
         }
 
         private bool getPPURegisterNMISetting()
