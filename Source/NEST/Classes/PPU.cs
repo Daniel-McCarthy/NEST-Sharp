@@ -384,10 +384,10 @@ namespace NEST.Classes
                     //Read current line of sprite tile
                     //int yLineOffset = lineNumber % spriteHeight; //This lets us know which line of the tile we are drawing, so that we can read the correct line data.
                     int yLineOffset = lineNumber - spriteYPos;
-                    yLineOffset = (isYFlipped) ? ((spriteHeight - 1) - yLineOffset) : yLineOffset; 
+                    yLineOffset = (isYFlipped) ? ((spriteHeight - 1) - yLineOffset) : yLineOffset;
 
-
-                    ushort patternAddressTemp = (ushort)((tileID * 16) + (yLineOffset * 2));
+                    ushort spritePatternTableAddress = (ushort)(getPPURegisterSpritePatternTableSetting() ? 0x1000 : 0x0000);
+                    ushort patternAddressTemp = (ushort)((tileID * 16) + (yLineOffset * 2) + spritePatternTableAddress);
                     byte tileDataRow1 = ppuRam[((tileID * 16) + (yLineOffset))];
                     byte tileDataRow2 = ppuRam[((tileID * 16) + (yLineOffset)) + 8];
 
