@@ -273,8 +273,8 @@ namespace NEST.Classes
             for (int tileIndex = 0; tileIndex < tileCount; tileIndex++)
             {
                 //Determine which tile we are drawing
-                int tileYPos = lineNumber / 8;
-                int tileXPos = tileIndex;
+                int tileYPos = (scrollY + lineNumber) / 8;
+                int tileXPos = (scrollX / 8) + tileIndex;
                 int tileNumber = tileXPos + (tileYPos * 32);
 
                 //Determine which name table cell the current tile is in
@@ -331,7 +331,7 @@ namespace NEST.Classes
                 Array.Reverse(tileColorIndices);
 
                 //Draw current tile data to line
-                for(int i = 0; i < 8; i++)
+                for(int i = (scrollX % 8); i < 8; i++)
                 {
                     Color pixelColor;
 
