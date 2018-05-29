@@ -60,6 +60,10 @@ namespace NEST
                 {
                     UNROM.loadRom(Core.rom);
                 }
+                else if (mapperSetting == 3)
+                {
+                    CNROM.loadRom(Core.rom);
+                }
 
                 ushort resetAddress = 0;
                 resetAddress |= Core.cpu.readCPURam(0xFFFC, true);
