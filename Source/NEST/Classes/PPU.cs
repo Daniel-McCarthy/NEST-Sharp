@@ -312,6 +312,31 @@ namespace NEST.Classes
         }
 
         /*
+         * This function draws a 256 wide screen line at the current scroll position from the 512 wide window line drawn ahead of time.
+         * It works from calling a function that draws the full 512 wide line from left and right name tables, then selects the pixels required for the frame.
+         */
+        public Color[] drawScreenBGLineFromFullWindow(uint lineNumber)
+        {
+            Color[] bgLine = new Color[256];
+            drawFullBGLineToWindow(lineNumber);
+
+            bool isRightNametable = (getPPURegisterNameTableSetting() % 2) != 0; //Name table setting can be 0 to 3. 1 and 3 are both odd and both right side tables.
+            bool isLowerNametable = (getPPURegisterNameTableSetting() > 1); //Name table setting can be 0 to 3. 2 and 3 are both greater than 1 and bottom tables.
+            uint xPosOffset = (uint)(isRightNametable ? 0xFF : 0x00);
+            uint yPosOffset = (uint)(isLowerNametable ? 0xFF : 0x00);
+
+            uint actualReadLine = (scrollY + yPosOffset + lineNumber) % 512;
+
+            for(int x = 0; x < 256; x++)
+            {
+                uint actualX = (uint)((scrollX + xPosOffset + x) % 512);
+                bgLine[x] = fullWindow.GetPixel(actualX, actualReadLine);
+            }
+
+            return bgLine;
+        }
+
+        /*
          * This function draws a full line to the full 512x512 window. It draws from both the left and right name tables at the line specified. 
          * It draws a full line and accounts for name table mirroring. From here the data is drawn to the window to be read in later.
          */
