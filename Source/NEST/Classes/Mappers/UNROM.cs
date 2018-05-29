@@ -20,6 +20,8 @@ namespace NEST.Classes.Mappers
                     loadChrRomBank(ref romFile);
                 }
 
+                Core.ppu.isNametableMirrored = true;
+                Core.ppu.isHorizNametableMirror = (!romFile.getVerticalMirroring());
             }
         }
 
