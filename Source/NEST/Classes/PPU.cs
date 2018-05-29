@@ -475,6 +475,76 @@ namespace NEST.Classes
         }
 
 
+        /*
+         *  New line drawing function. It can cross name tables and account for scroll. It only draws the tiles needed for this particular line.
+         *  Instead of drawing a full 512x1 line then selecting the pixels we need, we can reduce the work heavily by only drawing the tiles that will actually be used.
+         */
+        public Color[] drawBGFrameLine(uint lineNumber)
+        {
+            Color[] bgLine = new Color[256];
+
+            bool isRightNametable = (getPPURegisterNameTableSetting() % 2) != 0; //Name table setting can be 0 to 3. 1 and 3 are both odd and both right side tables.
+            bool isLowerNametable = (getPPURegisterNameTableSetting() > 1); //Name table setting can be 0 to 3. 2 and 3 are both greater than 1 and bottom tables.
+            uint xPosOffset = (uint)(isRightNametable ? 0xFF : 0x00);
+            uint yPosOffset = (uint)(isLowerNametable ? 0xFF : 0x00);
+            uint actualXScroll = (scrollX + xPosOffset) % 512;
+            uint actualYScroll = (scrollY + yPosOffset + lineNumber) % 512;
+
+            uint actualReadLine = (scrollY + yPosOffset + lineNumber) % 512;
+
+            int tileXPos = (int)(actualXScroll / 8);
+            int tileYPos = (int)(actualReadLine / 8);
+
+            uint totalPixelsDrawn = 0;
+
+            //Draw pixels from first tile (could be partial tile)
+            uint actualX = (uint)((actualXScroll + totalPixelsDrawn) % 512);
+            tileXPos = (int)(actualX / 8);
+            Color[] firstTile = drawBGTileLineFromNameTable(actualReadLine % 8, actualX < 256, !isLowerNametable, tileXPos % 32, tileYPos);
+
+            for (int x = (int)(actualXScroll % 8); x < 8; x++)
+            {
+                bgLine[totalPixelsDrawn++] = firstTile[x];
+            }
+
+            //Draw middle tiles (guaranteed full 8 pixel tiles)
+            for (int x = (int)totalPixelsDrawn; x < 256; x += 8)
+            {
+                if (totalPixelsDrawn <= (256 - 8))
+                {
+                    actualX = (uint)((actualXScroll + x) % 512);
+                    tileXPos = (int)(actualX / 8);
+
+                    Color[] nextTile = drawBGTileLineFromNameTable(actualReadLine % 8, actualX < 256, !isLowerNametable, tileXPos % 32, tileYPos);
+                    ;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        bgLine[totalPixelsDrawn++] = nextTile[i];
+                    }
+                }
+                else
+                {
+                    //End looping
+                    x = 256;
+                }
+            }
+
+            if (totalPixelsDrawn <= 256)
+            {
+                //Draw pixels from last tile  (could be partial tile)
+                actualX = (uint)((actualXScroll + totalPixelsDrawn) % 512);
+                tileXPos = (int)(actualX / 8);
+                Color[] lastTile = drawBGTileLineFromNameTable(actualReadLine % 8, actualX < 256, !isLowerNametable, tileXPos % 32, tileYPos);
+                uint lastTilePixelsToDraw = 256 - totalPixelsDrawn;
+
+                for (int x = 0; x < lastTilePixelsToDraw; x++)
+                {
+                    bgLine[totalPixelsDrawn++] = lastTile[x];
+                }
+            }
+
+            return bgLine;
+        }
 
         /*
          * Draws an 8px wide line from a tile in the specified name table. A tile is 8x8, this draws  an 8x1 line at the line specified.
