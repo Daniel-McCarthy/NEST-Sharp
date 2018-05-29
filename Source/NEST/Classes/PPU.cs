@@ -312,6 +312,45 @@ namespace NEST.Classes
         }
 
         /*
+         * This function draws a full line to the full 512x512 window. It draws from both the left and right name tables at the line specified. 
+         * It draws a full line and accounts for name table mirroring. From here the data is drawn to the window to be read in later.
+         */
+        public void drawFullBGLineToWindow(uint lineNumber)
+        {
+            bool isLineUpperTable;
+
+            if(isNametableMirrored && !isHorizNametableMirror)
+            {
+                //If name table is vertically mirrored, then draw the top. The bottom is just a copy.
+                isLineUpperTable = true;
+            }
+            else
+            {
+                //If line is less in the lower half of 512 lines
+                isLineUpperTable = (lineNumber < 256);
+            }
+
+            Color[] leftTable = drawBGLineFromNameTable(lineNumber % 256, true, isLineUpperTable);
+            Color[] rightTable;
+
+            if (isNametableMirrored && isHorizNametableMirror)
+            {
+                //If name table is horizontally mirrored, the draw the left table for both tables. The right is just a copy.
+                rightTable = leftTable;
+            }
+            else
+            {
+                rightTable = drawBGLineFromNameTable(lineNumber % 256, false, isLineUpperTable);
+            }
+            
+            for(int x = 0; x < 256; x++)
+            {
+                fullWindow.SetPixel((uint)x, lineNumber, leftTable[x]);
+                fullWindow.SetPixel((uint)(x + 256), lineNumber, rightTable[x]);
+            }
+        }
+
+        /*
          * Draws a full 256 wide line from a name table of choice at the line specified.
          * This allows us to read an entire name table line by line.
          */
