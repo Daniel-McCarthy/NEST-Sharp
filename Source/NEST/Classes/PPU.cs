@@ -252,13 +252,19 @@ namespace NEST.Classes
         {
             if( ly < 240)
             {
-                for (uint x = 0; x < backGroundLine.Length; x++)
+                for (uint x = 0; x < 256; x++)
                 {
-                    Core.ppu.frame.SetPixel(x, ly, backGroundLine[x]);
-
-                    if (spriteLine[x] != null && spriteLine[x].A != 0)
+                    if (backGroundLine != null)
                     {
-                        Core.ppu.frame.SetPixel(x, ly, spriteLine[x]);
+                        Core.ppu.frame.SetPixel(x, ly, backGroundLine[x]);
+                    }
+
+                    if (spriteLine != null)
+                    {
+                        if (spriteLine[x] != null && spriteLine[x].A != 0)
+                        {
+                            Core.ppu.frame.SetPixel(x, ly, spriteLine[x]);
+                        }
                     }
                 }
             }
