@@ -263,6 +263,10 @@ namespace NEST.Classes
             }
         }
 
+
+        /*
+         * Original line drawing function. This draws a line from a name table but does not account for crossing nametables and has poor scrolling.
+         */
         public Color[] drawBGLineFromNameTable1(byte lineNumber)
         {
             Color[] line = new Color[256];
