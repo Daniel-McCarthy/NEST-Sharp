@@ -63,6 +63,29 @@ namespace NEST.Classes.Mappers
                     {
                         controlRegisterValue = writeRegisterValue;
 
+                        byte nameTableSetting = (byte)(controlRegisterValue & 0b11);
+
+                        if(nameTableSetting == 0)
+                        {
+                            Core.ppu.isNametableMirrored = false;
+                            //TODO: Implement one-screen lower bank
+                        }
+                        else if (nameTableSetting == 1)
+                        {
+                            Core.ppu.isNametableMirrored = false;
+                            //TODO: Implement one-screen upper bank
+                        }
+                        else if (nameTableSetting == 2)
+                        {
+                            Core.ppu.isNametableMirrored = true;
+                            Core.ppu.isHorizNametableMirror = false;
+                        }
+                        else if (nameTableSetting == 3)
+                        {
+                            Core.ppu.isNametableMirrored = true;
+                            Core.ppu.isHorizNametableMirror = true;
+                        }
+
                         //TODO: Set control register settings
                     }
                     else if(writeToMMC1RamPage1Register)
