@@ -118,10 +118,35 @@ namespace NEST.Classes.Mappers
                         }
                         else if (writeToMMC1RomPageRegister)
                         {
+                            //Initiate PRG Rom Bank Swap
                             romPageRegisterValue = writeRegisterValue;
-                            if (romPageRegisterValue <= (Core.rom.getProgramRomSize() - 1))
+
+                            bool ramEnabled = (romPageRegisterValue & 0b10000) == 0b10000;
+
+                            //Supposedly we're supposed to ignore bit 0 in 32 kb mode
+                            if (prgRomBankSwitchingMode < 2)
+                            {
+                                romPageRegisterValue &= 0b00001110;
+                            }
+                            else
+                            {
+                                ramPage1RegisterValue &= 0b00001111;
+                            }
+
+                            if (prgRomBankSwitchingMode < 2)
                             {
                                 loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
+                                loadPrgRomBank(ref Core.rom, 0xC000, (byte)(romPageRegisterValue + 1));
+                            }
+                            else if (prgRomBankSwitchingMode == 2)
+                            {
+                                loadPrgRomBank(ref Core.rom, 0x8000, 0);
+                                loadPrgRomBank(ref Core.rom, 0xC000, romPageRegisterValue);
+                            }
+                            else if (prgRomBankSwitchingMode == 3)
+                            {
+                                loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
+                                loadPrgRomBank(ref Core.rom, 0xC000, (byte)(Core.rom.getProgramRamSize() - 1));
                             }
                         }
 
