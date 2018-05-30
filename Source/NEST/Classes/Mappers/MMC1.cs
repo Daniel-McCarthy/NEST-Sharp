@@ -119,6 +119,10 @@ namespace NEST.Classes.Mappers
                                 loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
                             }
                         }
+
+                        //Reset shift register
+                        writeRegisterShift = 0;
+                        writeRegisterValue = 0;
                     }
                 }
             }
