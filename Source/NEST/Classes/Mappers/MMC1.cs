@@ -110,10 +110,19 @@ namespace NEST.Classes.Mappers
                         }
                         else if (writeToMMC1RamPage2Register)
                         {
+                            //Initiate CHR Rom Bank Swap
                             ramPage2RegisterValue = writeRegisterValue;
-                            if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                            if (!chrRom8kbBankSwitchingMode)
                             {
-                                loadChrRomBank(ref Core.rom, 0x1000, ramPage1RegisterValue);
+                                int numBanks = (Core.rom.getCHRRomSize()) * ((chrRom8kbBankSwitchingMode) ? 1 : 2);
+                                if (ramPage1RegisterValue <= numBanks)
+                                {
+                                    //Ignore swap request if in 8kb swap mode
+                                    if (!chrRom8kbBankSwitchingMode)
+                                    {
+                                        loadChrRomBank(ref Core.rom, 0x1000, ramPage2RegisterValue);
+                                    }
+                                }
                             }
                         }
                         else if (writeToMMC1RomPageRegister)
