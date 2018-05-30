@@ -51,6 +51,10 @@ namespace NEST.Classes.Mappers
                     //Reset Shift if bit 7 is set
                     writeRegisterShift = 0;
                     writeRegisterValue = 0;
+                    controlRegisterValue |= 0x0C;
+
+                    //0x0C write locks 0xC000 to last bank of Prg Rom
+                    loadPrgRomBank(ref Core.rom, 0xC000, (byte)(Core.rom.getProgramRamSize() - 1));
                 }
                 else
                 {
