@@ -46,7 +46,7 @@ namespace NEST.Classes.Mappers
 
             if(address >= 0x8000 && address <= 0xFFFF)
             {
-                if((value & 0x80) == 0x80)
+                if ((value & 0x80) == 0x80)
                 {
                     //Reset Shift if bit 7 is set
                     writeRegisterShift = 0;
@@ -54,65 +54,66 @@ namespace NEST.Classes.Mappers
                 }
                 else
                 {
-                    writeRegisterValue >>= 1;
-                    writeRegisterValue |= (byte)((value & 0x01) << 4);
-
-                    writeRegisterShift++;
-                }
-
-                if(writeRegisterShift == 5)
-                {
-                    if(writeToMMC1ControlRegister)
+                    if (writeRegisterShift < 5)
                     {
-                        controlRegisterValue = writeRegisterValue;
-
-                        byte nameTableSetting = (byte)(controlRegisterValue & 0b11);
-
-                        if(nameTableSetting == 0)
-                        {
-                            Core.ppu.isNametableMirrored = false;
-                            //TODO: Implement one-screen lower bank
-                        }
-                        else if (nameTableSetting == 1)
-                        {
-                            Core.ppu.isNametableMirrored = false;
-                            //TODO: Implement one-screen upper bank
-                        }
-                        else if (nameTableSetting == 2)
-                        {
-                            Core.ppu.isNametableMirrored = true;
-                            Core.ppu.isHorizNametableMirror = false;
-                        }
-                        else if (nameTableSetting == 3)
-                        {
-                            Core.ppu.isNametableMirrored = true;
-                            Core.ppu.isHorizNametableMirror = true;
-                        }
-
-                        //TODO: Set control register settings
+                        writeRegisterValue |= (byte)((value & 0x01) << writeRegisterShift);
+                        writeRegisterShift++;
                     }
-                    else if(writeToMMC1RamPage1Register)
+
+                    if (writeRegisterShift == 5)
                     {
-                        ramPage1RegisterValue = writeRegisterValue;
-                        if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                        if (writeToMMC1ControlRegister)
                         {
-                            loadChrRomBank(ref Core.rom, 0x0000, ramPage1RegisterValue);
+                            controlRegisterValue = writeRegisterValue;
+
+                            byte nameTableSetting = (byte)(controlRegisterValue & 0b11);
+
+                            if (nameTableSetting == 0)
+                            {
+                                Core.ppu.isNametableMirrored = false;
+                                //TODO: Implement one-screen lower bank
+                            }
+                            else if (nameTableSetting == 1)
+                            {
+                                Core.ppu.isNametableMirrored = false;
+                                //TODO: Implement one-screen upper bank
+                            }
+                            else if (nameTableSetting == 2)
+                            {
+                                Core.ppu.isNametableMirrored = true;
+                                Core.ppu.isHorizNametableMirror = false;
+                            }
+                            else if (nameTableSetting == 3)
+                            {
+                                Core.ppu.isNametableMirrored = true;
+                                Core.ppu.isHorizNametableMirror = true;
+                            }
+
+                            //TODO: Set control register settings
                         }
-                    }
-                    else if (writeToMMC1RamPage2Register)
-                    {
-                        ramPage2RegisterValue = writeRegisterValue;
-                        if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                        else if (writeToMMC1RamPage1Register)
                         {
-                            loadChrRomBank(ref Core.rom, 0x1000, ramPage1RegisterValue);
+                            ramPage1RegisterValue = writeRegisterValue;
+                            if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                            {
+                                loadChrRomBank(ref Core.rom, 0x0000, ramPage1RegisterValue);
+                            }
                         }
-                    }
-                    else if(writeToMMC1RomPageRegister)
-                    {
-                        romPageRegisterValue = writeRegisterValue;
-                        if (romPageRegisterValue <= (Core.rom.getProgramRomSize() - 1))
+                        else if (writeToMMC1RamPage2Register)
                         {
-                            loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
+                            ramPage2RegisterValue = writeRegisterValue;
+                            if (ramPage1RegisterValue <= (Core.rom.getProgramRamSize() - 1))
+                            {
+                                loadChrRomBank(ref Core.rom, 0x1000, ramPage1RegisterValue);
+                            }
+                        }
+                        else if (writeToMMC1RomPageRegister)
+                        {
+                            romPageRegisterValue = writeRegisterValue;
+                            if (romPageRegisterValue <= (Core.rom.getProgramRomSize() - 1))
+                            {
+                                loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
+                            }
                         }
                     }
                 }
