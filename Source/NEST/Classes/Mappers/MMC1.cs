@@ -93,7 +93,12 @@ namespace NEST.Classes.Mappers
                                 Core.ppu.isHorizNametableMirror = true;
                             }
 
-                            //TODO: Set control register settings
+                            //Set prgRom Banking Mode
+                            prgRomBankSwitchingMode = (byte)((value & 0b1100) >> 2);
+
+                            //Set chrRom Banking Mode
+                            chrRom8kbBankSwitchingMode = (value & 0b10000) != 0;
+
                         }
                         else if (writeToMMC1RamPage1Register)
                         {
