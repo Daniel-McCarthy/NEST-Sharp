@@ -13,7 +13,7 @@ namespace NEST
 {
     public partial class MainWindow : Form
     {
-        private Thread emulatorThread;
+        public Thread emulatorThread;
 
         private AssemblyView assemblyView;
         private MemoryView memoryView;
@@ -96,7 +96,7 @@ namespace NEST
             Core.run = false;
 
             int loops = 0;
-            while(emulatorThread.IsAlive)
+            while(emulatorThread != null && emulatorThread.IsAlive)
             {
                 //Attempt to wait for the thread to be ready to be stopped.
                 if(emulatorThread.ThreadState == ThreadState.WaitSleepJoin)
