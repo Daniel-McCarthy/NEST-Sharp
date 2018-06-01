@@ -159,7 +159,7 @@ namespace NEST.Classes.Mappers
                             if (prgRomBankSwitchingMode < 2)
                             {
                                 loadPrgRomBank(ref Core.rom, 0x8000, romPageRegisterValue);
-                                loadPrgRomBank(ref Core.rom, 0xC000, (byte)(romPageRegisterValue + 1));
+                                //32kb Prg Rom Banking
                             }
                             else if (prgRomBankSwitchingMode == 2)
                             {
