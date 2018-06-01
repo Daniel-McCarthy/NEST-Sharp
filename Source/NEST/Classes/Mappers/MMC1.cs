@@ -195,7 +195,7 @@ namespace NEST.Classes.Mappers
             if (data != null)
             {
                 int bankSize = chrRom8kbBankSwitchingMode ? 0x2000 : 0x1000;
-                uint bankAddress = (uint)(bankSize * bankNumber);
+                uint bankAddress = (uint)(0x1000 * bankNumber);
                 uint prgRomDataAddress = (uint)(0x4000 * romFile.getProgramRomSize()); //Skip trainer if it exists
 
                 for (int i = 0; i < bankSize; i++)
