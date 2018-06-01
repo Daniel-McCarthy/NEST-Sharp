@@ -223,10 +223,11 @@ namespace NEST.Classes.Mappers
 
             if (data != null)
             {
+                int bankSize = (prgRomBankSwitchingMode < 2) ? 0x8000 : 0x4000;
                 uint bankAddress = (uint)(0x4000 * (bankNumber));
                 uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
 
-                for (int i = 0; i < 0x4000; i++)
+                for (int i = 0; i < bankSize; i++)
                 {
                     ushort writeAddress = (ushort)(address + i);
                     uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
