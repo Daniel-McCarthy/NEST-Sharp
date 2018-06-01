@@ -117,7 +117,7 @@ namespace NEST.Classes.Mappers
                             }
 
                             int numBanks = (Core.rom.getCHRRomSize()) * ((chrRom8kbBankSwitchingMode) ? 1 : 2);
-                            if (ramPage1RegisterValue <= numBanks)
+                            if (numBanks > 0 && ramPage1RegisterValue <= numBanks)
                             {
                                 loadChrRomBank(ref Core.rom, 0x0000, ramPage1RegisterValue);
                             }
@@ -129,7 +129,7 @@ namespace NEST.Classes.Mappers
                             if (!chrRom8kbBankSwitchingMode)
                             {
                                 int numBanks = (Core.rom.getCHRRomSize()) * ((chrRom8kbBankSwitchingMode) ? 1 : 2);
-                                if (ramPage1RegisterValue <= numBanks)
+                                if (numBanks > 0 && ramPage2RegisterValue <= numBanks)
                                 {
                                     //Ignore swap request if in 8kb swap mode
                                     if (!chrRom8kbBankSwitchingMode)
