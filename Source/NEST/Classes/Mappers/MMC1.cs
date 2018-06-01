@@ -94,10 +94,10 @@ namespace NEST.Classes.Mappers
                             }
 
                             //Set prgRom Banking Mode
-                            prgRomBankSwitchingMode = (byte)((value & 0b1100) >> 2);
+                            prgRomBankSwitchingMode = (byte)((controlRegisterValue & 0b1100) >> 2);
 
                             //Set chrRom Banking Mode
-                            chrRom8kbBankSwitchingMode = (value & 0b10000) != 0;
+                            chrRom8kbBankSwitchingMode = (controlRegisterValue & 0b10000) != 0;
 
                         }
                         else if (writeToMMC1RamPage1Register)
