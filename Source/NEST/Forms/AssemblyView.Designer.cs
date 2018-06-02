@@ -74,6 +74,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.breakpointsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addBreakpointByAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ppuRamAddressLabel = new System.Windows.Forms.Label();
+            this.ppuRamAddressValueLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flagsGroupBox.SuspendLayout();
             this.otherGroupBox.SuspendLayout();
@@ -330,6 +332,8 @@
             // otherGroupBox
             // 
             this.otherGroupBox.BackColor = System.Drawing.Color.Gray;
+            this.otherGroupBox.Controls.Add(this.ppuRamAddressValueLabel);
+            this.otherGroupBox.Controls.Add(this.ppuRamAddressLabel);
             this.otherGroupBox.Controls.Add(this.pcValue);
             this.otherGroupBox.Controls.Add(this.programCounterLabel);
             this.otherGroupBox.Location = new System.Drawing.Point(3, 177);
@@ -550,6 +554,25 @@
             this.addBreakpointByAddressToolStripMenuItem.Text = "Add Breakpoint by Address";
             this.addBreakpointByAddressToolStripMenuItem.Click += new System.EventHandler(this.addBreakpointByAddressToolStripMenuItem_Click);
             // 
+            // ppuRamAddressLabel
+            // 
+            this.ppuRamAddressLabel.AutoSize = true;
+            this.ppuRamAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ppuRamAddressLabel.Location = new System.Drawing.Point(13, 32);
+            this.ppuRamAddressLabel.Name = "ppuRamAddressLabel";
+            this.ppuRamAddressLabel.Size = new System.Drawing.Size(141, 16);
+            this.ppuRamAddressLabel.TabIndex = 6;
+            this.ppuRamAddressLabel.Text = "PPU Ram Address:";
+            // 
+            // ppuRamAddressValueLabel
+            // 
+            this.ppuRamAddressValueLabel.AutoSize = true;
+            this.ppuRamAddressValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ppuRamAddressValueLabel.Location = new System.Drawing.Point(156, 32);
+            this.ppuRamAddressValueLabel.Name = "ppuRamAddressValueLabel";
+            this.ppuRamAddressValueLabel.Size = new System.Drawing.Size(0, 16);
+            this.ppuRamAddressValueLabel.TabIndex = 7;
+            // 
             // AssemblyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,5 +655,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem breakpointsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addBreakpointByAddressToolStripMenuItem;
+        private System.Windows.Forms.Label ppuRamAddressValueLabel;
+        private System.Windows.Forms.Label ppuRamAddressLabel;
     }
 }

@@ -38,6 +38,7 @@ namespace NEST
         void updatePCValues()
         {
             pcValue.Text = Core.cpu.getProgramCounter().ToString("X4");
+            ppuRamAddressValueLabel.Text = Core.ppu.ppuWriteAddress.ToString("X4");
         }
 
 
