@@ -180,6 +180,11 @@ namespace NEST.Classes
             return Core.cpu.readCPURam(0x2001, true);
         }
 
+        private bool getMaskGreyscaleEnabled()
+        {
+            return (getPPUMask() & 0b1) != 0;
+        }
+
         public void oamDMATransfer(ushort address)
         {
             for (int i = 0; i < 0xFF; i++)
