@@ -10,6 +10,7 @@ namespace NEST.Classes
     class PPU
     {
         public SFML.Graphics.Image frame = new SFML.Graphics.Image(256, 240);
+        public SFML.Graphics.Image emptyFrame = new SFML.Graphics.Image(1, 1);
         public SFML.Graphics.Image fullWindow = new SFML.Graphics.Image(512, 512);
 
         private byte[] ppuRam = new byte[0x4000];
