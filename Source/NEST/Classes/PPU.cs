@@ -205,6 +205,21 @@ namespace NEST.Classes
             return (getPPUMask() & 0b10000) != 0;
         }
 
+        private bool getMaskEmphasizeRedEnabled()
+        {
+            return (getPPUMask() & 0b100000) != 0;
+        }
+
+        private bool getMaskEmphasizeGreenEnabled()
+        {
+            return (getPPUMask() & 0b1000000) != 0;
+        }
+
+        private bool getMaskEmphasizeBlueEnabled()
+        {
+            return (getPPUMask() & 0b10000000) != 0;
+        }
+
         public void oamDMATransfer(ushort address)
         {
             for (int i = 0; i < 0xFF; i++)
