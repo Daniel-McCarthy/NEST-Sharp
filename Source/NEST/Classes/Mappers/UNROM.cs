@@ -22,6 +22,7 @@ namespace NEST.Classes.Mappers
 
                 Core.ppu.isNametableMirrored = true;
                 Core.ppu.isHorizNametableMirror = (!romFile.getVerticalMirroring());
+                Core.ppu.isVertNametableMirror = (romFile.getVerticalMirroring());
             }
         }
 
