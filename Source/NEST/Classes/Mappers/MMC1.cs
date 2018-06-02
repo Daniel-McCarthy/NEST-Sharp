@@ -16,7 +16,7 @@ namespace NEST.Classes.Mappers
         public static byte ramPage2RegisterValue = 0;
         public static byte romPageRegisterValue = 0;
 
-        public static byte prgRomBankSwitchingMode = 0;
+        public static byte prgRomBankSwitchingMode = 3;
         public static bool chrRom8kbBankSwitchingMode = false;
 
         public static void loadRom(Rom romFile)
