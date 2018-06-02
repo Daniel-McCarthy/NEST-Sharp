@@ -42,7 +42,7 @@ namespace NEST.Classes.Mappers
                 uint chrDataAddress = (uint)(0x4000 * romFile.getProgramRomSize());
                 if (romFile.getCHRRomSize() != 0)
                 {
-                    for (int i = 0; i < 0x4000; i++)
+                    for (int i = 0; i < 0x2000; i++)
                     {
                         if ((chrDataAddress + i) < data.Length)
                         {
