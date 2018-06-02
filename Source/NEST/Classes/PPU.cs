@@ -246,6 +246,8 @@ namespace NEST.Classes
 
             if (ppuState == PPU_STATE_PRERENDER)
             {
+                spriteZeroHit = false;
+
                 if(ppuClocks >= 341)
                 {
                     ppuClocks -= 341;
