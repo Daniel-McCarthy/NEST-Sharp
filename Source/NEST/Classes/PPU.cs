@@ -73,7 +73,7 @@ namespace NEST.Classes
                         return address;
                     }
                 }
-                else
+                else if (isVertNametableMirror)
                 {
                     //Adjust address to upper name table if it is not already
                     if (address >= 0x2800)
@@ -85,6 +85,10 @@ namespace NEST.Classes
                     {
                         return address;
                     }
+                }
+                else
+                {
+                    return address;
                 }
             }
             else
