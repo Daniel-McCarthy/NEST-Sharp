@@ -185,6 +185,16 @@ namespace NEST.Classes
             return (getPPUMask() & 0b1) != 0;
         }
 
+        private bool getMaskLeft8BGPixelsEnabled()
+        {
+            return (getPPUMask() & 0b10) != 0;
+        }
+
+        private bool getMaskLeft8SpritesPixelsEnabled()
+        {
+            return (getPPUMask() & 0b100) != 0;
+        }
+
         public void oamDMATransfer(ushort address)
         {
             for (int i = 0; i < 0xFF; i++)
