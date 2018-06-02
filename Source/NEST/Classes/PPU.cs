@@ -685,7 +685,7 @@ namespace NEST.Classes
 
                 bool isSpriteOnLine = (spriteYPos <= lineNumber) && ((spriteYPos + (spriteHeight)) > lineNumber);
 
-                if(isSpriteOnLine && !isBelowBackground)
+                if(isSpriteOnLine && (!isBelowBackground || spriteIndex == 0))
                 {
                     //Read current line of sprite tile
                     //int yLineOffset = lineNumber % spriteHeight; //This lets us know which line of the tile we are drawing, so that we can read the correct line data.
@@ -727,8 +727,19 @@ namespace NEST.Classes
                             byte colorIndex = ppuRam[0x3F00 + colorAddress];
                             pixelColor = palette[colorIndex];
 
-                            if ((spriteXPos + i) < line.Length)
+                            if ((spriteXPos + i) < line.Length && !isBelowBackground)
                                 line[spriteXPos + i] = pixelColor;
+
+                            if(spriteIndex == 0)
+                            {
+                                bool bgEnabled = getMaskBackgroundEnabled();
+                                bool cycleIs256 = Core.TOTAL_PPU_CLOCKS == 256;
+
+                                if(bgEnabled && !cycleIs256)
+                                {
+                                    spriteZeroHit = true;
+                                }
+                            }
                         }
                     }
                 }
