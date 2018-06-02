@@ -85,13 +85,18 @@ namespace NEST.Classes.Mappers
                             }
                             else if (nameTableSetting == 2)
                             {
+                                //Set to Vertical Name Table Mirroring Mode
                                 Core.ppu.isNametableMirrored = true;
+                                Core.ppu.isVertNametableMirror = true;
                                 Core.ppu.isHorizNametableMirror = false;
                             }
                             else if (nameTableSetting == 3)
                             {
+                                //Set to Horizontal Name Table Mirroring Mode
                                 Core.ppu.isNametableMirrored = true;
+                                Core.ppu.isVertNametableMirror = false;
                                 Core.ppu.isHorizNametableMirror = true;
+
                             }
 
                             //Set prgRom Banking Mode
