@@ -175,6 +175,11 @@ namespace NEST.Classes
             return (getPPURegister() & 0b10000000) != 0;
         }
 
+        private byte getPPUMask()
+        {
+            return Core.cpu.readCPURam(0x2001, true);
+        }
+
         public void oamDMATransfer(ushort address)
         {
             for (int i = 0; i < 0xFF; i++)
