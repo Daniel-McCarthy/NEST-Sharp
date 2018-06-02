@@ -28,6 +28,7 @@ namespace NEST.Classes.Mappers
                 loadChrRomBank(ref romFile, 0x0000, 0);
                 loadChrRomBank(ref romFile, 0x1000, 1);
 
+                Core.ppu.isNametableMirrored = false;
             }
         }
 
