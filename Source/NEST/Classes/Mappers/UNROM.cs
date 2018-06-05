@@ -75,24 +75,15 @@ namespace NEST.Classes.Mappers
             //0x0000-0x0FFF Chr Rom Data Bank 1
             //0x1000-0x1FFF Chr Rom Data Bank 2
 
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
+            uint chrDataAddress = (uint)(0x2000 * romFile.getProgramRomSize());
 
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
-
-            if (data != null)
+            for (uint i = 0; i < 0x2000; i++)
             {
-                uint chrDataAddress = (uint)(0x2000 * romFile.getProgramRomSize());
-
-                for (int i = 0; i < 0x2000; i++)
+                if ((chrDataAddress + i) < (Core.rom.getExactDataLength() - 16)) //16 in order to skip the INES header
                 {
-                    if ((chrDataAddress + i) < data.Length)
-                    {
-                        Core.ppu.writePPURamByte((ushort)i, data[chrDataAddress + i]);
-                    }
+                    Core.ppu.writePPURamByte((ushort)i, Core.rom.readByte(chrDataAddress + i + 16));
                 }
             }
         }
-
     }
 }
