@@ -8,6 +8,7 @@ using Core = NEST.Classes.Core;
 using System.Threading;
 using NEST.Classes;
 using NEST.Classes.Mappers;
+using NEST.Forms;
 
 namespace NEST
 {
@@ -63,6 +64,10 @@ namespace NEST
                 else if (mapperSetting == 3)
                 {
                     CNROM.loadRom(Core.rom);
+                }
+                else if (mapperSetting == 4)
+                {
+                    MMC3.loadRom(Core.rom);
                 }
 
                 ushort resetAddress = 0;
