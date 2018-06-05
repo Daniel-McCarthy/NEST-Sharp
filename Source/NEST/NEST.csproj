@@ -111,6 +111,12 @@
     <Compile Include="Forms\MemoryView.Designer.cs">
       <DependentUpon>MemoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PaletteView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaletteView.Designer.cs">
+      <DependentUpon>PaletteView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Classes\Canvas.resx">
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryView.resx">
       <DependentUpon>MemoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaletteView.resx">
+      <DependentUpon>PaletteView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
