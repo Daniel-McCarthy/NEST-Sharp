@@ -8,6 +8,32 @@ namespace NEST.Classes.Mappers
 {
     class MMC3
     {
+        public static byte bankRegister;
+        public static bool prgRomBankingMode;
+        public static bool chrRomBankOrder;
+
+        public static byte irqLatch;
+        public static byte irqCounter;
+        public static bool irqEnabled;
+        public static bool irqPending;
+
+        public static void loadRom(Rom romFile)
+        {
+            if (romFile.getMapperSetting() == 4)
+            {
+                loadChrRomBank(ref Core.rom, 0x0000, 0x0800, 0);
+                loadChrRomBank(ref Core.rom, 0x0800, 0x0800, 0);
+                loadChrRomBank(ref Core.rom, 0x1000, 0x0800, 0);
+                loadChrRomBank(ref Core.rom, 0x1800, 0x0800, 0);
+
+                loadPrgRomBank(ref Core.rom, 0x8000, 0);
+                loadPrgRomBank(ref Core.rom, 0xA000, 0);
+                loadPrgRomBank(ref Core.rom, 0xC000, (byte)((Core.rom.getProgramRomSize() * 2) - 2));
+                loadPrgRomBank(ref Core.rom, 0xE000, (byte)((Core.rom.getProgramRomSize() * 2) - 1));
+
+                Core.ppu.isNametableMirrored = false;
+            }
+        }
 
         public static bool isMapperWriteAddress(ushort address)
         {
