@@ -15,6 +15,40 @@ namespace NEST.Classes.Mappers
         }
 
 
+        public static void loadChrRomBank(ref Rom romFile, ushort address, ushort bankSize, byte bankNumber)
+        {
+            //0x0000-0x07FF Chr Rom, 2k switchable bank
+            //0x0800-0x0FFF Chr Rom, 2k switchable bank
+            //0x1000-0x13FF Chr Rom, 1k switchable bank
+            //0x1400-0x17FF Chr Rom, 1k switchable bank
+            //0x1800-0x1BFF Chr Rom, 1k switchable bank
+            //0x1C00-0x1FFF Chr Rom, 1k switchable bank
+
+            //Order of 1k and 2k rom banks are switchable
+
+            int dataLength = romFile.getExactDataLength();
+            byte[] data = null;
+
+            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+
+
+            if (data != null)
+            {
+                uint bankAddress = (uint)(0x0400 * bankNumber);
+                uint prgRomDataAddress = (uint)(0x2000 * (Core.rom.getProgramRomSize() * 2)); //Skip trainer if it exists
+
+                for (int i = 0; i < bankSize; i++)
+                {
+                    ushort writeAddress = (ushort)(address + i);
+                    uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
+                    if (writeAddress >= 0x0000 && writeAddress < (address + bankSize) && readAddress < data.Length)
+                    {
+                        Core.ppu.writePPURamByte(writeAddress, data[readAddress]);
+                    }
+                }
+            }
+        }
+
         public static void loadPrgRomBank(ref Rom romFile, ushort address, byte bankNumber)
         {
             //0x8000-0x9FFF, switchable rom bank
