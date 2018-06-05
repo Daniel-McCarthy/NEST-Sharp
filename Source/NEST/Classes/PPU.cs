@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace NEST.Classes
         public SFML.Graphics.Image frame = new SFML.Graphics.Image(256, 240);
         public SFML.Graphics.Image emptyFrame = new SFML.Graphics.Image(1, 1);
         public SFML.Graphics.Image fullWindow = new SFML.Graphics.Image(512, 512);
+        private Stopwatch screenUpdateWatch = new Stopwatch();
 
         private byte[] ppuRam = new byte[0x4000];
         private byte[] oamRam = new byte[0x100];
@@ -314,6 +316,22 @@ namespace NEST.Classes
                     SFML.Graphics.Sprite frameSprite = new SFML.Graphics.Sprite(frameTexture);
                     //frameSprite.Scale = new SFML.System.Vector2f(1, 1);
                     Core.mainWindow.drawCanvas.drawFrame(frameSprite);
+
+                    screenUpdateWatch.Stop();
+                    if (screenUpdateWatch.ElapsedMilliseconds == 0)
+                    {
+                        screenUpdateWatch.Start();
+                    }
+                    else
+                    {
+
+                        if (screenUpdateWatch.ElapsedMilliseconds < 19)
+                        {
+                            System.Threading.Thread.Sleep((int)(19 - screenUpdateWatch.ElapsedMilliseconds));
+                        }
+
+                        screenUpdateWatch.Restart();
+                    }
                 }
             }
             else if (ppuState == PPU_STATE_VBLANK)
