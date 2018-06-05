@@ -57,25 +57,16 @@ namespace NEST.Classes.Mappers
         {
             //0x8000 16kb - 32 kb non-switchable program rom
 
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
+            uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
+            uint prgRomSize = (uint)(romFile.getProgramRomSize() * 0x4000);
 
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
-
-
-            if (data != null)
+            for (int i = 0; i < prgRomSize; i++)
             {
-                uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
-                uint prgRomSize = (uint)(romFile.getProgramRomSize() * 0x4000);
-
-                for (int i = 0; i < prgRomSize; i++)
+                ushort writeAddress = (ushort)(address + i);
+                uint readAddress = (uint)(prgRomDataAddress + i);
+                if (writeAddress >= 0x8000 && writeAddress <= 0xFFFF && readAddress < (Core.rom.getExactDataLength() - 16)) //16 in order to skip the INES header
                 {
-                    ushort writeAddress = (ushort)(address + i);
-                    uint readAddress = (uint)(prgRomDataAddress + i);
-                    if (writeAddress >= 0x8000 && writeAddress <= 0xFFFF && readAddress < data.Length)
-                    {
-                        Core.cpu.directCPURamWrite(writeAddress, data[readAddress]);
-                    }
+                    Core.cpu.directCPURamWrite(writeAddress, Core.rom.readByte(readAddress + 16));
                 }
             }
         }
