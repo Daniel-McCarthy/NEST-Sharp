@@ -33,23 +33,14 @@ namespace NEST.Classes.Mappers
 
         public static void loadChrRom(ref Rom romFile)
         {
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
-
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
-
-
-            if (data != null)
+            uint chrDataAddress = (uint)(0x4000 * romFile.getProgramRomSize());
+            if (romFile.getCHRRomSize() != 0)
             {
-                uint chrDataAddress = (uint)(0x4000 * romFile.getProgramRomSize());
-                if (romFile.getCHRRomSize() != 0)
+                for (uint i = 0; i < 0x2000; i++)
                 {
-                    for (int i = 0; i < 0x2000; i++)
+                    if ((chrDataAddress + i) < (Core.rom.getExactDataLength() - 16)) //16 in order to skip the INES header
                     {
-                        if ((chrDataAddress + i) < data.Length)
-                        {
-                            Core.ppu.writePPURamByte((ushort)i, data[chrDataAddress + i]);
-                        }
+                        Core.ppu.writePPURamByte((ushort)i, Core.rom.readByte(chrDataAddress + i + 16));
                     }
                 }
             }
@@ -57,35 +48,27 @@ namespace NEST.Classes.Mappers
 
         public static void loadPrgRom(ref Rom romFile)
         {
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
 
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+            int programSize = romFile.getProgramRomSize() * 0x8000;
 
-
-            if(data != null)
+            for (uint i = 0; i < programSize; i++)
             {
-                int programSize = romFile.getProgramRomSize() * 0x8000;
-
-                for (int i = 0; i < programSize; i++)
+                ushort address = (ushort)(0x8000 + i);
+                if (address >= 0x8000 && address <= 0xFFFF && i < (Core.rom.getExactDataLength() - 16)) //16 in order to skip the INES header
                 {
-                    ushort address = (ushort)(0x8000 + i);
-                    if (address >= 0x8000 && address <= 0xFFFF && i < data.Length)
-                    {
-                        Core.cpu.directCPURamWrite(address, data[i]);
-                    }
+                    Core.cpu.directCPURamWrite(address, Core.rom.readByte(i + 16));
                 }
+            }
 
-                // If there is only one bank, then mirror
-                if(romFile.getProgramRomSize() == 1)
+            // If there is only one bank, then mirror
+            if(romFile.getProgramRomSize() == 1)
+            {
+                for (uint i = 0; i < 0x4000; i++)
                 {
-                    for (int i = 0; i < 0x4000; i++)
+                    ushort address = (ushort)(0xC000 + i);
+                    if (address >= 0xC000 && address <= 0xFFFF && i < (Core.rom.getExactDataLength() - 16)) //16 in order to skip the INES header
                     {
-                        ushort address = (ushort)(0xC000 + i);
-                        if (address >= 0xC000 && address <= 0xFFFF && i < data.Length)
-                        {
-                            Core.cpu.directCPURamWrite(address, data[i]);
-                        }
+                        Core.cpu.directCPURamWrite(address, Core.rom.readByte(i + 16));
                     }
                 }
             }
