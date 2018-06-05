@@ -53,7 +53,7 @@ namespace NEST.Forms
         public void addPalette(string name, SFML.Graphics.Color[] palette)
         {
             palettes.Add(palette);
-            paletteNames.Add("Default Palette");
+            paletteNames.Add(name);
             palettesListBox.Items.Add(paletteNames[paletteNames.Count - 1]);
         }
 
