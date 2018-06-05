@@ -40,6 +40,8 @@ namespace NEST.Forms
             if(palettesListBox.SelectedIndex >= 0)
             {
                 displayPalette(palettesListBox.SelectedIndex);
+
+                setPaletteButton.Enabled = true;
             }
             else
             {
@@ -47,6 +49,8 @@ namespace NEST.Forms
                 {
                     colorBox.BackColor = System.Drawing.Color.FromName("Control");
                 }
+
+                setPaletteButton.Enabled = false;
             }
         }
 
