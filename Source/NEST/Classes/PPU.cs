@@ -703,8 +703,8 @@ namespace NEST.Classes
 
                     ushort spritePatternTableAddress = (ushort)(getPPURegisterSpritePatternTableSetting() ? 0x1000 : 0x0000);
                     ushort patternAddressTemp = (ushort)((tileID * 16) + (yLineOffset * 2) + spritePatternTableAddress);
-                    byte tileDataRow1 = ppuRam[((tileID * 16) + (yLineOffset))];
-                    byte tileDataRow2 = ppuRam[((tileID * 16) + (yLineOffset)) + 8];
+                    byte tileDataRow1 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset))];
+                    byte tileDataRow2 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset)) + 8];
 
                     byte[] tileColorIndices = new byte[8];
 
