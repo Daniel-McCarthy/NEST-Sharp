@@ -203,28 +203,21 @@ namespace NEST.Classes.Mappers
             //0xC000-0xDFFF, fixed to second to last rom bank
             //0xE000-0xFFFF, fixed to last rom bank
 
-            //The order of the swappable and fixed banks can be swithed.
-
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
-
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
+            //The order of the swappable and fixed banks can be switched.
 
 
-            if (data != null)
+            int bankSize = 0x2000;
+            uint bankAddress = (uint)(bankSize * (bankNumber));
+            uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
+
+            for (int i = 0; i < bankSize; i++)
             {
-                int bankSize = 0x2000;
-                uint bankAddress = (uint)(bankSize * (bankNumber));
-                uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
+                ushort writeAddress = (ushort)(address + i);
+                uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
 
-                for (int i = 0; i < bankSize; i++)
+                if (writeAddress >= 0x8000 && writeAddress <= 0xFFFF && readAddress < (Core.rom.getExactDataLength() - 16)) //16 to skip the INES header.
                 {
-                    ushort writeAddress = (ushort)(address + i);
-                    uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
-                    if (writeAddress >= 0x8000 && writeAddress <= 0xFFFF && readAddress < data.Length)
-                    {
-                        Core.cpu.directCPURamWrite(writeAddress, data[readAddress]);
-                    }
+                    Core.cpu.directCPURamWrite(writeAddress, Core.rom.readByte(16 + readAddress));
                 }
             }
         }
