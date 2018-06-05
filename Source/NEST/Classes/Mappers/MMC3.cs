@@ -181,25 +181,16 @@ namespace NEST.Classes.Mappers
 
             //Order of 1k and 2k rom banks are switchable
 
-            int dataLength = romFile.getExactDataLength();
-            byte[] data = null;
+            uint bankAddress = (uint)(0x0400 * bankNumber);
+            uint prgRomDataAddress = (uint)(0x2000 * (Core.rom.getProgramRomSize() * 2)); //Skip trainer if it exists
 
-            data = romFile.readBytesFromAddressToEnd(16); //16 in order to skip the INES header
-
-
-            if (data != null)
+            for (int i = 0; i < bankSize; i++)
             {
-                uint bankAddress = (uint)(0x0400 * bankNumber);
-                uint prgRomDataAddress = (uint)(0x2000 * (Core.rom.getProgramRomSize() * 2)); //Skip trainer if it exists
-
-                for (int i = 0; i < bankSize; i++)
+                ushort writeAddress = (ushort)(address + i);
+                uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
+                if (writeAddress >= 0x0000 && writeAddress < (address + bankSize) && readAddress < (Core.rom.getExactDataLength() - 16)) //16 to skip the INES header.
                 {
-                    ushort writeAddress = (ushort)(address + i);
-                    uint readAddress = (uint)(prgRomDataAddress + bankAddress + i);
-                    if (writeAddress >= 0x0000 && writeAddress < (address + bankSize) && readAddress < data.Length)
-                    {
-                        Core.ppu.writePPURamByte(writeAddress, data[readAddress]);
-                    }
+                    Core.ppu.writePPURamByte(writeAddress, Core.rom.readByte(16 + readAddress));
                 }
             }
         }
