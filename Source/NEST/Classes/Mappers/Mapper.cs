@@ -54,6 +54,10 @@ namespace NEST.Classes.Mappers
                 {
                     CNROM.writeCNROM(address, value);
                 }
+                else if (mapperSetting == 4)
+                {
+                    MMC3.writeMMC3(address, value);
+                }
 
             }
 
