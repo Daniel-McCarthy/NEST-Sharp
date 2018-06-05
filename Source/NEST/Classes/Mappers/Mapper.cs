@@ -27,6 +27,10 @@ namespace NEST.Classes.Mappers
                 {
                     return CNROM.isMapperWriteAddress(address);
                 }
+                else if (mapperSetting == 4)
+                {
+                    return MMC3.isMapperWriteAddress(address);
+                }
             }
 
             return false;
