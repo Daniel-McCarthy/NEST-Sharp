@@ -57,5 +57,15 @@ namespace NEST.Forms
             palettesListBox.Items.Add(paletteNames[paletteNames.Count - 1]);
         }
 
+        private void setPaletteButton_Click(object sender, EventArgs e)
+        {
+            int selectedPaletteNumber = palettesListBox.SelectedIndex;
+
+            int length = palettes[selectedPaletteNumber].Length;
+            for(int i = 0; i < length; i++)
+            {
+                Core.ppu.palette[i] = palettes[selectedPaletteNumber][i];
+            }
+        }
     }
 }

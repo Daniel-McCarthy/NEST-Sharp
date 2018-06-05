@@ -95,6 +95,7 @@
             this.color1PictureBox = new System.Windows.Forms.PictureBox();
             this.paletteSelectGroupBox = new System.Windows.Forms.GroupBox();
             this.palettesListBox = new System.Windows.Forms.ListBox();
+            this.setPaletteButton = new System.Windows.Forms.Button();
             this.colorsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.color63PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.color0PictureBox)).BeginInit();
@@ -767,11 +768,22 @@
             this.palettesListBox.TabIndex = 0;
             this.palettesListBox.SelectedValueChanged += new System.EventHandler(this.palettesListBox_SelectedValueChanged);
             // 
+            // setPaletteButton
+            // 
+            this.setPaletteButton.Enabled = false;
+            this.setPaletteButton.Location = new System.Drawing.Point(12, 371);
+            this.setPaletteButton.Name = "setPaletteButton";
+            this.setPaletteButton.Size = new System.Drawing.Size(103, 58);
+            this.setPaletteButton.TabIndex = 2;
+            this.setPaletteButton.Text = "Set as Current Palette";
+            this.setPaletteButton.UseVisualStyleBackColor = true;
+            this.setPaletteButton.Click += new System.EventHandler(this.setPaletteButton_Click);
             // PaletteView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.setPaletteButton);
             this.Controls.Add(this.paletteSelectGroupBox);
             this.Controls.Add(this.colorsGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -919,5 +931,6 @@
         public System.Windows.Forms.PictureBox color3PictureBox;
         public System.Windows.Forms.PictureBox color2PictureBox;
         public System.Windows.Forms.PictureBox color1PictureBox;
+        private System.Windows.Forms.Button setPaletteButton;
     }
 }
