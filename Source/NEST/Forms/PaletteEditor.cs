@@ -23,6 +23,14 @@ namespace NEST.Forms
 
         }
 
+        public void loadPalette(SFML.Graphics.Color[] palette)
+        {
+            for (int i = 0; i < pictureBoxes.Count; i++)
+            {
+                SFML.Graphics.Color paletteColor = palette[i];
+                pictureBoxes[i].BackColor = System.Drawing.Color.FromArgb(paletteColor.R, paletteColor.G, paletteColor.B);
+            }
+        }
 
         private void colorPictureBox_MouseClick(object sender, MouseEventArgs e)
         {
