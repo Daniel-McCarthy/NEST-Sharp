@@ -61,5 +61,19 @@ namespace NEST.Forms
         {
         }
 
+        public SFML.Graphics.Color[] returnPalette()
+        {
+            int length = pictureBoxes.Count;
+            SFML.Graphics.Color[] palette = new SFML.Graphics.Color[length];
+
+            for(int i = 0; i < length; i++)
+            {
+                Color storedColor = pictureBoxes[i].BackColor;
+                SFML.Graphics.Color convertedColor = new SFML.Graphics.Color(storedColor.R, storedColor.G, storedColor.B);
+                palette[i] = convertedColor;
+            }
+
+            return palette;
+        }
     }
 }
