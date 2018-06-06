@@ -77,5 +77,28 @@ namespace NEST.Forms
                 Core.ppu.palette[i] = palettes[selectedPaletteNumber][i];
             }
         }
+
+
+        private void newPaletteButton_Click(object sender, EventArgs e)
+        {
+            PaletteEditor editor = new PaletteEditor();
+            editor.loadPalette(defaultPalette);
+
+            if(editor.ShowDialog() == DialogResult.OK)
+            {
+                InputBox nameBox = new InputBox();
+                nameBox.Text = "Enter Palette Name:";
+
+                string paletteName = "New Palette";
+
+                if(nameBox.ShowDialog() == DialogResult.OK)
+                {
+                    paletteName = nameBox.inputTextBox.Text;
+                }
+
+                addPalette(paletteName, editor.returnPalette());
+            }
+        }
+
     }
 }
