@@ -34,6 +34,39 @@ namespace NEST.Forms
 
         private void colorPictureBox_MouseClick(object sender, MouseEventArgs e)
         {
+            if(e.Button == MouseButtons.Right)
+            {
+                //Set right clicked color picture box to new selected color.
+                ColorDialog colorDialogue = new ColorDialog();
+
+                if (colorDialogue.ShowDialog() == DialogResult.OK)
+                {
+                    ((PictureBox)sender).BackColor = colorDialogue.Color;
+                }
+            }
+
+            //Change style of clicked picture box to show it is selected
+            PictureBox senderPictureBox = (PictureBox)sender;
+            int pictureBoxNumber = pictureBoxes.IndexOf(senderPictureBox);
+
+            // Remove border style from previously selected picture box.
+            if (selectedPictureBoxIndex != -1)
+            {
+                if (selectedPictureBoxIndex < pictureBoxes.Count)
+                {
+                    pictureBoxes[selectedPictureBoxIndex].BorderStyle = BorderStyle.None;
+                }
+            }
+
+            selectedPictureBoxIndex = pictureBoxNumber;
+
+            // Add border style to newly selected picture box.
+            if (selectedPictureBoxIndex >= 0 && selectedPictureBoxIndex < pictureBoxes.Count)
+            {
+                pictureBoxes[selectedPictureBoxIndex].BorderStyle = BorderStyle.Fixed3D;
+            }
+
+            displayColor(pictureBoxes[selectedPictureBoxIndex].BackColor);
         }
 
         private void displayColor(Color color)
