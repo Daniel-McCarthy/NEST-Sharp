@@ -724,7 +724,9 @@ namespace NEST.Classes
 
             int spriteCount = oamRam.Length / 4;
 
-            for (int spriteIndex = 0; spriteIndex < spriteCount; spriteIndex++)
+            int spritesDrawn = 0;
+
+            for (int spriteIndex = 0; (spriteIndex < spriteCount) && (spritesDrawn < 8); spriteIndex++)
             {
                 byte spriteYPos = oamRam[spriteIndex * 4];
                 byte tileID     = oamRam[(spriteIndex * 4) + 1];
@@ -766,6 +768,8 @@ namespace NEST.Classes
                     if(!isXFlipped)
                         Array.Reverse(tileColorIndices);
 
+                    bool spriteHit = false;
+
                     //Draw current tile data to line
                     for (int i = 0; i < 8; i++)
                     {
@@ -784,15 +788,23 @@ namespace NEST.Classes
                             if ((spriteXPos + i) < line.Length && !isBelowBackground)
                                 line[spriteXPos + i] = pixelColor;
 
-                            if(spriteIndex == 0)
-                            {
-                                bool bgEnabled = getMaskBackgroundEnabled();
-                                bool cycleIs256 = Core.TOTAL_PPU_CLOCKS == 256;
+                            spriteHit = true;
 
-                                if(bgEnabled && !cycleIs256)
-                                {
-                                    spriteZeroHit = true;
-                                }
+                        }
+                    }
+
+                    if(spriteHit)
+                    {
+                        ++spritesDrawn;
+
+                        if (spriteIndex == 0)
+                        {
+                            bool bgEnabled = getMaskBackgroundEnabled();
+                            bool cycleIs256 = Core.TOTAL_PPU_CLOCKS == 256;
+
+                            if (bgEnabled && !cycleIs256)
+                            {
+                                spriteZeroHit = true;
                             }
                         }
                     }
