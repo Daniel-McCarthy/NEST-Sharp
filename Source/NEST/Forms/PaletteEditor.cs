@@ -84,14 +84,44 @@ namespace NEST.Forms
 
         private void rValueSlider_ValueChanged(object sender, EventArgs e)
         {
+            if (selectedPictureBoxIndex != -1)
+            {
+                Color color = pictureBoxes[selectedPictureBoxIndex].BackColor;
+                byte newRValue = (byte)(((TrackBar)sender).Value);
+
+                color = Color.FromArgb(newRValue, color.G, color.B);
+
+                pictureBoxes[selectedPictureBoxIndex].BackColor = color;
+                displayColor(color);
+            }
         }
 
         private void gValueSlider_ValueChanged(object sender, EventArgs e)
         {
+            if (selectedPictureBoxIndex != -1)
+            {
+                Color color = pictureBoxes[selectedPictureBoxIndex].BackColor;
+                byte newGValue = (byte)(((TrackBar)sender).Value);
+
+                color = Color.FromArgb(color.R, newGValue, color.B);
+
+                pictureBoxes[selectedPictureBoxIndex].BackColor = color;
+                displayColor(color);
+            }
         }
 
         private void bValueSlider_ValueChanged(object sender, EventArgs e)
         {
+            if (selectedPictureBoxIndex != -1)
+            {
+                Color color = pictureBoxes[selectedPictureBoxIndex].BackColor;
+                byte newBValue = (byte)(((TrackBar)sender).Value);
+
+                color = Color.FromArgb(color.R, color.G, newBValue);
+
+                pictureBoxes[selectedPictureBoxIndex].BackColor = color;
+                displayColor(color);
+            }
         }
 
         public SFML.Graphics.Color[] returnPalette()
