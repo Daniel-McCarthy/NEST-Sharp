@@ -36,6 +36,18 @@ namespace NEST.Forms
         {
         }
 
+        private void displayColor(Color color)
+        {
+            rValueSlider.Value = color.R;
+            gValueSlider.Value = color.G;
+            bValueSlider.Value = color.B;
+
+            rValueTextbox.Text = color.R.ToString("X2");
+            gValueTextbox.Text = color.G.ToString("X2");
+            bValueTextbox.Text = color.B.ToString("X2");
+
+            colorPreviewPictureBox.BackColor = color;
+        }
 
         private void rValueSlider_ValueChanged(object sender, EventArgs e)
         {
