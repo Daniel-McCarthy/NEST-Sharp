@@ -98,6 +98,8 @@
             this.setPaletteButton = new System.Windows.Forms.Button();
             this.editPaletteButton = new System.Windows.Forms.Button();
             this.newPaletteButton = new System.Windows.Forms.Button();
+            this.savePalButton = new System.Windows.Forms.Button();
+            this.loadPalButton = new System.Windows.Forms.Button();
             this.colorsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.color63PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.color0PictureBox)).BeginInit();
@@ -802,11 +804,21 @@
             this.newPaletteButton.UseVisualStyleBackColor = true;
             this.newPaletteButton.Click += new System.EventHandler(this.newPaletteButton_Click);
             // 
+            // savePalButton
+            // 
+            this.savePalButton.Location = new System.Drawing.Point(331, 371);
+            this.savePalButton.Name = "savePalButton";
+            this.savePalButton.Size = new System.Drawing.Size(75, 29);
+            this.savePalButton.TabIndex = 5;
+            this.savePalButton.Text = "Save *.pal";
+            this.savePalButton.UseVisualStyleBackColor = true;
+            this.savePalButton.Click += new System.EventHandler(this.savePalButton_Click);
             // PaletteView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.savePalButton);
             this.Controls.Add(this.newPaletteButton);
             this.Controls.Add(this.editPaletteButton);
             this.Controls.Add(this.setPaletteButton);
@@ -960,5 +972,6 @@
         private System.Windows.Forms.Button setPaletteButton;
         private System.Windows.Forms.Button editPaletteButton;
         private System.Windows.Forms.Button newPaletteButton;
+        private System.Windows.Forms.Button savePalButton;
     }
 }

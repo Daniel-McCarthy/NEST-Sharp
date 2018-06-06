@@ -114,5 +114,45 @@ namespace NEST.Forms
                 palettes[selectedPaletteNumber] = editor.returnPalette();
             }
         }
+
+        private void savePalButton_Click(object sender, EventArgs e)
+        {
+            int paletteNumber = palettesListBox.SelectedIndex;
+
+            if (paletteNumber != -1)
+            {
+
+                using (SaveFileDialog saveDialogue = new SaveFileDialog())
+                {
+                    saveDialogue.Filter = "Palette files (*.pal)|*.pal|All files (*.*)|*.*";
+
+                    if (saveDialogue.ShowDialog() == DialogResult.OK)
+                    {
+                        byte[] paletteData = new byte[64 * 3];
+
+                        for (int i = 0; i < 64; i++)
+                        {
+                            SFML.Graphics.Color color = palettes[paletteNumber][i];
+                            paletteData[(i * 3)] = color.R;
+                            paletteData[(i * 3) + 1] = color.G;
+                            paletteData[(i * 3) + 2] = color.B;
+                        }
+
+                        System.IO.File.WriteAllBytes(saveDialogue.FileName, paletteData);
+
+                        MessageBox.Show("Successfully Saved.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to save to selected path.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No palette selected.");
+            }
+        }
+
     }
 }
