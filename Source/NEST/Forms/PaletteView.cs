@@ -49,6 +49,7 @@ namespace NEST.Forms
 
                 setPaletteButton.Enabled = true;
                 editPaletteButton.Enabled = true;
+                savePalButton.Enabled = true;
             }
             else
             {
@@ -59,6 +60,7 @@ namespace NEST.Forms
 
                 setPaletteButton.Enabled = false;
                 editPaletteButton.Enabled = false;
+                savePalButton.Enabled = false;
             }
         }
 
