@@ -326,6 +326,7 @@ namespace NEST.Classes
                     {
 
                         if (screenUpdateWatch.ElapsedMilliseconds < 19)
+                        screenUpdateWatch.Stop();
                         {
                             System.Threading.Thread.Sleep((int)(19 - screenUpdateWatch.ElapsedMilliseconds));
                         }
