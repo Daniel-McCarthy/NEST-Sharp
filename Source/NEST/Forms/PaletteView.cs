@@ -48,6 +48,7 @@ namespace NEST.Forms
                 displayPalette(palettesListBox.SelectedIndex);
 
                 setPaletteButton.Enabled = true;
+                editPaletteButton.Enabled = true;
             }
             else
             {
@@ -57,6 +58,7 @@ namespace NEST.Forms
                 }
 
                 setPaletteButton.Enabled = false;
+                editPaletteButton.Enabled = false;
             }
         }
 
@@ -100,5 +102,17 @@ namespace NEST.Forms
             }
         }
 
+        private void editPaletteButton_Click(object sender, EventArgs e)
+        {
+            PaletteEditor editor = new PaletteEditor();
+
+            int selectedPaletteNumber = palettesListBox.SelectedIndex;
+            editor.loadPalette(palettes[selectedPaletteNumber]);
+
+            if (editor.ShowDialog() == DialogResult.OK)
+            {
+                palettes[selectedPaletteNumber] = editor.returnPalette();
+            }
+        }
     }
 }
