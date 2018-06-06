@@ -571,7 +571,8 @@ namespace NEST.Classes
             }
 
             bool horizontalNameTableSelection = (overrideHorizTable) ? (!isRightNametable) : (actualX < 256);
-            Color[] firstTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, !isLowerNametable, tileXPos % 32, tileYPos);
+            bool verticalNameTableSelection = (overrideVertTable) ? (!isLowerNametable) : (actualYScroll < 256);
+            Color[] firstTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, verticalNameTableSelection, tileXPos % 32, tileYPos % 32);
 
             for (int x = (int)(actualXScroll % 8); x < 8; x++)
             {
@@ -588,7 +589,7 @@ namespace NEST.Classes
 
                     horizontalNameTableSelection = (overrideHorizTable) ? (!isRightNametable) : (actualX < 256);
 
-                    Color[] nextTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, !isLowerNametable, tileXPos % 32, tileYPos);
+                    Color[] nextTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, verticalNameTableSelection, tileXPos % 32, tileYPos % 32);
 
                     for (int i = 0; i < 8; i++)
                     {
@@ -609,7 +610,7 @@ namespace NEST.Classes
                 tileXPos = (int)(actualX / 8);
 
                 horizontalNameTableSelection = (overrideHorizTable) ? (!isRightNametable) : (actualX < 256);
-                Color[] lastTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, !isLowerNametable, tileXPos % 32, tileYPos);
+                Color[] lastTile = drawBGTileLineFromNameTable(actualReadLine % 8, horizontalNameTableSelection, verticalNameTableSelection, tileXPos % 32, tileYPos % 32);
                 //Color[] lastTile = drawBGTileLineFromNameTable(actualReadLine % 8, actualX < 256, !isLowerNametable, tileXPos % 32, tileYPos);
                 uint lastTilePixelsToDraw = 256 - totalPixelsDrawn;
 
