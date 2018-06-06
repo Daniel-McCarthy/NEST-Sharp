@@ -813,11 +813,23 @@
             this.savePalButton.Text = "Save *.pal";
             this.savePalButton.UseVisualStyleBackColor = true;
             this.savePalButton.Click += new System.EventHandler(this.savePalButton_Click);
+            // 
+            // loadPalButton
+            // 
+            this.loadPalButton.Location = new System.Drawing.Point(331, 400);
+            this.loadPalButton.Name = "loadPalButton";
+            this.loadPalButton.Size = new System.Drawing.Size(75, 29);
+            this.loadPalButton.TabIndex = 6;
+            this.loadPalButton.Text = "Load *.pal";
+            this.loadPalButton.UseVisualStyleBackColor = true;
+            this.loadPalButton.Click += new System.EventHandler(this.loadPalButton_Click);
+            // 
             // PaletteView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.loadPalButton);
             this.Controls.Add(this.savePalButton);
             this.Controls.Add(this.newPaletteButton);
             this.Controls.Add(this.editPaletteButton);
@@ -973,5 +985,6 @@
         private System.Windows.Forms.Button editPaletteButton;
         private System.Windows.Forms.Button newPaletteButton;
         private System.Windows.Forms.Button savePalButton;
+        private System.Windows.Forms.Button loadPalButton;
     }
 }

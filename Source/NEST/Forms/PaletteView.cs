@@ -154,5 +154,41 @@ namespace NEST.Forms
             }
         }
 
+        private void loadPalButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openDialogue = new OpenFileDialog())
+            {
+                openDialogue.Filter = "Palette files (*.pal)|*.pal|All files (*.*)|*.*";
+
+                if (openDialogue.ShowDialog() == DialogResult.OK)
+                {
+                    byte[] paletteData = System.IO.File.ReadAllBytes(openDialogue.FileName);
+
+                    if(paletteData.Length >= (64 * 3))
+                    {
+                        SFML.Graphics.Color[] palette = new Color[64];
+
+                        for(int i = 0; i < 64; i++)
+                        {
+                            SFML.Graphics.Color newColor = new SFML.Graphics.Color(paletteData[(i * 3)], paletteData[(i * 3) + 1], paletteData[(i * 3) + 2]);
+                            palette[i] = newColor;
+                        }
+
+                        //Accept input for palette name
+                        InputBox nameBox = new InputBox();
+                        nameBox.Text = "Enter Palette Name:";
+
+                        string paletteName = "New Palette";
+
+                        if (nameBox.ShowDialog() == DialogResult.OK)
+                        {
+                            paletteName = nameBox.inputTextBox.Text;
+                        }
+
+                        addPalette(paletteName, palette);
+                    }
+                }
+            }
+        }
     }
 }
