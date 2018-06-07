@@ -206,8 +206,10 @@ namespace NEST.Classes.Mappers
             //The order of the swappable and fixed banks can be switched.
 
 
-            int bankSize = 0x2000;
+            uint bankSize = 0x2000;
+            uint romSize = (uint)((Core.rom.getProgramRomSize() * 2) * 0x2000);
             uint bankAddress = (uint)(bankSize * (bankNumber));
+            bankAddress %= romSize;
             uint prgRomDataAddress = (uint)((romFile.getTrainerIncluded()) ? 0x0200 : 0x0000); //Skip trainer if it exists
 
             for (int i = 0; i < bankSize; i++)
