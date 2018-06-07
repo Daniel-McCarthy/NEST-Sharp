@@ -19,10 +19,14 @@ namespace NEST.Forms
         {
             InitializeComponent();
 
+            // Builds an array out of all the picture boxes so that they can be referenced by number.
             pictureBoxes = new List<PictureBox> { color0PictureBox, color1PictureBox, color2PictureBox, color3PictureBox, color4PictureBox, color5PictureBox, color6PictureBox, color7PictureBox, color8PictureBox, color9PictureBox, color10PictureBox, color11PictureBox, color12PictureBox, color13PictureBox, color14PictureBox, color15PictureBox, color16PictureBox, color17PictureBox, color18PictureBox, color19PictureBox, color20PictureBox, color21PictureBox, color22PictureBox, color23PictureBox, color24PictureBox, color25PictureBox, color26PictureBox, color27PictureBox, color28PictureBox, color29PictureBox, color30PictureBox, color31PictureBox, color32PictureBox, color33PictureBox, color34PictureBox, color35PictureBox, color36PictureBox, color37PictureBox, color38PictureBox, color39PictureBox, color40PictureBox, color41PictureBox, color42PictureBox, color43PictureBox, color44PictureBox, color45PictureBox, color46PictureBox, color47PictureBox, color48PictureBox, color49PictureBox, color50PictureBox, color51PictureBox, color52PictureBox, color53PictureBox, color54PictureBox, color55PictureBox, color56PictureBox, color57PictureBox, color58PictureBox, color59PictureBox, color60PictureBox, color61PictureBox, color62PictureBox, color63PictureBox };
 
         }
 
+        /*
+         * Draws an array of SFML colors onto the picture boxes for displaying the palette
+         */
         public void loadPalette(SFML.Graphics.Color[] palette)
         {
             for (int i = 0; i < pictureBoxes.Count; i++)
@@ -32,6 +36,9 @@ namespace NEST.Forms
             }
         }
 
+        /*
+         * Selects a picture box and opens color dialoge on picture box color if right clicked.
+         */
         private void colorPictureBox_MouseClick(object sender, MouseEventArgs e)
         {
             
@@ -70,6 +77,9 @@ namespace NEST.Forms
             }
         }
 
+        /*
+         * Draws a specified color to the preview picture box and adjusts the sliders and textboxes to represent the color.
+         */
         private void displayColor(Color color)
         {
             rValueSlider.Value = color.R;
@@ -83,6 +93,9 @@ namespace NEST.Forms
             colorPreviewPictureBox.BackColor = color;
         }
 
+        /*
+         * Adjusts the preview and palette color of the selected picture box to new Red value from slider.
+         */
         private void rValueSlider_ValueChanged(object sender, EventArgs e)
         {
             if (selectedPictureBoxIndex != -1)
@@ -97,6 +110,9 @@ namespace NEST.Forms
             }
         }
 
+        /*
+         * Adjusts the preview and palette color of the selected picture box to new Green value from slider.
+         */
         private void gValueSlider_ValueChanged(object sender, EventArgs e)
         {
             if (selectedPictureBoxIndex != -1)
@@ -111,6 +127,9 @@ namespace NEST.Forms
             }
         }
 
+        /*
+         * Adjusts the preview and palette color of the selected picture box to new Blue value from slider.
+         */
         private void bValueSlider_ValueChanged(object sender, EventArgs e)
         {
             if (selectedPictureBoxIndex != -1)
@@ -125,6 +144,9 @@ namespace NEST.Forms
             }
         }
 
+        /*
+         * Returns an array of SFML colors from all of the palette picture boxes.
+         */
         public SFML.Graphics.Color[] returnPalette()
         {
             int length = pictureBoxes.Count;
