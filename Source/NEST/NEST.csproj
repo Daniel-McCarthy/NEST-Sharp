@@ -111,6 +111,12 @@
     <Compile Include="Forms\MemoryView.Designer.cs">
       <DependentUpon>MemoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PaletteEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaletteEditor.Designer.cs">
+      <DependentUpon>PaletteEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PaletteView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MemoryView.resx">
       <DependentUpon>MemoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaletteEditor.resx">
+      <DependentUpon>PaletteEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PaletteView.resx">
       <DependentUpon>PaletteView.cs</DependentUpon>
