@@ -173,6 +173,7 @@ namespace NEST.Classes
                 //Set byte of PPU Write Address
                 if(!Core.ppu.ppuAddressWrittenOnce)
                 {
+                    value &= 0x3F; //0x3F so that the address can not exceed PPU Ram size
                     Core.ppu.tempPPUWriteAddress &= 0x00FF;
                     Core.ppu.tempPPUWriteAddress |= (ushort)(value << 8);
                     Core.ppu.ppuAddressWrittenOnce = true;
