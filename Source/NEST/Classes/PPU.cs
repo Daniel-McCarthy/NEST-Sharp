@@ -748,8 +748,22 @@ namespace NEST.Classes
                     int yLineOffset = lineNumber - spriteYPos;
                     yLineOffset = (isYFlipped) ? ((spriteHeight - 1) - yLineOffset) : yLineOffset;
 
-                    ushort spritePatternTableAddress = (ushort)(getPPURegisterSpritePatternTableSetting() ? 0x1000 : 0x0000);
-                    ushort patternAddressTemp = (ushort)((tileID * 16) + (yLineOffset * 2) + spritePatternTableAddress);
+                    ushort spritePatternTableAddress = 0;
+
+                    //Determine pattern table address for this sprite
+                    if (spriteHeight == 8)
+                    {
+                        //If the sprite is 8x8, then the sprite pattern table address is decided by bit 3 in the PPUCTRL register.
+                        spritePatternTableAddress = (ushort)(getPPURegisterSpritePatternTableSetting() ? 0x1000 : 0x0000);
+                    }
+                    else
+                    {
+                        //If the sprite is 8x16, then the sprite pattern table address is decided by bit 0 in the tileID.
+                        //Additionally, we mask off bit 0 so it is not factored into the sprite tile id.
+                        spritePatternTableAddress = (ushort)(((tileID & 0x1) != 0) ? 0x1000 : 0x0000);
+                        tileID &= 0b11111110;
+                    }
+
                     byte tileDataRow1 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset))];
                     byte tileDataRow2 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset)) + 8];
 
