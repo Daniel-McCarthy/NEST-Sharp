@@ -131,7 +131,14 @@ namespace NEST.Classes
             }
             else if (address == PPU_DATA_REGISTER)
             {
-                byte value = Core.ppu.readPPURamByte(Core.ppu.ppuWriteAddress);
+                ushort ppuAddress = Core.ppu.ppuWriteAddress;
+
+                if(ppuAddress > 0x3FFF)
+                {
+                    ppuAddress %= 0x3FFF;
+                }
+
+                byte value = Core.ppu.readPPURamByte(ppuAddress);
                 Core.ppu.ppuWriteAddress += (ushort)(Core.ppu.getPPURegisterVRAMIncrement());
                 return value;
             }
