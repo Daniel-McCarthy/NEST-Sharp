@@ -764,8 +764,9 @@ namespace NEST.Classes
                         tileID &= 0b11111110;
                     }
 
-                    byte tileDataRow1 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset))];
-                    byte tileDataRow2 = ppuRam[spritePatternTableAddress + ((tileID * 16) + (yLineOffset)) + 8];
+                    int spriteHalfOffset = (yLineOffset > 7) ? 8 : 0; //If the sprite is 8x16 and is drawing the lower half, offset 8 bytes over
+                    byte tileDataRow1 = ppuRam[spritePatternTableAddress + ((tileID * 16) + spriteHalfOffset + (yLineOffset))];
+                    byte tileDataRow2 = ppuRam[spritePatternTableAddress + ((tileID * 16) + spriteHalfOffset + (yLineOffset)) + 8];
 
                     byte[] tileColorIndices = new byte[8];
 
