@@ -233,7 +233,7 @@ namespace NEST.Classes
 
         public void oamDMATransfer(ushort address)
         {
-            for (int i = 0; i < 0xFF; i++)
+            for (int i = 0; i <= 0xFF; i++)
             {
                 oamRam[i] = Core.cpu.readCPURam((ushort)(address + i), false);
             }
