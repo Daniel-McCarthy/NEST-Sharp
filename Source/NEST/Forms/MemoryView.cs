@@ -34,7 +34,6 @@ namespace NEST
             memoryViewComboBox.SelectedIndex = 0;
         }
 
-        
         private void loadMemory()
         {
             richTextBox1.Text = "";
@@ -49,8 +48,6 @@ namespace NEST
                     {
                         richTextBox1.Text += " ";
                     }
-
-                    //richTextBox1.Text += NativeMethods.readMemoryByte((short)(baseAddress + (y * 16) + x)).ToString("X2");
 
                     byte value = 0;
 
@@ -94,7 +91,6 @@ namespace NEST
             }
         }
         
-
         private void refreshButton_Click(object sender, EventArgs e)
         {
             loadMemory();
