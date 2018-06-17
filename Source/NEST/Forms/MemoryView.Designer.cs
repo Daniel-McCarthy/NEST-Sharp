@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemoryView));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.hexTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.thousandthNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -45,16 +45,16 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // hexTextBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.richTextBox1.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 33);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(527, 298);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "0000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";
+            this.hexTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.hexTextBox.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hexTextBox.ForeColor = System.Drawing.Color.White;
+            this.hexTextBox.Location = new System.Drawing.Point(12, 33);
+            this.hexTextBox.Name = "hexTextBox";
+            this.hexTextBox.Size = new System.Drawing.Size(527, 298);
+            this.hexTextBox.TabIndex = 0;
+            this.hexTextBox.Text = "0000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";
             // 
             // label1
             // 
@@ -185,7 +185,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.hexTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MemoryView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -203,7 +203,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox hexTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.NumericUpDown thousandthNumericUpDown;
