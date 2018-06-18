@@ -32,14 +32,14 @@ namespace NEST
 
         }
 
-        
+
         /*
          *  Load Rom File 
         */
-        
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             Core.paused = true;
             string filePath = (openFileDialog1.ShowDialog() == DialogResult.OK) ? openFileDialog1.FileName : "Error: No such file found.";
 
@@ -161,4 +161,37 @@ namespace NEST
         }
     }
 
+}
+
+        bool loadSaveFile(string filepath)
+        {
+            byte[] saveFile = File.ReadAllBytes(filepath);
+
+            if (saveFile != null)
+            {
+                int fileLength = saveFile.Length;
+
+                if (fileLength >= 0x2000)
+                {
+                    ushort address = 0x6000;
+                    for (ushort i = 0x0; i <= 0x1FFF; i++)
+                    {
+                        Core.cpu.directCPURamWrite((ushort)(address + i), saveFile[i]);
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: Save file does not exist.");
+                return false;
+            }
+
+            return true;
+        }
+
+    }
 }
