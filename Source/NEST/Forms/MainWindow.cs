@@ -169,6 +169,29 @@ namespace NEST
 
 }
 
+        public bool createSaveFile(string fileName, bool overwrite)
+        {
+
+            int mapperSetting = Core.rom.getMapperSetting();
+            bool romUsesRam = mapperSetting == Mapper.NROM_ID || mapperSetting == Mapper.MMC1_ID || mapperSetting == Mapper.MMC3_ID || mapperSetting == Mapper.MMC5_ID;
+
+            if (romUsesRam)
+            {
+                byte[] saveData = returnSaveDataFromMemory();
+
+                string savePath = Core.rom.romFilePath.Substring(0, Core.rom.romFilePath.LastIndexOf('.')) + ".sav";
+                bool fileExists = File.Exists(savePath);
+
+                if (!fileExists || overwrite)
+                {
+                    File.WriteAllBytes(savePath, saveData);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public byte[] returnSaveDataFromMemory()
         {
             byte[] memory = new byte[0x2000];
