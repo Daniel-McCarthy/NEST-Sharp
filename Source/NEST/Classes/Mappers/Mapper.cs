@@ -8,6 +8,12 @@ namespace NEST.Classes.Mappers
 {
     class Mapper
     {
+        public const int NROM_ID   = 0x00;
+        public const int MMC1_ID   = 0x01;
+        public const int UxROM_ID  = 0x02;
+        public const int CNROM_ID  = 0x03;
+        public const int MMC3_ID   = 0x04;
+        public const int MMC5_ID   = 0x05;
 
         public static bool isMapperWriteAddress(ushort address)
         {
