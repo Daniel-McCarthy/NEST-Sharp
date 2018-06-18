@@ -169,6 +169,19 @@ namespace NEST
 
 }
 
+        public byte[] returnSaveDataFromMemory()
+        {
+            byte[] memory = new byte[0x2000];
+
+            ushort address = 0x6000;
+            for (int i = 0; i <= 0x1FFF; i++)
+            {
+                memory[i] = Core.cpu.readCPURam((ushort)(address + i), true);
+            }
+
+            return memory;
+        }
+
         bool loadSaveFile(string filepath)
         {
             byte[] saveFile = File.ReadAllBytes(filepath);
