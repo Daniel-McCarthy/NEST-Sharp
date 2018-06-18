@@ -18,6 +18,7 @@ namespace NEST
 
         private AssemblyView assemblyView;
         private MemoryView memoryView;
+        private PaletteView paletteView;
 
         public Classes.Canvas drawCanvas = new Classes.Canvas();
         public SFML.Graphics.Sprite frame;
