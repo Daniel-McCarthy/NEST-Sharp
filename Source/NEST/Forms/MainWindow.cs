@@ -88,6 +88,11 @@ namespace NEST
                 resumeToolStripMenuItem.Enabled = true;
                 pauseToolStripMenuItem.Enabled = true;
 
+                string saveFilePath = filePath.Substring(0, filePath.LastIndexOf('.')) + ".sav";
+                if (File.Exists(saveFilePath))
+                {
+                    loadSaveFile(saveFilePath);
+                }
             }
             else
             {
