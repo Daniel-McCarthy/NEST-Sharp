@@ -237,5 +237,12 @@ namespace NEST
             return true;
         }
 
+        private void savesavFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Core.rom.romFilePath != "")
+            {
+                createSaveFile(Core.rom.romFilePath, true);
+            }
+        }
     }
 }
