@@ -47,6 +47,7 @@ namespace NEST
             if(File.Exists(filePath))
             {
                 Core.rom = new Rom(File.ReadAllBytes(filePath));
+                Core.rom.romFilePath = filePath;
 
                 int mapperSetting = Core.rom.getMapperSetting();
 
