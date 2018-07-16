@@ -60,7 +60,7 @@ namespace NEST
                     }
                     else if (memorySourceSetting == PPU_SETTING)
                     {
-                        if ((baseAddress + (y * 16) + x) < 0x4001)
+                        if ((baseAddress + (y * 16) + x) < 0x4000)
                         {
                             value = Core.ppu.readPPURamByte((ushort)(baseAddress + (y * 16) + x));
                         }
