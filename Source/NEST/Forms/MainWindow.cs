@@ -244,5 +244,19 @@ namespace NEST
                 createSaveFile(Core.rom.romFilePath, true);
             }
         }
+
+		private void paletteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (paletteView == null || paletteView.IsDisposed)
+            {
+				paletteView = new PaletteView();
+				paletteView.Show();
+            }
+            else
+            {
+				paletteView.Show();
+				paletteView.BringToFront();
+            }
+		}
     }
 }
