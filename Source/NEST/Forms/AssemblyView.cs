@@ -93,32 +93,9 @@ namespace NEST
             stackValue.Text = data.ToString("X2");
             
         }
-
-        /*
-        void updateInterruptDisplay()
-        {
-            imeValueLabel.Text = (Core.beakCPU.interruptsEnabled) ? 1.ToString("X2") : 0.ToString("X2");
-            ieValueLabel.Text = Core.beakMemory.readMemory(0xFFFF).ToString("X2");
-            ifValueLabel.Text = Core.beakMemory.readMemory(0xFF0F).ToString("X2");
-        }*/
-
-            /*
-        void updateLCDValuesDisplay()
-        {
-            
-            lcdcValueLabel.Text = Core.beakGPU.getLCDControl().ToString("X2");
-            lcdStatValueLabel.Text = Core.beakGPU.getLCDStatus().ToString("X2");
-            lcdLYValueLabel.Text = Core.beakGPU.getLCDLY().ToString("X2");
-            lcdModeValueLabel.Text = Core.beakGPU.getLCDMode().ToString("X2");
-            scrollXValueLabel.Text = Core.beakGPU.getScrollX().ToString("X2");
-            scrollYValueLabel.Text = Core.beakGPU.getScrollY().ToString("X2");
-        }*/
-
+        
         private void stepButton_Click(object sender, EventArgs e)
         {
-            
-            //Call function in DLL to step emulator
-            //NativeMethods.setStep();
             Core.step = true;
 
             System.Threading.Thread.Sleep(10);
@@ -128,8 +105,6 @@ namespace NEST
             updateFlagDisplay();
             updateAssemblyDisplay();
             updateStackDisplay();
-            //updateInterruptDisplay();
-            //updateLCDValuesDisplay();
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -141,8 +116,6 @@ namespace NEST
             updateFlagDisplay();
             updateAssemblyDisplay();
             updateStackDisplay();
-            //updateInterruptDisplay();
-            //updateLCDValuesDisplay();
         }
 
         private void AssemblyView_Load(object sender, EventArgs e)
@@ -153,8 +126,6 @@ namespace NEST
             updateFlagDisplay();
             updateAssemblyDisplay();
             updateStackDisplay();
-            //updateInterruptDisplay();
-            //updateLCDValuesDisplay();
 
             listBox1.SelectedIndex = 0;
         }
@@ -171,8 +142,6 @@ namespace NEST
             updateFlagDisplay();
             updateAssemblyDisplay();
             updateStackDisplay();
-            //updateInterruptDisplay();
-            //updateLCDValuesDisplay();
         }
 
         private void runButton_Click(object sender, EventArgs e)
@@ -188,8 +157,6 @@ namespace NEST
             updateFlagDisplay();
             updateAssemblyDisplay();
             updateStackDisplay();
-            //updateInterruptDisplay();
-            //updateLCDValuesDisplay();
         }
 
         
@@ -199,7 +166,6 @@ namespace NEST
             byte opcode = Core.cpu.readCPURam((ushort)address, true);
             string opcodeString = "";
             int bytesRead = 0;
-
 
             switch (opcode & 0xF0)
             {
