@@ -8,8 +8,7 @@ using System.Windows.Forms;
 
 namespace NEST.Classes
 {
-
-    class Rom
+    public class Rom
     {
         private byte[] romData;
         public bool loadSuccessful = false;
