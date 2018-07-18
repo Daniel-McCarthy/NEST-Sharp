@@ -32,8 +32,7 @@ namespace NEST
             drawCanvas.Location = new Point(0, 27);
 
         }
-
-
+        
         /*
          *  Load Rom File 
         */
@@ -102,6 +101,7 @@ namespace NEST
                 //Core.beakMemory.romFilePath = "";
             }
         }
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -167,9 +167,6 @@ namespace NEST
         {
             Core.paused = true;
         }
-    }
-
-}
 
         public bool createSaveFile(string fileName, bool overwrite)
         {
