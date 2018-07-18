@@ -124,7 +124,7 @@ namespace NEST.Classes
             }
         }
 
-        public byte readByte(ushort address)
+        public byte readByte(uint address)
         {
             return romData[address];
         }
