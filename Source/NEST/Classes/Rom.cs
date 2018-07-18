@@ -25,6 +25,8 @@ namespace NEST.Classes
         private bool ignoreMirroring = false; // True infers use of 4 screen vram.
         private bool usesProgramRam = false; // INES 2.0 feature.
 
+        public string romFilePath = "";
+
 
         public Rom(byte[] fileData)
         {
@@ -109,6 +111,7 @@ namespace NEST.Classes
                 if (newRomData != null && newRomData.Length > 0)
                 {
                     romData = newRomData;
+                    romFilePath = path;
                     return true;
                 }
                 else
