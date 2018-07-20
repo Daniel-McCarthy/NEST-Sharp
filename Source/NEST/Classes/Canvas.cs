@@ -120,7 +120,6 @@ namespace NEST.Classes
         {
             if (e.KeyCode == Keys.Up)
             {
-                //this.BackColor = System.Drawing.Color.Aqua;
                 Core.input.setJoy1KeyInput(0, true);
             }
 
@@ -174,7 +173,6 @@ namespace NEST.Classes
 
             if (e.KeyCode == Keys.Up)
             {
-                //this.BackColor = System.Drawing.Color.Aqua;
                 Core.input.setJoy1KeyInput(0, false);
             }
 
