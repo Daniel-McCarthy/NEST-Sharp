@@ -94,7 +94,7 @@ namespace NEST
             }
             else
             {
-                MessageBox.Show(filePath);
+                MessageBox.Show("File not found at path: " + filePath);
             }
         }
 
