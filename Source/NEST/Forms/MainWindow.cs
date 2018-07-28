@@ -76,9 +76,6 @@ namespace NEST
                 resetAddress |= (ushort)(Core.cpu.readCPURam(0xFFFD, true) << 8);
                 Core.cpu.programCounter = resetAddress;
 
-                //Core.beakMemory.initializeGameBoyValues();
-                //Core.beakMemory.readRomHeader();
-
                 if (emulatorThread == null)
                 {
                     emulatorThread = new Thread(global::NEST.Classes.NEST_Main.startEmulator);
@@ -98,7 +95,6 @@ namespace NEST
             else
             {
                 MessageBox.Show(filePath);
-                //Core.beakMemory.romFilePath = "";
             }
         }
 
