@@ -314,7 +314,6 @@ namespace NEST.Classes
                     //Draw frame to screen
                     SFML.Graphics.Texture frameTexture = new SFML.Graphics.Texture(Core.ppu.frame);
                     SFML.Graphics.Sprite frameSprite = new SFML.Graphics.Sprite(frameTexture);
-                    //frameSprite.Scale = new SFML.System.Vector2f(1, 1);
                     Core.mainWindow.drawCanvas.drawFrame(frameSprite);
 
                     screenUpdateWatch.Stop();
