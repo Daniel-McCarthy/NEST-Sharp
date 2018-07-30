@@ -13,7 +13,7 @@ namespace NEST.Classes
         private byte xAddress = 0;                                                  //X Index Value
         private byte yAddress = 0;                                                  //Y Index Value
         public ushort programCounter = 0x8000;                                      //Tracks position in the program
-        private byte stackPointer = 0xFD;                                              //Tracks position in the stack
+        private byte stackPointer = 0xFD;                                           //Tracks position in the stack
         private byte statusRegister = 0 | Empty_Flag | Interrupt_Disable_Flag;      //Tracks what flags are set in the CPU
 
         private const byte Carry_Flag               = 0x1;          //C
@@ -2794,10 +2794,6 @@ namespace NEST.Classes
         {
             return (statusRegister & flag) == flag;
         }
-
-
-
-
 
         public void fetchAndExecute()
         {
