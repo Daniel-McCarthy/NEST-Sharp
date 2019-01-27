@@ -2798,265 +2798,597 @@ namespace NEST.Classes
         public void fetchAndExecute()
         {
             byte opcode = readImmediateByte();
-
-            if (opcode == 0x00) { opcode00(); }
-            if (opcode == 0x01) { opcode01(); }
-            //if (opcode == 0x02) { opcode02(); }
-            //if (opcode == 0x03) { opcode03(); }
-            if (opcode == 0x04) { opcode04(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x05) { opcode05(); }
-            if (opcode == 0x06) { opcode06(); }
-            //if (opcode == 0x07) { opcode07(); }
-            if (opcode == 0x08) { opcode08(); }
-            if (opcode == 0x09) { opcode09(); }
-            if (opcode == 0x0A) { opcode0A(); }
-            //if (opcode == 0x0B) { opcode0B(); }
-            if (opcode == 0x0C) { opcode0C(); } // Unofficial Opcode: 3 byte NOP.
-            if (opcode == 0x0D) { opcode0D(); }
-            if (opcode == 0x0E) { opcode0E(); }
-            //if (opcode == 0x0F) { opcode0F(); }
-            if (opcode == 0x10) { opcode10(); }
-            if (opcode == 0x11) { opcode11(); }
-            //if (opcode == 0x12) { opcode12(); }
-            //if (opcode == 0x13) { opcode13(); }
-            if (opcode == 0x14) { opcode14(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x15) { opcode15(); }
-            if (opcode == 0x16) { opcode16(); }
-            //if (opcode == 0x17) { opcode17(); }
-            if (opcode == 0x18) { opcode18(); }
-            if (opcode == 0x19) { opcode19(); }
-            //if (opcode == 0x1A) { opcode1A(); }
-            //if (opcode == 0x1B) { opcode1B(); }
-            //if (opcode == 0x1C) { opcode1C(); }
-            if (opcode == 0x1D) { opcode1D(); }
-            if (opcode == 0x1E) { opcode1E(); }
-            //if (opcode == 0x1F) { opcode1F(); }
-            if (opcode == 0x20) { opcode20(); }
-            if (opcode == 0x21) { opcode21(); }
-            //if (opcode == 0x22) { opcode22(); }
-            //if (opcode == 0x23) { opcode23(); }
-            if (opcode == 0x24) { opcode24(); }
-            if (opcode == 0x25) { opcode25(); }
-            if (opcode == 0x26) { opcode26(); }
-            //if (opcode == 0x27) { opcode27(); }
-            if (opcode == 0x28) { opcode28(); }
-            if (opcode == 0x29) { opcode29(); }
-            if (opcode == 0x2A) { opcode2A(); }
-            //if (opcode == 0x2B) { opcode2B(); }
-            if (opcode == 0x2C) { opcode2C(); }
-            if (opcode == 0x2D) { opcode2D(); }
-            if (opcode == 0x2E) { opcode2E(); }
-            //if (opcode == 0x2F) { opcode2F(); }
-            if (opcode == 0x30) { opcode30(); }
-            if (opcode == 0x31) { opcode31(); }
-            //if (opcode == 0x32) { opcode32(); }
-            //if (opcode == 0x33) { opcode33(); }
-            if (opcode == 0x34) { opcode34(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x35) { opcode35(); }
-            if (opcode == 0x36) { opcode36(); }
-            //if (opcode == 0x37) { opcode37(); }
-            if (opcode == 0x38) { opcode38(); }
-            if (opcode == 0x39) { opcode39(); }
-            //if (opcode == 0x3A) { opcode3A(); }
-            //if (opcode == 0x3B) { opcode3B(); }
-            //if (opcode == 0x3C) { opcode3C(); }
-            if (opcode == 0x3D) { opcode3D(); }
-            if (opcode == 0x3E) { opcode3E(); }
-            //if (opcode == 0x3F) { opcode3F(); }
-            if (opcode == 0x40) { opcode40(); }
-            if (opcode == 0x41) { opcode41(); }
-            //if (opcode == 0x42) { opcode42(); }
-            //if (opcode == 0x43) { opcode43(); }
-            if (opcode == 0x44) { opcode44(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x45) { opcode45(); }
-            if (opcode == 0x46) { opcode46(); }
-            //if (opcode == 0x47) { opcode47(); }
-            if (opcode == 0x48) { opcode48(); }
-            if (opcode == 0x49) { opcode49(); }
-            if (opcode == 0x4A) { opcode4A(); }
-            //if (opcode == 0x4B) { opcode4B(); }
-            if (opcode == 0x4C) { opcode4C(); }
-            if (opcode == 0x4D) { opcode4D(); }
-            if (opcode == 0x4E) { opcode4E(); }
-            //if (opcode == 0x4F) { opcode4F(); }
-            if (opcode == 0x50) { opcode50(); }
-            if (opcode == 0x51) { opcode51(); }
-            //if (opcode == 0x52) { opcode52(); }
-            //if (opcode == 0x53) { opcode53(); }
-            if (opcode == 0x54) { opcode54(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x55) { opcode55(); }
-            if (opcode == 0x56) { opcode56(); }
-            //if (opcode == 0x57) { opcode57(); }
-            if (opcode == 0x58) { opcode58(); }
-            if (opcode == 0x59) { opcode59(); }
-            //if (opcode == 0x5A) { opcode5A(); }
-            //if (opcode == 0x5B) { opcode5B(); }
-            //if (opcode == 0x5C) { opcode5C(); }
-            if (opcode == 0x5D) { opcode5D(); }
-            if (opcode == 0x5E) { opcode5E(); }
-            //if (opcode == 0x5F) { opcode5F(); }
-            if (opcode == 0x60) { opcode60(); }
-            if (opcode == 0x61) { opcode61(); }
-            //if (opcode == 0x62) { opcode62(); }
-            //if (opcode == 0x63) { opcode63(); }
-            if (opcode == 0x64) { opcode64(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x65) { opcode65(); }
-            if (opcode == 0x66) { opcode66(); }
-            //if (opcode == 0x67) { opcode67(); }
-            if (opcode == 0x68) { opcode68(); }
-            if (opcode == 0x69) { opcode69(); }
-            if (opcode == 0x6A) { opcode6A(); }
-            //if (opcode == 0x6B) { opcode6B(); }
-            if (opcode == 0x6C) { opcode6C(); }
-            if (opcode == 0x6D) { opcode6D(); }
-            if (opcode == 0x6E) { opcode6E(); }
-            //if (opcode == 0x6F) { opcode6F(); }
-            if (opcode == 0x70) { opcode70(); }
-            if (opcode == 0x71) { opcode71(); }
-            //if (opcode == 0x72) { opcode72(); }
-            //if (opcode == 0x73) { opcode73(); }
-            if (opcode == 0x74) { opcode74(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x75) { opcode75(); }
-            if (opcode == 0x76) { opcode76(); }
-            //if (opcode == 0x77) { opcode77(); }
-            if (opcode == 0x78) { opcode78(); }
-            if (opcode == 0x79) { opcode79(); }
-            //if (opcode == 0x7A) { opcode7A(); }
-            //if (opcode == 0x7B) { opcode7B(); }
-            //if (opcode == 0x7C) { opcode7C(); }
-            if (opcode == 0x7D) { opcode7D(); }
-            if (opcode == 0x7E) { opcode7E(); }
-            //if (opcode == 0x7F) { opcode7F(); }
-            if (opcode == 0x80) { opcode80(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x81) { opcode81(); }
-            if (opcode == 0x82) { opcode82(); } // Unofficial Opcode: 2 byte NOP.
-            //if (opcode == 0x83) { opcode83(); }
-            if (opcode == 0x84) { opcode84(); }
-            if (opcode == 0x85) { opcode85(); }
-            if (opcode == 0x86) { opcode86(); }
-            //if (opcode == 0x87) { opcode87(); }
-            if (opcode == 0x88) { opcode88(); }
-            if (opcode == 0x89) { opcode89(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0x8A) { opcode8A(); }
-            //if (opcode == 0x8B) { opcode8B(); }
-            if (opcode == 0x8C) { opcode8C(); }
-            if (opcode == 0x8D) { opcode8D(); }
-            if (opcode == 0x8E) { opcode8E(); }
-            //if (opcode == 0x8F) { opcode8F(); }
-            if (opcode == 0x90) { opcode90(); }
-            if (opcode == 0x91) { opcode91(); }
-            //if (opcode == 0x92) { opcode92(); }
-            //if (opcode == 0x93) { opcode93(); }
-            if (opcode == 0x94) { opcode94(); }
-            if (opcode == 0x95) { opcode95(); }
-            if (opcode == 0x96) { opcode96(); }
-            //if (opcode == 0x97) { opcode97(); }
-            if (opcode == 0x98) { opcode98(); }
-            if (opcode == 0x99) { opcode99(); }
-            if (opcode == 0x9A) { opcode9A(); }
-            //if (opcode == 0x9B) { opcode9B(); }
-            //if (opcode == 0x9C) { opcode9C(); }
-            if (opcode == 0x9D) { opcode9D(); }
-            //if (opcode == 0x9E) { opcode9E(); }
-            //if (opcode == 0x9F) { opcode9F(); }
-            if (opcode == 0xA0) { opcodeA0(); }
-            if (opcode == 0xA1) { opcodeA1(); }
-            if (opcode == 0xA2) { opcodeA2(); }
-            //if (opcode == 0xA3) { opcodeA3(); }
-            if (opcode == 0xA4) { opcodeA4(); }
-            if (opcode == 0xA5) { opcodeA5(); }
-            if (opcode == 0xA6) { opcodeA6(); }
-            //if (opcode == 0xA7) { opcodeA7(); }
-            if (opcode == 0xA8) { opcodeA8(); }
-            if (opcode == 0xA9) { opcodeA9(); }
-            if (opcode == 0xAA) { opcodeAA(); }
-            //if (opcode == 0xAB) { opcodeAB(); }
-            if (opcode == 0xAC) { opcodeAC(); }
-            if (opcode == 0xAD) { opcodeAD(); }
-            if (opcode == 0xAE) { opcodeAE(); }
-            //if (opcode == 0xAF) { opcodeAF(); }
-            if (opcode == 0xB0) { opcodeB0(); }
-            if (opcode == 0xB1) { opcodeB1(); }
-            //if (opcode == 0xB2) { opcodeB2(); }
-            //if (opcode == 0xB3) { opcodeB3(); }
-            if (opcode == 0xB4) { opcodeB4(); }
-            if (opcode == 0xB5) { opcodeB5(); }
-            if (opcode == 0xB6) { opcodeB6(); }
-            //if (opcode == 0xB7) { opcodeB7(); }
-            if (opcode == 0xB8) { opcodeB8(); }
-            if (opcode == 0xB9) { opcodeB9(); }
-            if (opcode == 0xBA) { opcodeBA(); }
-            //if (opcode == 0xBB) { opcodeBB(); }
-            if (opcode == 0xBC) { opcodeBC(); }
-            if (opcode == 0xBD) { opcodeBD(); }
-            if (opcode == 0xBE) { opcodeBE(); }
-            //if (opcode == 0xBF) { opcodeBF(); }
-            if (opcode == 0xC0) { opcodeC0(); }
-            if (opcode == 0xC1) { opcodeC1(); }
-            if (opcode == 0xC2) { opcodeC2(); } // Unofficial Opcode: 2 byte NOP.
-            //if (opcode == 0xC3) { opcodeC3(); }
-            if (opcode == 0xC4) { opcodeC4(); }
-            if (opcode == 0xC5) { opcodeC5(); }
-            if (opcode == 0xC6) { opcodeC6(); }
-            //if (opcode == 0xC7) { opcodeC7(); }
-            if (opcode == 0xC8) { opcodeC8(); }
-            if (opcode == 0xC9) { opcodeC9(); }
-            if (opcode == 0xCA) { opcodeCA(); }
-            //if (opcode == 0xCB) { opcodeCB(); }
-            if (opcode == 0xCC) { opcodeCC(); }
-            if (opcode == 0xCD) { opcodeCD(); }
-            if (opcode == 0xCE) { opcodeCE(); }
-            //if (opcode == 0xCF) { opcodeCF(); }
-            if (opcode == 0xD0) { opcodeD0(); }
-            if (opcode == 0xD1) { opcodeD1(); }
-            //if (opcode == 0xD2) { opcodeD2(); }
-            //if (opcode == 0xD3) { opcodeD3(); }
-            if (opcode == 0xD4) { opcodeD4(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0xD5) { opcodeD5(); }
-            if (opcode == 0xD6) { opcodeD6(); }
-            //if (opcode == 0xD7) { opcodeD7(); }
-            if (opcode == 0xD8) { opcodeD8(); }
-            if (opcode == 0xD9) { opcodeD9(); }
-            //if (opcode == 0xDA) { opcodeDA(); }
-            //if (opcode == 0xDB) { opcodeDB(); }
-            //if (opcode == 0xDC) { opcodeDC(); }
-            if (opcode == 0xDD) { opcodeDD(); }
-            if (opcode == 0xDE) { opcodeDE(); }
-            //if (opcode == 0xDF) { opcodeDF(); }
-            if (opcode == 0xE0) { opcodeE0(); }
-            if (opcode == 0xE1) { opcodeE1(); }
-            if (opcode == 0xE2) { opcodeE2(); } // Unofficial Opcode: 2 byte NOP.
-            //if (opcode == 0xE3) { opcodeE3(); }
-            if (opcode == 0xE4) { opcodeE4(); }
-            if (opcode == 0xE5) { opcodeE5(); }
-            if (opcode == 0xE6) { opcodeE6(); }
-            //if (opcode == 0xE7) { opcodeE7(); }
-            if (opcode == 0xE8) { opcodeE8(); }
-            if (opcode == 0xE9) { opcodeE9(); }
-            if (opcode == 0xEA) { opcodeEA(); }
-            //if (opcode == 0xEB) { opcodeEB(); }
-            if (opcode == 0xEC) { opcodeEC(); }
-            if (opcode == 0xED) { opcodeED(); }
-            if (opcode == 0xEE) { opcodeEE(); }
-            //if (opcode == 0xEF) { opcodeEF(); }
-            if (opcode == 0xF0) { opcodeF0(); }
-            if (opcode == 0xF1) { opcodeF1(); }
-            //if (opcode == 0xF2) { opcodeF2(); }
-            //if (opcode == 0xF3) { opcodeF3(); }
-            if (opcode == 0xF4) { opcodeF4(); } // Unofficial Opcode: 2 byte NOP.
-            if (opcode == 0xF5) { opcodeF5(); }
-            if (opcode == 0xF6) { opcodeF6(); }
-            //if (opcode == 0xF7) { opcodeF7(); }
-            if (opcode == 0xF8) { opcodeF8(); }
-            if (opcode == 0xF9) { opcodeF9(); }
-            //if (opcode == 0xFA) { opcodeFA(); }
-            //if (opcode == 0xFB) { opcodeFB(); }
-            //if (opcode == 0xFC) { opcodeFC(); }
-            if (opcode == 0xFD) { opcodeFD(); }
-            if (opcode == 0xFE) { opcodeFE(); }
-            //if (opcode == 0xFF) { opcodeFF(); }
-
-
+            switch (opcode)
+            {
+                case 0x00:
+                    opcode00();
+                    break;
+                case 0x01:
+                    opcode01();
+                    break;
+                    // No 02
+                    // No 03
+                case 0x04:
+                    opcode04(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x05:
+                    opcode05();
+                    break;
+                case 0x06:
+                    opcode06();
+                    break;
+                    // No 07
+                case 0x08:
+                    opcode08();
+                    break;
+                case 0x09:
+                    opcode09();
+                    break;
+                case 0x0A:
+                    opcode0A();
+                    break;
+                    // No 0B
+                case 0x0C:
+                    opcode0C(); // Unofficial Opcode: 3 byte NOP.
+                    break;
+                case 0x0D:
+                    opcode0D();
+                    break;
+                case 0x0E:
+                    opcode0E();
+                    break;
+                    // No 0F
+                case 0x10:
+                    opcode10();
+                    break;
+                case 0x11:
+                    opcode11();
+                    break;
+                    // No 12
+                    // No 13
+                case 0x14:
+                    opcode14();  // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x15:
+                    opcode15();
+                    break;
+                case 0x16:
+                    opcode16();
+                    break;
+                    // No 17
+                case 0x18:
+                    opcode18();
+                    break;
+                case 0x19:
+                    opcode19();
+                    break;
+                    // No 1A
+                    // No 1B
+                    // No 1C
+                case 0x1D:
+                    opcode1D();
+                    break;
+                case 0x1E:
+                    opcode1E();
+                    break;
+                    // No 1F
+                case 0x20:
+                    opcode20();
+                    break;
+                case 0x21:
+                    opcode21();
+                    break;
+                    // No 22
+                    // No 23
+                case 0x24:
+                    opcode24();
+                    break;
+                case 0x25:
+                    opcode25();
+                    break;
+                case 0x26:
+                    opcode26();
+                    break;
+                    // No 27
+                case 0x28:
+                    opcode28();
+                    break;
+                case 0x29:
+                    opcode29();
+                    break;
+                case 0x2A:
+                    opcode2A();
+                    break;
+                    // No 2B
+                case 0x2C:
+                    opcode2C();
+                    break;
+                case 0x2D:
+                    opcode2D();
+                    break;
+                case 0x2E:
+                    opcode2E();
+                    break;
+                    // No 2F
+                case 0x30:
+                    opcode30();
+                    break;
+                case 0x31:
+                    opcode31();
+                    break;
+                    // No 32
+                    // No 33
+                case 0x34:
+                    opcode34(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x35:
+                    opcode35();
+                    break;
+                case 0x36:
+                    opcode36();
+                    break;
+                    // No 37
+                case 0x38:
+                    opcode38();
+                    break;
+                case 0x39:
+                    opcode39();
+                    break;
+                    // No 3A
+                    // No 3B
+                    // No 3C
+                case 0x3D:
+                    opcode3D();
+                    break;
+                case 0x3E:
+                    opcode3E();
+                    break;
+                    // No 3F
+                case 0x40:
+                    opcode40();
+                    break;
+                case 0x41:
+                    opcode41();
+                    break;
+                    // No 42
+                    // No 43
+                case 0x44:
+                    opcode44(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x45:
+                    opcode45();
+                    break;
+                case 0x46:
+                    opcode46();
+                    break;
+                    // No 47
+                case 0x48:
+                    opcode48();
+                    break;
+                case 0x49:
+                    opcode49();
+                    break;
+                case 0x4A:
+                    opcode4A();
+                    break;
+                    // No 4B
+                case 0x4C:
+                    opcode4C();
+                    break;
+                case 0x4D:
+                    opcode4D();
+                    break;
+                case 0x4E:
+                    opcode4E();
+                    break;
+                    // No 4F
+                case 0x50:
+                    opcode50();
+                    break;
+                case 0x51:
+                    opcode51();
+                    break;
+                    // No 52
+                    // No 53
+                case 0x54:
+                    opcode54(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x55:
+                    opcode55();
+                    break;
+                case 0x56:
+                    opcode56();
+                    break;
+                    // No 57
+                case 0x58:
+                    opcode58();
+                    break;
+                case 0x59:
+                    opcode59();
+                    break;
+                    // No 5A
+                    // No 5B
+                    // No 5C
+                case 0x5D:
+                    opcode5D();
+                    break;
+                case 0x5E:
+                    opcode5E();
+                    break;
+                    // No 5F
+                case 0x60:
+                    opcode60();
+                    break;
+                case 0x61:
+                    opcode61();
+                    break;
+                    // No 62
+                    // No 63
+                case 0x64:
+                    opcode64(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x65:
+                    opcode65();
+                    break;
+                case 0x66:
+                    opcode66();
+                    break;
+                    // No 67
+                case 0x68:
+                    opcode68();
+                    break;
+                case 0x69:
+                    opcode69();
+                    break;
+                case 0x6A:
+                    opcode6A();
+                    break;
+                    // No 6B
+                case 0x6C:
+                    opcode6C();
+                    break;
+                case 0x6D:
+                    opcode6D();
+                    break;
+                case 0x6E:
+                    opcode6E();
+                    break;
+                    // No 6F
+                case 0x70:
+                    opcode70();
+                    break;
+                case 0x71:
+                    opcode71();
+                    break;
+                    // No 72
+                    // No 73
+                case 0x74:
+                    opcode74(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x75:
+                    opcode75();
+                    break;
+                case 0x76:
+                    opcode76();
+                    break;
+                    // No 77
+                case 0x78:
+                    opcode78();
+                    break;
+                case 0x79:
+                    opcode79();
+                    break;
+                    // No 7A
+                    // No 7B
+                    // No 7C
+                case 0x7D:
+                    opcode7D();
+                    break;
+                case 0x7E:
+                    opcode7E();
+                    break;
+                    // No 7F
+                case 0x80:
+                    opcode80(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x81:
+                    opcode81();
+                    break;
+                case 0x82:
+                    opcode82(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                    // No 83
+                case 0x84:
+                    opcode84();
+                    break;
+                case 0x85:
+                    opcode85();
+                    break;
+                case 0x86:
+                    opcode86();
+                    break;
+                    // No 87
+                case 0x88:
+                    opcode88();
+                    break;
+                case 0x89:
+                    opcode89(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0x8A:
+                    opcode8A();
+                    break;
+                    // No 8B
+                case 0x8C:
+                    opcode8C();
+                    break;
+                case 0x8D:
+                    opcode8D();
+                    break;
+                case 0x8E:
+                    opcode8E();
+                    break;
+                    // No 8F
+                case 0x90:
+                    opcode90();
+                    break;
+                case 0x91:
+                    opcode91();
+                    break;
+                    // No 92
+                    // No 93
+                case 0x94:
+                    opcode94();
+                    break;
+                case 0x95:
+                    opcode95();
+                    break;
+                case 0x96:
+                    opcode96();
+                    break;
+                    // No 97
+                case 0x98:
+                    opcode98();
+                    break;
+                case 0x99:
+                    opcode99();
+                    break;
+                case 0x9A:
+                    opcode9A();
+                    break;
+                    // No 9B
+                    // No 9C
+                case 0x9D:
+                    opcode9D();
+                    break;
+                    // No 9E
+                    // No 9F
+                case 0xA0:
+                    opcodeA0();
+                    break;
+                case 0xA1:
+                    opcodeA1();
+                    break;
+                case 0xA2:
+                    opcodeA2();
+                    break;
+                    // No A3
+                case 0xA4:
+                    opcodeA4();
+                    break;
+                case 0xA5:
+                    opcodeA5();
+                    break;
+                case 0xA6:
+                    opcodeA6();
+                    break;
+                    // No A7
+                case 0xA8:
+                    opcodeA8();
+                    break;
+                case 0xA9:
+                    opcodeA9();
+                    break;
+                case 0xAA:
+                    opcodeAA();
+                    break;
+                    // No AB
+                case 0xAC:
+                    opcodeAC();
+                    break;
+                case 0xAD:
+                    opcodeAD();
+                    break;
+                case 0xAE:
+                    opcodeAE();
+                    break;
+                    // No AF
+                case 0xB0:
+                    opcodeB0();
+                    break;
+                case 0xB1:
+                    opcodeB1();
+                    break;
+                    // No B2
+                    // No B3
+                case 0xB4:
+                    opcodeB4();
+                    break;
+                case 0xB5:
+                    opcodeB5();
+                    break;
+                case 0xB6:
+                    opcodeB6();
+                    break;
+                    // No B7
+                case 0xB8:
+                    opcodeB8();
+                    break;
+                case 0xB9:
+                    opcodeB9();
+                    break;
+                case 0xBA:
+                    opcodeBA();
+                    break;
+                    // No BB
+                case 0xBC:
+                    opcodeBC();
+                    break;
+                case 0xBD:
+                    opcodeBD();
+                    break;
+                case 0xBE:
+                    opcodeBE();
+                    break;
+                    // No BF
+                case 0xC0:
+                    opcodeC0();
+                    break;
+                case 0xC1:
+                    opcodeC1();
+                    break;
+                case 0xC2:
+                    opcodeC2(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                    // No C3
+                case 0xC4:
+                    opcodeC4();
+                    break;
+                case 0xC5:
+                    opcodeC5();
+                    break;
+                case 0xC6:
+                    opcodeC6();
+                    break;
+                    // No C7
+                case 0xC8:
+                    opcodeC8();
+                    break;
+                case 0xC9:
+                    opcodeC9();
+                    break;
+                case 0xCA:
+                    opcodeCA();
+                    break;
+                    // No CB
+                case 0xCC:
+                    opcodeCC();
+                    break;
+                case 0xCD:
+                    opcodeCD();
+                    break;
+                case 0xCE:
+                    opcodeCE();
+                    break;
+                    // No CF
+                case 0xD0:
+                    opcodeD0();
+                    break;
+                case 0xD1:
+                    opcodeD1();
+                    break;
+                    // No D2
+                    // No D3
+                case 0xD4:
+                    opcodeD4(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0xD5:
+                    opcodeD5();
+                    break;
+                case 0xD6:
+                    opcodeD6();
+                    break;
+                    // No D7
+                case 0xD8:
+                    opcodeD8();
+                    break;
+                case 0xD9:
+                    opcodeD9();
+                    break;
+                    // No DA
+                    // No DB
+                    // No DC
+                case 0xDD:
+                    opcodeDD();
+                    break;
+                case 0xDE:
+                    opcodeDE();
+                    break;
+                    // No DF
+                case 0xE0:
+                    opcodeE0();
+                    break;
+                case 0xE1:
+                    opcodeE1();
+                    break;
+                case 0xE2:
+                    opcodeE2(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                    // No E3
+                case 0xE4:
+                    opcodeE4();
+                    break;
+                case 0xE5:
+                    opcodeE5();
+                    break;
+                case 0xE6:
+                    opcodeE6();
+                    break;
+                    // No E7
+                case 0xE8:
+                    opcodeE8();
+                    break;
+                case 0xE9:
+                    opcodeE9();
+                    break;
+                case 0xEA:
+                    opcodeEA();
+                    break;
+                    // No EB
+                case 0xEC:
+                    opcodeEC();
+                    break;
+                case 0xED:
+                    opcodeED();
+                    break;
+                case 0xEE:
+                    opcodeEE();
+                    break;
+                    // No EF
+                case 0xF0:
+                    opcodeF0();
+                    break;
+                case 0xF1:
+                    opcodeF1();
+                    break;
+                    // No F2
+                    // No F3
+                case 0xF4:
+                    opcodeF4(); // Unofficial Opcode: 2 byte NOP.
+                    break;
+                case 0xF5:
+                    opcodeF5();
+                    break;
+                case 0xF6:
+                    opcodeF6();
+                    break;
+                    // No F7
+                case 0xF8:
+                    opcodeF8();
+                    break;
+                case 0xF9:
+                    opcodeF9();
+                    break;
+                    // No FA
+                    // No FB
+                    // No FC
+                case 0xFD:
+                    opcodeFD();
+                    break;
+                case 0xFE:
+                    opcodeFE();
+                    break;
+                    // No FF
+            }
         }
 
         public byte getAccumulator()
