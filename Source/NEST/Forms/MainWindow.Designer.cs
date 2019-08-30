@@ -45,6 +45,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.paletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savesavFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
