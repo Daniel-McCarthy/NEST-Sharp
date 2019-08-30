@@ -86,5 +86,26 @@ namespace NEST.Classes
                 }
             }
         }
+
+
+        public static void resetCore()
+        {
+            Core.TOTAL_CPU_CLOCKS = 0;
+            Core.TOTAL_PPU_CLOCKS = 0;
+
+            Core.paused = false;
+            Core.step = false;
+
+            Core.breakPointEnabled = true;
+            Core.breakpoints = new ConcurrentDictionary<string, ushort>();
+
+            // Don't reset rom since the rom class will be created again on new rom load.
+            Core.cpu.resetCPU();
+            Core.ppu.resetPPU();
+            Core.input.resetInput();
+
+            Mappers.MMC1.resetMMC1();
+            Mappers.MMC3.resetMMC3();
+        }
     }
 }

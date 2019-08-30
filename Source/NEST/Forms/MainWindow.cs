@@ -40,17 +40,23 @@ namespace NEST
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            bool alreadyEmulating = Core.run;
             Core.paused = true;
             string filePath = (openFileDialog1.ShowDialog() == DialogResult.OK) ? openFileDialog1.FileName : "Error: No such file found.";
 
             if(File.Exists(filePath))
             {
+                if (alreadyEmulating)
+                {
+                    global::NEST.Classes.NEST_Main.resetCore();
+                }
+
                 Core.rom = new Rom(File.ReadAllBytes(filePath));
                 Core.rom.romFilePath = filePath;
 
                 int mapperSetting = Core.rom.getMapperSetting();
 
-                if(mapperSetting == 0)
+                if (mapperSetting == 0)
                 {
                     NROM.loadRom(Core.rom);
                 }
@@ -80,6 +86,11 @@ namespace NEST
                 {
                     emulatorThread = new Thread(global::NEST.Classes.NEST_Main.startEmulator);
                     emulatorThread.Start();
+                }
+                else
+                {
+                    Core.run = true;
+                    Core.paused = false;
                 }
 
                 resumeToolStripMenuItem.Enabled = true;

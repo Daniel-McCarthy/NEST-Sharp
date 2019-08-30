@@ -223,5 +223,17 @@ namespace NEST.Classes.Mappers
                 }
             }
         }
+
+        public static void resetMMC3()
+        {
+            bankRegister = 0;
+            prgRomBankingMode = false;
+            chrRomBankOrder = false;
+
+            irqLatch = 0;
+            irqCounter = 0;
+            irqEnabled = false;
+            irqPending = false;
+        }
     }
 }

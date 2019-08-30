@@ -512,7 +512,7 @@ namespace NEST.Classes
                     }
                     else
                     {
-                        //Read Default BG Color.
+                        //Read Default BG Color. 
                         pixelColor = palette[ppuRam[0x3F00]];
                     }
 
@@ -828,5 +828,35 @@ namespace NEST.Classes
             return line;
         }
 
+        public void resetPPU()
+        {
+            frame               = new SFML.Graphics.Image(256, 240);
+            emptyFrame          = new SFML.Graphics.Image(1, 1);
+            fullWindow          = new SFML.Graphics.Image(512, 512);
+            screenUpdateWatch   = new Stopwatch();
+
+            ppuRam = new byte[0x4000];
+            oamRam = new byte[0x100];
+
+            scrollWrittenOnce       = false;
+            ppuAddressWrittenOnce   = false;
+            oamAddressWrittenOnce   = false;
+            ppuWriteAddress         = 0;
+            tempPPUWriteAddress     = 0;
+            oamWriteAddress         = 0;
+            tempOAMWriteAddress     = 0;
+            pendingNMI              = false;
+            spriteZeroHit           = false;
+            spriteOverflow          = false;
+            isNametableMirrored     = false;
+            isHorizNametableMirror  = false;
+            isVertNametableMirror   = false;
+
+            scrollX     = 0;
+            scrollY     = 0;
+            ly          = 0;
+            ppuState    = 0;
+            frameCount  = 0;
+        }
     }
 }

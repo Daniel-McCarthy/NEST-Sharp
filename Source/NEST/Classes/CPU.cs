@@ -3449,5 +3449,21 @@ namespace NEST.Classes
                 Core.ppu.pendingNMI = false;
             }
         }
+
+        public void resetCPU() {
+            accumulator = 0;
+            xAddress = 0;
+            yAddress = 0;
+            programCounter = 0x8000;
+            stackPointer = 0xFD;
+            statusRegister = 0 | Empty_Flag | Interrupt_Disable_Flag;
+
+            cpuRam = new byte[0x10000];
+
+            pendingInterrupt = false;
+
+            tClock = 0;
+            mClock = 0;
+        }
     }
 }

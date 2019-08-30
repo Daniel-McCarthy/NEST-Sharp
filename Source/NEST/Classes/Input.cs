@@ -67,8 +67,6 @@ namespace NEST.Classes
                     joy2NextInputRead = 0;
                 }
             }
-            
-
         }
 
         public byte joyPadRegisterRead(bool isJoyPad2 = false)
@@ -246,6 +244,33 @@ namespace NEST.Classes
             }
         }
 
+        public void resetInput()
+        {
+            joy1NextInputRead = 0;
+            joy1Strobing = false;
+            joy1PreviousStrobeValue = false;
+            joy1Connected = true;
+            joy1KeyUp = false;
+            joy1KeyDown = false;
+            joy1KeyLeft = false;
+            joy1KeyRight = false;
+            joy1KeyStart = false;
+            joy1KeySelect = false;
+            joy1KeyA = false;
+            joy1KeyB = false;
 
+            joy2NextInputRead = 0;
+            joy2Strobing = false;
+            joy2PreviousStrobeValue = false;
+            joy2Connected = true;
+            joy2KeyUp = false;
+            joy2KeyDown = false;
+            joy2KeyLeft = false;
+            joy2KeyRight = false;
+            joy2KeyStart = false;
+            joy2KeySelect = false;
+            joy2KeyA = false;
+            joy2KeyB = false;
+        }
     }
 }
