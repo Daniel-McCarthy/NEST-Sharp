@@ -48,7 +48,7 @@ namespace NEST
             {
                 if (alreadyEmulating)
                 {
-                    global::NEST.Classes.NEST_Main.resetCore();
+                    NEST_Main.resetCore();
                 }
 
                 Core.rom = new Rom(File.ReadAllBytes(filePath));
@@ -82,15 +82,13 @@ namespace NEST
                 resetAddress |= (ushort)(Core.cpu.readCPURam(0xFFFD, true) << 8);
                 Core.cpu.programCounter = resetAddress;
 
+                Core.run = true;
+                Core.paused = false;
+
                 if (emulatorThread == null)
                 {
                     emulatorThread = new Thread(global::NEST.Classes.NEST_Main.startEmulator);
                     emulatorThread.Start();
-                }
-                else
-                {
-                    Core.run = true;
-                    Core.paused = false;
                 }
 
                 resumeToolStripMenuItem.Enabled = true;

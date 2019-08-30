@@ -19,7 +19,7 @@ namespace NEST.Classes
             TOTAL_CPU_CLOCKS = 0;
             TOTAL_PPU_CLOCKS = 0;
 
-            run = true;
+            run = false;
             paused = false;
             step = false;
         }
@@ -47,7 +47,7 @@ namespace NEST.Classes
         public static void startEmulator()
         {
 
-            while(Core.run)
+            while (Core.run)
             {
 
                 if (Core.breakPointEnabled)
