@@ -490,7 +490,7 @@ namespace NEST.Classes
         {
             //Bitwise Left Shift of value at Zero Page X address
 
-            ushort address = (ushort)(readImmediateByte() + xAddress);
+            byte address = (byte)((readImmediateByte() + xAddress) % 256);
             byte value = readCPURam(address);
 
             setFlagTo(Carry_Flag, (value & 0x80) == 0x80);          //Set carry flag to old bit 7
@@ -816,7 +816,7 @@ namespace NEST.Classes
         {
             //Bitwise Left Rotate of value at Zero Page X address
 
-            ushort address = (ushort)(readImmediateByte() + xAddress);
+            byte address = (byte)((readImmediateByte() + xAddress) % 256);
             byte value = readCPURam(address);
 
             bool oldCarry = getFlagStatus(Carry_Flag);
@@ -1116,7 +1116,7 @@ namespace NEST.Classes
         {
             //Bitwise Right Shift of value at Zero Page X address
 
-            ushort address = (ushort)(readImmediateByte() + xAddress);
+            byte address = (byte)((readImmediateByte() + xAddress) % 256);
             byte value = readCPURam(address);
 
             setFlagTo(Carry_Flag, (value & 0x01) == 0x01);          //Set carry flag to old bit 7
@@ -1461,7 +1461,7 @@ namespace NEST.Classes
         {
             //Bitwise Right Rotate of value at Zero Page X address
 
-            ushort address = (ushort)(readImmediateByte() + xAddress);
+            byte address = (byte)((readImmediateByte() + xAddress) % 256);
             byte value = readCPURam(address);
 
             bool oldCarry = getFlagStatus(Carry_Flag);
@@ -1740,8 +1740,7 @@ namespace NEST.Classes
         {
             //STA: Copy value in accumulator to Zero Page + X Address
 
-            ushort address = readImmediateByte();
-            address += xAddress;
+            byte address = (byte)((readImmediateByte() + xAddress) % 256);
             writeCPURam(address, accumulator);
 
             //4 cycles
