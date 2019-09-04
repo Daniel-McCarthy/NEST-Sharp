@@ -1,3 +1,5 @@
+*This repository has been archived and will no longer be updated. All future developement will be for the Qt/C++ [sister project](https://github.com/Daniel-McCarthy/NEST) that was previously developed in tandem. Thank you for your interest.*
+___
 # NEST-Sharp
 
 NEST is an NES Emulator with a fresh chicken theme.
